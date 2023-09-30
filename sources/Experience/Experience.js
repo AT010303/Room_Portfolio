@@ -10,7 +10,7 @@ import Renderer from './Renderer.js'
 import Camera from './Camera.js'
 import World from './World.js'
 
-import roomModel from './roomModel.js'
+
 
 import assets from './assets.js'
 
@@ -45,6 +45,7 @@ export default class Experience
         this.setRenderer()
         this.setResources()
         this.setWorld()
+        
         
         this.sizes.on('resize', () =>
         {

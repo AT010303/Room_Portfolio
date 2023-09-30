@@ -131,7 +131,7 @@ export default class roomModel{
         this.model = this.roomModel.scene
 
         //room
-        this.chairTop= this.model.children.find((child) => child.name=== 'chairTop')
+        // this.chairTop= this.model.children.find((child) => child.name=== 'chairTop')
         this.chairTvclockstuf = this.model.children.find((child) => child.name === 'chairTvclockstuf')
         this.deskShelfStuf = this.model.children.find((child)=> child.name === 'deskShelfStuf')
         this.frame1 =  this.model.children.find((child)=> child.name === 'frame1')
@@ -169,7 +169,7 @@ export default class roomModel{
         this.nbaked0m = new THREE.MeshBasicMaterial({map : this.nBaked0})
         this.nbaked1m = new THREE.MeshBasicMaterial({map : this.nBaked1})
         this.nbaked2m = new THREE.MeshBasicMaterial({map : this.nBaked2,})
-        this.nBaked3m = new THREE.MeshBasicMaterial({map : this.nBaked2,})
+        
 
         this.nleaf0m = new THREE.MeshBasicMaterial({map : this.nleaf0})
         this.nleaf1m = new THREE.MeshBasicMaterial({map : this.nleaf1})
@@ -190,7 +190,7 @@ export default class roomModel{
         this.roomFurniture.material = this.nbaked0m
         this.deskShelfStuf.material = this.nbaked1m
         this.chairTvclockstuf.material = this.nbaked2m
-        this.chairTop.material = this.nBaked3m
+        // this.chairTop.material = this.nBaked3m
 
         this.leaf0.material = this.nleaf0m
         this.leaf1.material = this.nleaf1m
@@ -210,4 +210,5 @@ export default class roomModel{
 
         this.scene.add(this.model)
     }
+
 }

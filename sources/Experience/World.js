@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import Experience from './Experience.js'
 import roomModel from './roomModel.js'
+import chairTop from './chairTop.js'
 
 export default class World
 {
@@ -31,10 +32,15 @@ export default class World
         // this.scene.add(cube)
         
         this.setroomModel();
+        this.setchairTop();
     }
 
     setroomModel(){
         this.roomModel = new roomModel()
+    }
+
+    setchairTop(){
+        this.chairTop = new chairTop()
     }
 
     resize()
@@ -43,6 +49,10 @@ export default class World
 
     update()
     {
+
+        if(this.chairTop)
+            this.chairTop.update()
+        
     }
 
     destroy()

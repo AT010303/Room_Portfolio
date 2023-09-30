@@ -6,6 +6,7 @@ export default [
         [
             { name: 'lennaTexture', source: '/assets/lenna.png', type: 'texture' },
             {name : 'RoomModel' , source: '/assets/roomModel.glb', type: 'model'},
+            {name : 'chairTop' , source: '/assets/chairTop.glb', type: 'model'},
 
 
             //textures
