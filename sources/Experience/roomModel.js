@@ -19,6 +19,13 @@ export default class roomModel{
         this.nBaked0.minFilter = THREE.NearestFilter
 
 
+        this.dBaked0 = this.resources.items.dayBaked0
+        this.dBaked0.flipY = false
+        this.dBaked0.encoding = THREE.sRGBEncoding
+        this.dBaked0.magFilter = THREE.NearestFilter
+        this.dBaked0.minFilter = THREE.NearestFilter
+
+
         this.nBaked1 = this.resources.items.nightBaked1
         this.nBaked1.flipY = false
         this.nBaked1.encoding = THREE.sRGBEncoding
@@ -26,11 +33,24 @@ export default class roomModel{
         this.nBaked1.minFilter = THREE.NearestFilter
 
 
+        this.dBaked1 = this.resources.items.dayBaked1
+        this.dBaked1.flipY = false
+        this.dBaked1.encoding = THREE.sRGBEncoding
+        this.dBaked1.magFilter = THREE.NearestFilter
+        this.dBaked1.minFilter = THREE.NearestFilter
+
+
         this.nBaked2 = this.resources.items.nightBaked2
         this.nBaked2.flipY = false
         this.nBaked2.encoding = THREE.sRGBEncoding
         this.nBaked2.magFilter = THREE.NearestFilter
         this.nBaked2.minFilter = THREE.NearestFilter
+
+        this.dBaked2 = this.resources.items.dayBaked2
+        this.dBaked2.flipY = false
+        this.dBaked2.encoding = THREE.sRGBEncoding
+        this.dBaked2.magFilter = THREE.NearestFilter
+        this.dBaked2.minFilter = THREE.NearestFilter
 
 
 
@@ -168,7 +188,11 @@ export default class roomModel{
 
         this.nbaked0m = new THREE.MeshBasicMaterial({map : this.nBaked0})
         this.nbaked1m = new THREE.MeshBasicMaterial({map : this.nBaked1})
-        this.nbaked2m = new THREE.MeshBasicMaterial({map : this.nBaked2,})
+        this.nbaked2m = new THREE.MeshBasicMaterial({map : this.nBaked2})
+
+        this.dbaked0m = new THREE.MeshBasicMaterial({map : this.dBaked0})
+        this.dbaked1m = new THREE.MeshBasicMaterial({map : this.dBaked1})
+        this.dbaked2m = new THREE.MeshBasicMaterial({map : this.dBaked2})
         
 
         this.nleaf0m = new THREE.MeshBasicMaterial({map : this.nleaf0})
@@ -186,10 +210,17 @@ export default class roomModel{
         this.nstemm = new THREE.MeshBasicMaterial({map : this.nstem})
         this.nsoilm = new THREE.MeshBasicMaterial({map : this.nsoil})
 
-
+        //nignh
         this.roomFurniture.material = this.nbaked0m
         this.deskShelfStuf.material = this.nbaked1m
         this.chairTvclockstuf.material = this.nbaked2m
+
+        //day
+        // this.roomFurniture.material = this.dbaked0m
+        // this.deskShelfStuf.material = this.dbaked1m
+        // this.chairTvclockstuf.material = this.dbaked2m
+
+
         // this.chairTop.material = this.nBaked3m
 
         this.leaf0.material = this.nleaf0m

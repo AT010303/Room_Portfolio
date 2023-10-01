@@ -18,6 +18,13 @@ export default class chairTop{
         this.nBaked2.encoding = THREE.sRGBEncoding
         this.nBaked2.magFilter = THREE.NearestFilter
         this.nBaked2.minFilter = THREE.NearestFilter
+
+
+        this.dBaked2 = this.resources.items.dayBaked2
+        this.dBaked2.flipY = false
+        this.dBaked2.encoding = THREE.sRGBEncoding
+        this.dBaked2.magFilter = THREE.NearestFilter
+        this.dBaked2.minFilter = THREE.NearestFilter
         
         this.setModel()
         // this.setMaterial()
@@ -29,7 +36,9 @@ export default class chairTop{
         this.model.group = this.resources.items.chairTop.scene.children[0]
 
         this.nBaked3m = new THREE.MeshBasicMaterial({map : this.nBaked2,})
+        this.dBaked3m = new THREE.MeshBasicMaterial({map : this.dBaked2,})
         this.model.group.material = this.nBaked3m
+        // this.model.group.material = this.dBaked3m
 
         this.scene.add(this.model.group)
 
