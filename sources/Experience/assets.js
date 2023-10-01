@@ -33,6 +33,21 @@ export default [
             {name : 'dayBaked0', source: '/assets/furnitureDay.jpg', type : 'texture'},
             {name : 'dayBaked1', source: '/assets/deskShelfStufDay.jpg', type : 'texture'},
             {name : 'dayBaked2', source: '/assets/chairTvclockstufDay.jpg', type : 'texture'},
+            {name : 'dpot', source: '/assets/plant/day/pot.jpg', type : 'texture'},
+            {name : 'dsoil', source: '/assets/plant/day/soil.jpg', type : 'texture'},
+            {name : 'dstem', source: '/assets/plant/day/stem.jpg', type : 'texture'},
+            {name : 'dleaf0', source: '/assets/plant/day/leaf0.jpg', type : 'texture'},
+            {name : 'dleaf1', source: '/assets/plant/day/leaf1.jpg', type : 'texture'},
+            {name : 'dleaf2', source: '/assets/plant/day/leaf2.jpg', type : 'texture'},
+            {name : 'dleaf3', source: '/assets/plant/day/leaf3.jpg', type : 'texture'},
+            {name : 'dleaf4', source: '/assets/plant/day/leaf4.jpg', type : 'texture'},
+            {name : 'dleaf5', source: '/assets/plant/day/leaf5.jpg', type : 'texture'},
+            {name : 'dleaf6', source: '/assets/plant/day/leaf6.jpg', type : 'texture'},
+            {name : 'dleaf7', source: '/assets/plant/day/leaf7.jpg', type : 'texture'},
+            {name : 'dleaf8', source: '/assets/plant/day/leaf8.jpg', type : 'texture'},
+            {name : 'dleaf9', source: '/assets/plant/day/leaf9.jpg', type : 'texture'},
+            {name : 'dleaf10', source: '/assets/plant/day/leaf10.jpg', type : 'texture'},
+
         ]
     }
 ]

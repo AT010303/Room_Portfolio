@@ -37,8 +37,8 @@ export default class chairTop{
 
         this.nBaked3m = new THREE.MeshBasicMaterial({map : this.nBaked2,})
         this.dBaked3m = new THREE.MeshBasicMaterial({map : this.dBaked2,})
-        this.model.group.material = this.nBaked3m
-        // this.model.group.material = this.dBaked3m
+        // this.model.group.material = this.nBaked3m
+        this.model.group.material = this.dBaked3m
 
         this.scene.add(this.model.group)
 
