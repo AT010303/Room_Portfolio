@@ -1,3 +1,4 @@
+import * as THREE from 'three'
 import EventEmitter from './EventEmitter.js'
 import Experience from '../Experience.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
@@ -15,6 +16,7 @@ export default class Resources extends EventEmitter
         super()
 
         this.experience = new Experience()
+        // this.assets = assets
         this.renderer = this.experience.renderer.instance
 
         this.setLoaders()
@@ -31,7 +33,20 @@ export default class Resources extends EventEmitter
     {
         this.loaders = []
 
+        //Loading manager
+        // const loadingManager = new THREE.LoadingManager(
+        //     ()=>{
+        //         console.log('loaded');
+        //     },
+
+        //     ()=>{
+        //         console.log('progress');
+        //     }
+
+        // )
+
         // Images
+        
         this.loaders.push({
             extensions: ['jpg', 'png'],
             action: (_resource) =>
@@ -51,6 +66,10 @@ export default class Resources extends EventEmitter
                 image.src = _resource.source
             }
         })
+
+        
+
+        // const textureLoader = new THREE.TextureLoader(loadingManager)
 
         // Draco
         const dracoLoader = new DRACOLoader()

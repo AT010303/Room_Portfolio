@@ -9,6 +9,7 @@ import Resources from './Resources.js'
 import Renderer from './Renderer.js'
 import Camera from './Camera.js'
 import World from './World.js'
+import PreLoader from './PreLoader.js'
 
 
 
@@ -45,6 +46,7 @@ export default class Experience
         this.setRenderer()
         this.setResources()
         this.setWorld()
+        this.setPreloader()
         
         
         this.sizes.on('resize', () =>
@@ -112,6 +114,10 @@ export default class Experience
     setWorld()
     {
         this.world = new World()
+    }
+
+    setPreloader(){
+        this.preloader = new PreLoader()
     }
 
     update()
