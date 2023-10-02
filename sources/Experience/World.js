@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import Experience from './Experience.js'
-import roomModel from './roomModel.js'
-import chairTop from './chairTop.js'
+import roomModel from './World/roomModel.js'
+import chairTop from './World/chairTop.js'
 
 export default class World
 {
@@ -23,14 +23,6 @@ export default class World
 
     setRoom()
     {
-        // this.resources.items.lennaTexture.encoding = THREE.sRGBEncoding
-        
-        // const cube = new THREE.Mesh(
-        //     new THREE.BoxGeometry(1, 1, 1),
-        //     new THREE.MeshBasicMaterial({ map: this.resources.items.lennaTexture })
-        // )
-        // this.scene.add(cube)
-        
         this.setroomModel();
         this.setchairTop();
     }
