@@ -10,6 +10,7 @@ import Renderer from './Renderer.js'
 import Camera from './Camera.js'
 import World from './World.js'
 import PreLoader from './PreLoader.js'
+import Navigation from './Navigation.js'
 
 
 
@@ -47,6 +48,7 @@ export default class Experience
         this.setResources()
         this.setWorld()
         this.setPreloader()
+        // this.setNavigation()
         
         
         this.sizes.on('resize', () =>
@@ -120,6 +122,10 @@ export default class Experience
         this.preloader = new PreLoader()
     }
 
+    // setNavigation(){
+    //     this.navigation = new Navigation()
+    // }
+
     update()
     {
         if(this.stats)
@@ -132,6 +138,9 @@ export default class Experience
         
         if(this.renderer)
             this.renderer.update()
+
+        if(this.navigation)
+            this.navigation.update()
 
         window.requestAnimationFrame(() =>
         {

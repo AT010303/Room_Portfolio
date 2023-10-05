@@ -127,7 +127,7 @@ export default class Renderer
                 generateMipmaps: false,
                 minFilter: THREE.LinearFilter,
                 magFilter: THREE.LinearFilter,
-                format: THREE.RGBFormat,
+                format: THREE.RGBAFormat,
                 encoding: THREE.sRGBEncoding,
                 samples: 2
             }
