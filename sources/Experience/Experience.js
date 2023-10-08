@@ -12,6 +12,8 @@ import World from './World.js'
 import PreLoader from './PreLoader.js'
 import Navigation from './Navigation.js'
 
+import { inject } from '@vercel/analytics'
+
 
 
 import assets from './assets.js'
@@ -36,7 +38,7 @@ export default class Experience
             console.warn('Missing \'targetElement\' property')
             return
         }
-
+        inject();
         this.time = new Time()
         this.sizes = new Sizes()
         this.setConfig()
