@@ -48,7 +48,7 @@ export default class Experience
         this.setResources()
         this.setWorld()
         this.setPreloader()
-        // this.setNavigation()
+        this.setNavigation()
         
         
         this.sizes.on('resize', () =>
@@ -73,6 +73,8 @@ export default class Experience
         const boundings = this.targetElement.getBoundingClientRect()
         this.config.width = boundings.width
         this.config.height = boundings.height || window.innerHeight
+        this.config.smallestSide = Math.min(this.config.width, this.config.height)
+        this.config.largestSide = Math.max(this.config.width, this.config.height)
     }
 
     setDebug()
@@ -122,9 +124,9 @@ export default class Experience
         this.preloader = new PreLoader()
     }
 
-    // setNavigation(){
-    //     this.navigation = new Navigation()
-    // }
+    setNavigation(){
+        this.navigation = new Navigation()
+    }
 
     update()
     {
@@ -154,6 +156,8 @@ export default class Experience
         const boundings = this.targetElement.getBoundingClientRect()
         this.config.width = boundings.width
         this.config.height = boundings.height
+        this.config.smallestSide = Math.min(this.config.width, this.config.height)
+        this.config.largestSide = Math.max(this.config.width, this.config.height)
 
         this.config.pixelRatio = Math.min(Math.max(window.devicePixelRatio, 1), 2)
 

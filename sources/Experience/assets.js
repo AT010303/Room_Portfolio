@@ -20,6 +20,12 @@ export default [
             {name : 'dayBaked2', source: '/assets/chairTvclockstufDay.jpg', type : 'texture'},
             {name : 'dayBaked3', source: '/assets/plantDay.jpg', type : 'texture'},
 
+
+            // {name : 'dayBaked0', source: '/assets/compresed/furnitureDay.jpg', type : 'texture'},
+
+
+            
+
         ]
     }
 ]
