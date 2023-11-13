@@ -189,7 +189,7 @@ export default class Navigation{
 
         }else{
             this.view.spherical.value.theta -= this.view.drag.delta.x * this.view.drag.sensitivity / this.config.smallestSide
-            this.view.spherical.value.phi -= this.view.drag.delta.y * this.view.drag.sensitivity / this.config.largestSide
+            this.view.spherical.value.phi -= this.view.drag.delta.y * this.view.drag.sensitivity / this.config.smallestSide
 
             //add limits
             this.view.spherical.value.phi = Math.min(Math.max(this.view.spherical.value.phi, this.view.spherical.limits.phi.min), this.view.spherical.limits.phi.max)
