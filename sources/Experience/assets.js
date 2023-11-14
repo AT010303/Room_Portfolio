@@ -15,7 +15,7 @@ export default [
 
             //textures
             //night
-            {name : 'nightBaked', source: '/assets/bakedTextureNight.jpg', type : 'texture'},
+            {name : 'nightBaked', source: '/assets/bakedTextureNightcmp.jpg', type : 'texture'},
             // {name : 'nightBaked0', source: '/assets/furniture.jpg', type : 'texture'},
             // {name : 'nightBaked1', source: '/assets/deskShelfStuf.jpg', type : 'texture'},
             // {name : 'nightBaked2', source: '/assets/chairTvclockstuf.jpg', type : 'texture'},

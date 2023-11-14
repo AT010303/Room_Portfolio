@@ -21,18 +21,20 @@ export default class Navigation{
         this.view.spherical.smoothed = this.view.spherical.value.clone()
         this.view.spherical.smoothing = 0.005
         this.view.spherical.limits = {}
-        this.view.spherical.limits.radius = {min : 10 , max : 40}
-        this.view.spherical.limits.phi = {min : 0.01 , max : Math.PI * 0.45}
-        this.view.spherical.limits.theta = {min : Math.PI * 0.5 , max : Math.PI * 1}
+        // this.view.spherical.limits.radius = {min : 10 , max : 40}
+        this.view.spherical.limits.radius = {min : 10 , max : 50}
+        // this.view.spherical.limits.phi = {min : 0.01 , max : Math.PI * 0.45}
+        this.view.spherical.limits.phi = {min : 0.01 , max : Math.PI * 0.5}
+        this.view.spherical.limits.theta = {min :  Math.PI * 0.5 , max : Math.PI * 1}
 
-        this.view.taget = {}
-        this.view.taget.value = new THREE.Vector3(0, 2, 0)
-        this.view.taget.smoothed = this.view.taget.value.clone()
-        this.view.taget.smoothing = 0.005
-        this.view.taget.limits = {}
-        this.view.taget.limits.x = {min : -3 , max : 3}
-        this.view.taget.limits.y = {min : 1 , max : 5}
-        this.view.taget.limits.z = {min : -3 , max : 3}
+        this.view.target = {}
+        this.view.target.value = new THREE.Vector3(0, 2, 0)
+        this.view.target.smoothed = this.view.target.value.clone()
+        this.view.target.smoothing = 0.005
+        this.view.target.limits = {}
+        this.view.target.limits.x = {min : -3 , max : 3}
+        this.view.target.limits.y = {min : 1 , max : 5}
+        this.view.target.limits.z = {min : -3 , max : 3}
 
         this.view.drag = {}
         this.view.drag.delta = {}
@@ -48,6 +50,7 @@ export default class Navigation{
         this.view.zoom.sensitivity = 0.01
         this.view.zoom.delta = 0
 
+        
         /**
          * Methods
          */
@@ -59,6 +62,7 @@ export default class Navigation{
         this.view.move = (_x,_y)=>{
             this.view.drag.delta.x += _x - this.view.drag.previous.x
             this.view.drag.delta.y += _y - this.view.drag.previous.y
+
             this.view.drag.previous.x = _x
             this.view.drag.previous.y = _y
         }
@@ -96,7 +100,7 @@ export default class Navigation{
             window.removeEventListener('mouseup', this.view.onMouseUp)
             window.removeEventListener('mousemove', this.view.onMouseMove)
         }
-        window.addEventListener('mousedown', this.view.onMouseDown)
+        this.targetElement.addEventListener('mousedown', this.view.onMouseDown)
 
         /**
          * touch events
@@ -161,6 +165,7 @@ export default class Navigation{
         /**
          * view
          */
+        // console.log(this.view.drag.delta.y);
 
         //zoom
         this.view.spherical.value.radius += this.view.zoom.delta * this.view.zoom.sensitivity
@@ -179,21 +184,22 @@ export default class Navigation{
             up.multiplyScalar( this.view.drag.delta.y * 0.01)
             right.multiplyScalar(this.view.drag.delta.x * 0.01)
 
-            this.view.taget.value.add(up)
-            this.view.taget.value.add(right)
+            this.view.target.value.add(up)
+            this.view.target.value.add(right)
 
             // add limits
-            this.view.taget.value.x = Math.min(Math.max(this.view.taget.value.x, this.view.taget.limits.x.min), this.view.taget.limits.x.max)
-            this.view.taget.value.y = Math.min(Math.max(this.view.taget.value.y, this.view.taget.limits.y.min), this.view.taget.limits.y.max)
-            this.view.taget.value.z = Math.min(Math.max(this.view.taget.value.z, this.view.taget.limits.z.min), this.view.taget.limits.z.max)
+            this.view.target.value.x = Math.min(Math.max(this.view.target.value.x, this.view.target.limits.x.min), this.view.target.limits.x.max)
+            this.view.target.value.y = Math.min(Math.max(this.view.target.value.y, this.view.target.limits.y.min), this.view.target.limits.y.max)
+            this.view.target.value.z = Math.min(Math.max(this.view.target.value.z, this.view.target.limits.z.min), this.view.target.limits.z.max)
 
         }else{
             this.view.spherical.value.theta -= this.view.drag.delta.x * this.view.drag.sensitivity / this.config.smallestSide
             this.view.spherical.value.phi -= this.view.drag.delta.y * this.view.drag.sensitivity / this.config.smallestSide
 
             //add limits
-            this.view.spherical.value.phi = Math.min(Math.max(this.view.spherical.value.phi, this.view.spherical.limits.phi.min), this.view.spherical.limits.phi.max)
             this.view.spherical.value.theta = Math.min(Math.max(this.view.spherical.value.theta, this.view.spherical.limits.theta.min), this.view.spherical.limits.theta.max)
+            this.view.spherical.value.phi = Math.min(Math.max(this.view.spherical.value.phi, this.view.spherical.limits.phi.min), this.view.spherical.limits.phi.max)
+           
         }
         
         this.view.drag.delta.x = 0
@@ -205,15 +211,15 @@ export default class Navigation{
         this.view.spherical.smoothed.phi += (this.view.spherical.value.phi - this.view.spherical.smoothed.phi) * this.view.spherical.smoothing * this.time.delta
         this.view.spherical.smoothed.theta += (this.view.spherical.value.theta - this.view.spherical.smoothed.theta) * this.view.spherical.smoothing * this.time.delta
 
-        this.view.taget.smoothed.x += (this.view.taget.value.x - this.view.taget.smoothed.x) * this.view.taget.smoothing * this.time.delta
-        this.view.taget.smoothed.x += (this.view.taget.value.y - this.view.taget.smoothed.y) * this.view.taget.smoothing * this.time.delta
-        this.view.taget.smoothed.x += (this.view.taget.value.z - this.view.taget.smoothed.z) * this.view.taget.smoothing * this.time.delta
+        this.view.target.smoothed.x += (this.view.target.value.x - this.view.target.smoothed.x) * this.view.target.smoothing * this.time.delta
+        this.view.target.smoothed.y += (this.view.target.value.y - this.view.target.smoothed.y) * this.view.target.smoothing * this.time.delta
+        this.view.target.smoothed.z += (this.view.target.value.z - this.view.target.smoothed.z) * this.view.target.smoothing * this.time.delta
 
         const viewPosition = new THREE.Vector3()
         viewPosition.setFromSpherical(this.view.spherical.smoothed)
-        viewPosition.add(this.view.taget.value)
+        viewPosition.add(this.view.target.smoothed)
 
         this.camera.modes.default.instance.position.copy(viewPosition)
-        this.camera.modes.default.instance.lookAt(this.view.taget.smoothed)
+        this.camera.modes.default.instance.lookAt(this.view.target.smoothed)
     }
 }
