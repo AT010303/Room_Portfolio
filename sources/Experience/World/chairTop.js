@@ -19,6 +19,13 @@ export default class chairTop{
         this.nBaked.magFilter = THREE.LinearFilter
         this.nBaked.minFilter = THREE.LinearFilter
 
+
+        this.dBaked = this.resources.items.dayBaked
+        this.dBaked.flipY = false
+        this.dBaked.encoding = THREE.sRGBEncoding
+        this.dBaked.magFilter = THREE.LinearFilter
+        this.dBaked.minFilter = THREE.LinearFilter
+
         // this.nBaked2 = this.resources.items.nightBaked2
         // this.nBaked2.flipY = false
         // this.nBaked2.encoding = THREE.sRGBEncoding
@@ -43,9 +50,10 @@ export default class chairTop{
         // this.model.group = this.resources.items.chairTop.scene.children[0]
         // this.model.group = this.resources.items.chairTop.scene.children[0]
 
-        this.nBaked3m = new THREE.MeshBasicMaterial({map : this.nBaked})
-        // this.dBaked3m = new THREE.MeshBasicMaterial({map : this.dBaked2,})
-        this.chairTop.material = this.nBaked3m
+        this.nBakedm = new THREE.MeshBasicMaterial({map : this.nBaked})
+        this.dBakedm = new THREE.MeshBasicMaterial({map : this.dBaked})
+        // this.chairTop.material = this.nBakedm
+        this.chairTop.material = this.dBakedm
         // this.model.group.material = this.nBaked3m
         // this.model.group.material = this.dBaked3m
 

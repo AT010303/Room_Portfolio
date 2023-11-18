@@ -18,6 +18,13 @@ export default class roomModel{
         this.nBaked.encoding = THREE.sRGBEncoding
         this.nBaked.magFilter = THREE.LinearFilter
         this.nBaked.minFilter = THREE.LinearFilter
+
+
+        this.dBaked = this.resources.items.dayBaked
+        this.dBaked.flipY = false
+        this.dBaked.encoding = THREE.sRGBEncoding
+        this.dBaked.magFilter = THREE.LinearFilter
+        this.dBaked.minFilter = THREE.LinearFilter
         
         // this.nBaked0 = this.resources.items.nightBaked0
         // this.nBaked0.flipY = false
@@ -103,6 +110,7 @@ export default class roomModel{
         // this.nbaked2m = new THREE.MeshBasicMaterial({map : this.nBaked2})
         // this.nbaked3m = new THREE.MeshBasicMaterial({map : this.nBaked3})
         this.nbakedm = new THREE.MeshBasicMaterial({map : this.nBaked})
+        this.dbakedm = new THREE.MeshBasicMaterial({map : this.dBaked})
 
         // this.dbaked0m = new THREE.MeshBasicMaterial({map : this.dBaked0})
         // this.dbaked1m = new THREE.MeshBasicMaterial({map : this.dBaked1})
@@ -112,12 +120,16 @@ export default class roomModel{
 
 //applying texyure        
         //night
-        this.roomFurniture.material = this.nbakedm
-        this.deskShelfStuf.material = this.nbakedm
-        this.chairTvclockstuf.material = this.nbakedm
-        this.plant.material = this.nbakedm
+        // this.roomFurniture.material = this.nbakedm
+        // this.deskShelfStuf.material = this.nbakedm
+        // this.chairTvclockstuf.material = this.nbakedm
+        // this.plant.material = this.nbakedm
 
         //day
+        this.roomFurniture.material = this.dbakedm
+        this.deskShelfStuf.material = this.dbakedm
+        this.chairTvclockstuf.material = this.dbakedm
+        this.plant.material = this.dbakedm
         // this.roomFurniture.material = this.dbaked0m
         // this.deskShelfStuf.material = this.dbaked1m
         // this.chairTvclockstuf.material = this.dbaked2m
