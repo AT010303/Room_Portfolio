@@ -25,19 +25,6 @@ export default class chairTop{
         this.dBaked.encoding = THREE.sRGBEncoding
         this.dBaked.magFilter = THREE.LinearFilter
         this.dBaked.minFilter = THREE.LinearFilter
-
-        // this.nBaked2 = this.resources.items.nightBaked2
-        // this.nBaked2.flipY = false
-        // this.nBaked2.encoding = THREE.sRGBEncoding
-        // this.nBaked2.magFilter = THREE.NearestFilter
-        // this.nBaked2.minFilter = THREE.NearestFilter
-
-
-        // this.dBaked2 = this.resources.items.dayBaked2
-        // this.dBaked2.flipY = false
-        // this.dBaked2.encoding = THREE.sRGBEncoding
-        // this.dBaked2.magFilter = THREE.NearestFilter
-        // this.dBaked2.minFilter = THREE.NearestFilter
         
         this.setModel()
     }
@@ -47,24 +34,15 @@ export default class chairTop{
         this.model = this.chairTop.scene
         this.chairTop = this.model.children.find((child)=> child.name === 'chairTop')
 
-        // this.model.group = this.resources.items.chairTop.scene.children[0]
-        // this.model.group = this.resources.items.chairTop.scene.children[0]
-
         this.nBakedm = new THREE.MeshBasicMaterial({map : this.nBaked})
         this.dBakedm = new THREE.MeshBasicMaterial({map : this.dBaked})
         // this.chairTop.material = this.nBakedm
         this.chairTop.material = this.dBakedm
-        // this.model.group.material = this.nBaked3m
-        // this.model.group.material = this.dBaked3m
 
-        // this.scene.add(this.model.group)
         this.scene.add(this.model)
-
     }
 
     update(){
-
         this.chairTop.rotation.y = Math.sin(this.time.elapsed * 0.0004)
-        // this.model.group.rotation.y = Math.sin(this.time.elapsed * 0.0004)
     }
 }
