@@ -15,6 +15,8 @@ export default [
             {name : 'nightBaked', source: '/assets/bakedTextureNightcmp.jpg', type : 'texture'},
             //Day
             {name : 'dayBaked', source: '/assets/bakedTextureDaycmp.jpg', type : 'texture'},
+            //LightMap
+            {name : 'lightMap', source: '/assets/roomTextureLightMapcmp.jpg', type : 'texture'},
 
 
             

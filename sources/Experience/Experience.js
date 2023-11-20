@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import GUI from 'lil-gui'
+import { Pane } from 'tweakpane'
 
 import Time from './Utils/Time.js'
 import Sizes from './Utils/Sizes.js'
@@ -83,7 +84,8 @@ export default class Experience
     {
         if(this.config.debug)
         {
-            this.debug = new GUI()
+            this.debug = new Pane()
+            this.debug.containerElem_.style.width = '300px'
         }
     }
 
