@@ -1,8 +1,8 @@
 import * as THREE from 'three'
 import Experience from "../Experience";
 
-import vertexShader from '../shaders/room/vertex.glsl'
-import fragmentShader from '../shaders/room/fragment.glsl'
+import vertexShader from './shaders/room/vertex.glsl'
+import fragmentShader from './shaders/room/fragment.glsl'
 
 export default class roomModel{
     constructor(){
