@@ -45,23 +45,23 @@ export default class chairTop{
         this.chairTop = this.model.children.find((child)=> child.name === 'chairTop')
 
 
-        this.material = new THREE.ShaderMaterial({
-            uniforms:{
-                nbakedm : {value: this.nBaked},
-                lightMapm : {value: this.lightMap},
-                // dbakedm : {value: this.dBaked}
-            },
-            vertexShader: vertexShader,
-            fragmentShader: fragmentShader
-        })
+        // this.material = new THREE.ShaderMaterial({
+        //     uniforms:{
+        //         nbakedm : {value: this.nBaked},
+        //         lightMapm : {value: this.lightMap},
+        //         // dbakedm : {value: this.dBaked}
+        //     },
+        //     vertexShader: vertexShader,
+        //     fragmentShader: fragmentShader
+        // })
 
-        // this.nBakedm = new THREE.MeshBasicMaterial({map : this.nBaked})
+        this.nBakedm = new THREE.MeshBasicMaterial({map : this.nBaked})
         // this.dBakedm = new THREE.MeshBasicMaterial({map : this.dBaked})
         // this.lightMapm = new THREE.MeshBasicMaterial({map : this.lightMap})
-        // this.chairTop.material = this.nBakedm
+        this.chairTop.material = this.nBakedm
         // this.chairTop.material = this.dBakedm
         // this.chairTop.material = this.lightMapm
-        this.chairTop.material = this.material
+        // this.chairTop.material = this.material
 
         this.scene.add(this.model)
     }
