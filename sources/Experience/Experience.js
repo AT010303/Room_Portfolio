@@ -67,7 +67,7 @@ export default class Experience
         this.config = {}
     
         // Debug
-        this.config.debug = window.location.hash === '#debug'
+        // this.config.debug = window.location.hash === '#debug'
 
         // Pixel ratio
         this.config.pixelRatio = Math.min(Math.max(window.devicePixelRatio, 1), 2)
@@ -82,11 +82,11 @@ export default class Experience
 
     setDebug()
     {
-        if(this.config.debug)
-        {
+        // if(this.config.debug)
+        // {
             this.debug = new Pane()
             this.debug.containerElem_.style.width = '300px'
-        }
+        // }
     }
 
     setStats()

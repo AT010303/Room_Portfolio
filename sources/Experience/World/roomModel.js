@@ -25,6 +25,16 @@ export default class roomModel{
         
          //Debug
          if(this.debug){
+
+
+            this.debugFolder
+                .addBinding(
+                    this.model.material.uniforms.NightMix,
+                    'value',
+                    {label:'NightMix', min: 0 , max: 1}
+                )
+
+
             this.debugFolder
                 .addBinding(
                     this.colors,
@@ -117,25 +127,27 @@ export default class roomModel{
 
 
         this.colors = {}
-        this.colors.boardColor = '#ff0085'
-        this.colors.pcColor = '#5e8bff'
-        this.colors.deskColor = '#fb853d'
+        this.colors.boardColor = '#ff006d'
+        this.colors.pcColor = '#4b7eff'
+        this.colors.deskColor = '#ff6828'
 
 
         this.model.material = new THREE.ShaderMaterial({
             uniforms:{
                 nbakedm : {value: this.model.nBaked},
+                dbakedm : {value: this.model.dBaked},
                 lightMapm : {value: this.model.lightMap},
-                // dbakedm : {value: this.dBaked}
+
+                NightMix: {value: 0},
 
                 lightBoardColor: {value: new THREE.Color(this.colors.boardColor)},
-                lightBoardStrength: {value: 1.5},
+                lightBoardStrength: {value: 1.35},
 
                 lightPcColor: {value: new THREE.Color(this.colors.pcColor)},
                 lightPcStrength: {value: 1.2},
 
                 lightDeskColor: {value: new THREE.Color(this.colors.deskColor)},
-                lightDeskStrength: {value: 1.8}
+                lightDeskStrength: {value: 1.55}
             },
             vertexShader: vertexShader,
             fragmentShader: fragmentShader

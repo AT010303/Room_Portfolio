@@ -1,4 +1,5 @@
 import glsl from 'vite-plugin-glsl';
+import glslify from 'vite-plugin-glslify';
 import { defineConfig } from 'vite'
 import path from 'path'
 
@@ -13,5 +14,5 @@ export default defineConfig({
         emptyOutDir: true,
         sourcemap: true
     },
-    plugins: [glsl()]
+    plugins: [glslify()]
 })
