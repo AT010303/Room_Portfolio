@@ -12,6 +12,9 @@ import Camera from './Camera.js'
 import World from './World.js'
 import PreLoader from './PreLoader.js'
 import Navigation from './Navigation.js'
+import RayCaster from './RayCaster.js'
+import Controller from './Controller.js'
+import Animations from './World/Animation.js'
 
 import { inject } from '@vercel/analytics'
 
@@ -40,6 +43,8 @@ export default class Experience
             return
         }
         inject();
+        this.scene = new THREE.Scene()
+
         this.time = new Time()
         this.sizes = new Sizes()
         this.setConfig()
@@ -49,9 +54,13 @@ export default class Experience
         this.setCamera()
         this.setRenderer()
         this.setResources()
-        this.setWorld()
         this.setPreloader()
-        this.setNavigation()
+        this.setWorld()
+        this.setAnimation()
+        this.setController()
+        this.setRayCaster()
+        
+        // this.setNavigation()
         
         
         this.sizes.on('resize', () =>
@@ -132,6 +141,18 @@ export default class Experience
         this.navigation = new Navigation()
     }
 
+    setRayCaster(){
+        this.rayCaster = new RayCaster()
+    }
+
+    setController(){
+        this.controller = new Controller()
+    }
+
+    setAnimation(){
+        this.animations = new Animation()
+    }
+
     update()
     {
         if(this.stats)
@@ -147,6 +168,8 @@ export default class Experience
 
         if(this.navigation)
             this.navigation.update()
+
+        // this.animations.update()
 
         window.requestAnimationFrame(() =>
         {

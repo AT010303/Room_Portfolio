@@ -18,9 +18,6 @@ export default [
             //LightMap
             {name : 'lightMap', source: '/assets/roomTextureLightMapcmp.jpg', type : 'texture'},
 
-
-            
-
         ]
     }
 ]
