@@ -14,11 +14,9 @@ import PreLoader from './PreLoader.js'
 import Navigation from './Navigation.js'
 import RayCaster from './RayCaster.js'
 import Controller from './Controller.js'
-import Animations from './World/Animation.js'
+// import Animations from './World/Animation.js'
 
 import { inject } from '@vercel/analytics'
-
-
 
 import assets from './assets.js'
 
