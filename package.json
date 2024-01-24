@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite serve --host",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "@vercel/analytics": "^1.1.0",
@@ -19,5 +20,8 @@
     "vite": "^4.5.0",
     "vite-plugin-glsl": "^0.1.2",
     "vite-plugin-glslify": "^2.0.2"
+  },
+  "devDependencies": {
+    "prettier": "3.2.4"
   }
 }
