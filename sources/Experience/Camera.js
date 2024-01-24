@@ -206,16 +206,16 @@ export default class Camera {
       gsap.to(this.instance.position, {
         duration: duration,
         ease: 'power1.inOut',
-        x: 2.11873,
-        y: 4.01519,
-        z: -2
+        x: 1.65,
+        y: 4,
+        z: -3.3
       });
       gsap.to(this.controls.target, {
         duration: duration,
         ease: 'power1.inOut',
-        x: 2.11873,
-        y: 3.01519,
-        z: 3.68201
+        x: 1.65,
+        y: 2.75,
+        z: 3.8
       });
 
       await this.sleep(1500);
@@ -277,9 +277,9 @@ export default class Camera {
     }
 
     if (this.camInstance == 'desktop') {
-      this.controls.target.x = 2.11873;
-      this.controls.target.y = 3.01519;
-      this.controls.target.z = 3.68201;
+      this.controls.target.x = 1.65;
+      this.controls.target.y = 2.75;
+      this.controls.target.z = 3.8;
     }
   }
 
