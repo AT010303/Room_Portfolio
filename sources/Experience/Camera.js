@@ -90,7 +90,7 @@ export default class Camera {
   setInstance() {
     // Set up
     this.instance = new THREE.PerspectiveCamera(
-      20,
+      35,
       this.config.width / this.config.height,
       0.1,
       150
@@ -143,7 +143,7 @@ export default class Camera {
     };
 
     this.camAngle.desktop = () => {
-      this.controls.minDistance = 5;
+      this.controls.minDistance = 3.5;
       this.controls.maxDistance = 7;
       // this.controls.minAzimuthAngle = 0
       // this.controls.maxAzimuthAngle = Math.PI * 1.999
@@ -177,6 +177,8 @@ export default class Camera {
 
       await this.sleep(1000);
 
+      console.log('default');
+
       this.controls.enableZoom = true;
       this.controls.enableRotate = true;
     };
@@ -196,6 +198,7 @@ export default class Camera {
       await this.sleep(1500);
       this.controls.enableRotate = true;
       this.controls.enableZoom = true;
+      console.log('roomview');
     };
 
     this.transitions.desktop = async (duration) => {
@@ -207,19 +210,20 @@ export default class Camera {
         duration: duration,
         ease: 'power1.inOut',
         x: 1.65,
-        y: 4,
-        z: -3.3
+        y: 3,
+        z: 0
       });
       gsap.to(this.controls.target, {
         duration: duration,
         ease: 'power1.inOut',
         x: 1.65,
-        y: 2.75,
-        z: 3.8
+        y: 2.6,
+        z: 3.65
       });
 
       await this.sleep(1500);
       this.controls.enableZoom = true;
+      console.log('desktop');
     };
   }
 
@@ -278,8 +282,8 @@ export default class Camera {
 
     if (this.camInstance == 'desktop') {
       this.controls.target.x = 1.65;
-      this.controls.target.y = 2.75;
-      this.controls.target.z = 3.8;
+      this.controls.target.y = 2.6;
+      this.controls.target.z = 3.65;
     }
   }
 
