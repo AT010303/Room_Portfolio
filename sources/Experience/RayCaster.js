@@ -29,19 +29,19 @@ export default class RayCaster {
       });
 
       this.desktopHitbox = new THREE.Mesh(
-        new THREE.BoxGeometry(1.94, 1.1, 0.0249),
+        new THREE.BoxGeometry(1940, 1100, 24.9),
         this.thitBoxMaterial
       );
-      this.desktopHitbox.position.set(2.11873, 3.01519, 3.68201);
+      this.desktopHitbox.position.set(2118.73, 3015.19, 3682.01);
       this.desktopHitbox.visible = false;
 
       this.scene.add(this.desktopHitbox);
 
       this.laptopHitbox = new THREE.Mesh(
-        new THREE.BoxGeometry(1.01, 0.582, 0.01),
+        new THREE.BoxGeometry(1010, 582, 10),
         this.thitBoxMaterial
       );
-      this.laptopHitbox.position.set(0.29281, 2.3835, 3.195);
+      this.laptopHitbox.position.set(292.81, 2383.5, 3195);
       this.laptopHitbox.rotateX(0.13);
       this.laptopHitbox.rotateY(-0.988);
       this.laptopHitbox.rotateZ(0.077);
@@ -136,6 +136,7 @@ export default class RayCaster {
           // this.controller.desktopControls.desktop(this.roomview.monitor, 'desktop')
           console.log('desktop');
           this.controller.desktopControls.desktop();
+          this.scene.remove(this.desktopHitbox);
           break;
       }
     }

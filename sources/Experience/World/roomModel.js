@@ -79,6 +79,7 @@ export default class roomModel {
 
     this.model.roomModel = this.resources.items.RoomModelDraco.scene;
     this.model.roomModel.position.set(0, 0, 0);
+    this.model.roomModel.scale.set(1000, 1000, 1000);
     this.model.nBaked = this.resources.items.nightBaked;
     this.model.nBaked.flipY = false;
     this.model.nBaked.colorSpace = THREE.SRGBColorSpace;

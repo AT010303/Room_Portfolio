@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import Experience from '../Experience.js';
 import roomModel from './roomModel.js';
 import chairTop from './chairTop.js';
+import DesktopScreen from '../DesktopScreen.js';
 
 export default class World {
   constructor(_options) {
@@ -20,6 +21,7 @@ export default class World {
   setRoom() {
     this.setroomModel();
     this.setchairTop();
+    this.setDesktopScreen();
   }
 
   setroomModel() {
@@ -30,10 +32,15 @@ export default class World {
     this.chairTop = new chairTop();
   }
 
+  setDesktopScreen() {
+    this.desktopScreen = new DesktopScreen();
+  }
+
   resize() {}
 
   update() {
     if (this.chairTop) this.chairTop.update();
+    if (this.monitorScreen) this.monitorScreen.update();
   }
 
   destroy() {}

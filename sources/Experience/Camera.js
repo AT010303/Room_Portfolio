@@ -92,11 +92,11 @@ export default class Camera {
     this.instance = new THREE.PerspectiveCamera(
       35,
       this.config.width / this.config.height,
-      0.1,
-      150
+      10,
+      1000000
     );
     this.instance.rotation.reorder('YXZ');
-    this.instance.position.set(50, 40, -15);
+    this.instance.position.set(50000, 40000, -15000);
 
     this.scene.add(this.instance);
   }
@@ -113,16 +113,16 @@ export default class Camera {
     this.controls.enableZoom = false;
     this.controls.panSpeed = 0.5;
     this.controls.screenSpacePanning = false;
-    this.minPan = new THREE.Vector3(-2, -2, -2);
-    this.maxPan = new THREE.Vector3(2, 2, 2);
+    this.minPan = new THREE.Vector3(-2000, -2000, -2000);
+    this.maxPan = new THREE.Vector3(2000, 2000, 2000);
   }
 
   setCamAngle() {
     this.camAngle = {};
 
     this.camAngle.unlocked = () => {
-      this.controls.maxDistance = 50;
-      this.controls.minDistance = 0;
+      this.controls.maxDistance = 50000;
+      this.controls.minDistance = 10;
       this.controls.minAzimuthAngle = Math.PI * 0.5;
       this.controls.maxAzimuthAngle = Math.PI;
       this.controls.minPolarAngle = Math.PI * 0.2;
@@ -132,8 +132,8 @@ export default class Camera {
     };
 
     this.camAngle.default = () => {
-      this.controls.maxDistance = 16;
-      this.controls.minDistance = 7;
+      this.controls.maxDistance = 16000;
+      this.controls.minDistance = 7000;
       this.controls.minAzimuthAngle = 0;
       this.controls.maxAzimuthAngle = Math.PI * 1.999;
       this.controls.minPolarAngle = Math.PI * 0.2;
@@ -143,8 +143,8 @@ export default class Camera {
     };
 
     this.camAngle.desktop = () => {
-      this.controls.minDistance = 3.5;
-      this.controls.maxDistance = 7;
+      this.controls.minDistance = 1500;
+      this.controls.maxDistance = 7000;
       // this.controls.minAzimuthAngle = 0
       // this.controls.maxAzimuthAngle = Math.PI * 1.999
       // this.controls.minPolarAngle = Math.PI * 0.2
@@ -163,15 +163,15 @@ export default class Camera {
       gsap.to(this.instance.position, {
         duration: duration,
         ease: 'power1.inOut',
-        x: 10,
-        y: 10,
-        z: -10
+        x: 10000,
+        y: 10000,
+        z: -10000
       });
       gsap.to(this.controls.target, {
         duration: duration,
         ease: 'power1.inOut',
         x: 0,
-        y: 2,
+        y: 2000,
         z: 0
       });
 
@@ -190,9 +190,9 @@ export default class Camera {
       gsap.to(this.instance.position, {
         duration: duration,
         ease: 'power1.inOut',
-        x: -10.2,
-        y: 6.3,
-        z: 3.8
+        x: -10200,
+        y: 6300,
+        z: 3800
       });
 
       await this.sleep(1500);
@@ -209,16 +209,16 @@ export default class Camera {
       gsap.to(this.instance.position, {
         duration: duration,
         ease: 'power1.inOut',
-        x: 1.65,
-        y: 3,
+        x: 1650,
+        y: 3000,
         z: 0
       });
       gsap.to(this.controls.target, {
         duration: duration,
         ease: 'power1.inOut',
-        x: 1.65,
-        y: 2.6,
-        z: 3.65
+        x: 1650,
+        y: 2600,
+        z: 3650
       });
 
       await this.sleep(1500);
@@ -281,9 +281,9 @@ export default class Camera {
     }
 
     if (this.camInstance == 'desktop') {
-      this.controls.target.x = 1.65;
-      this.controls.target.y = 2.6;
-      this.controls.target.z = 3.65;
+      this.controls.target.x = 1650;
+      this.controls.target.y = 2600;
+      this.controls.target.z = 3650;
     }
   }
 

@@ -96,6 +96,8 @@ export default class Experience {
 
   setScene() {
     this.scene = new THREE.Scene();
+    this.cssScene = new THREE.Scene();
+    this.overlayScene = new THREE.Scene();
   }
 
   setCamera() {

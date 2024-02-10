@@ -15,6 +15,7 @@ export default class chairTop {
   setModel() {
     this.model = this.resources.items.chairTopDraco.scene;
     this.model.position.set(0, 0, 0);
+    this.model.scale.set(1000, 1000, 1000);
     this.chairTop = this.model.children.find(
       (child) => child.name === 'chairTop'
     );

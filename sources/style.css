@@ -9,6 +9,10 @@ body {
   overflow: hidden;
 }
 
+#css {
+  cursor: pointer;
+}
+
 .experience {
   position: fixed;
   width: 100vw;

@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import Experience from './Experience.js';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { CSS3DRenderer } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 
 export default class Renderer {
   constructor(_options = {}) {
@@ -13,6 +14,7 @@ export default class Renderer {
     this.sizes = this.experience.sizes;
     this.scene = this.experience.scene;
     this.camera = this.experience.camera;
+    this.cssScene = this.experience.cssScene;
 
     this.usePostprocess = false;
 
@@ -21,7 +23,7 @@ export default class Renderer {
   }
 
   setInstance() {
-    this.clearColor = '#010101';
+    this.clearColor = '#444';
 
     // Renderer
     this.instance = new THREE.WebGLRenderer({
@@ -48,6 +50,17 @@ export default class Renderer {
     // this.instance.toneMappingExposure = 1
 
     this.context = this.instance.getContext();
+
+    //css3dRenderer
+    this.cssInstance = new CSS3DRenderer();
+    this.cssInstance.setSize(this.config.width, this.config.height);
+    this.cssInstance.domElement.style.position = 'absolute';
+    this.cssInstance.domElement.style.top = '0px';
+    this.cssInstance.domElement.style.left = '0px';
+    this.cssInstance.domElement.style.width = '100%';
+    this.cssInstance.domElement.style.height = '100%';
+
+    document.querySelector('#css')?.appendChild(this.cssInstance.domElement);
 
     // Add stats panel
     if (this.stats) {
@@ -96,6 +109,9 @@ export default class Renderer {
     this.instance.setSize(this.config.width, this.config.height);
     this.instance.setPixelRatio(this.config.pixelRatio);
 
+    //css renderer
+    this.cssInstance.setSize(this.config.width, this.config.height);
+
     // Post process
     this.postProcess.composer.setSize(this.config.width, this.config.height);
     this.postProcess.composer.setPixelRatio(this.config.pixelRatio);
@@ -115,6 +131,8 @@ export default class Renderer {
     if (this.stats) {
       this.stats.afterRender();
     }
+
+    this.cssInstance.render(this.cssScene, this.camera.instance);
   }
 
   destroy() {
