@@ -49,10 +49,6 @@ export default class DesktopScreen extends EventEmitter {
     iframe.style.border = '0px';
     iframe.style.boxSizing = 'border-box';
     iframe.style.opacity = '1';
-    iframe.className = 'jitter';
-    iframe.id = 'computer-screen';
-    iframe.frameBorder = '0';
-    iframe.title = 'HeffernanOS';
 
     // Add iframe to container
     container.appendChild(iframe);
