@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import Experience from '../Experience.js';
-import roomModel from './RoomModel.js';
+import roomModel from './roomModel.js';
 import chairTop from './chairTop.js';
 import DesktopScreen from '../DesktopScreen.js';
 
