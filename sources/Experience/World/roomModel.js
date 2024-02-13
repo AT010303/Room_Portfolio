@@ -6,7 +6,6 @@ import fragmentShader from './shaders/Room/fragment.glsl';
 
 export default class roomModel {
   constructor() {
-    // console.log("myroom");
     this.experience = new Experience();
     this.resources = this.experience.resources;
     this.scene = this.experience.scene;
@@ -82,21 +81,19 @@ export default class roomModel {
     this.model.roomModel.scale.set(1000, 1000, 1000);
     this.model.nBaked = this.resources.items.nightBaked;
     this.model.nBaked.flipY = false;
-    this.model.nBaked.colorSpace = THREE.SRGBColorSpace;
+    // this.model.nBaked.colorSpace = THREE.SRGBColorSpace;
     this.model.nBaked.magFilter = THREE.LinearFilter;
     this.model.nBaked.minFilter = THREE.LinearFilter;
 
     this.model.dBaked = this.resources.items.dayBaked;
     this.model.dBaked.flipY = false;
-    this.model.dBaked.colorSpace = THREE.SRGBColorSpace;
+    // this.model.dBaked.colorSpace = THREE.SRGBColorSpace;
     this.model.dBaked.magFilter = THREE.NearestFilter;
     this.model.dBaked.minFilter = THREE.NearestFilter;
 
     this.model.lightMap = this.resources.items.lightMap;
     this.model.lightMap.flipY = false;
-    this.model.lightMap.colorSpace = THREE.SRGBColorSpace;
-    this.model.lightMap.magFilter = THREE.LinearFilter;
-    this.model.lightMap.minFilter = THREE.LinearFilter;
+    this.model.lightMap.toneMapping = THREE.ReinhardToneMapping;
 
     //room
     this.chairTvclockstuf = this.model.roomModel.children.find(
@@ -134,9 +131,9 @@ export default class roomModel {
     );
 
     this.colors = {};
-    this.colors.boardColor = '#ff006d';
+    this.colors.boardColor = '#ff64a6';
     this.colors.pcColor = '#4b7eff';
-    this.colors.deskColor = '#ff6828';
+    this.colors.deskColor = '#ffa27a';
 
     this.model.material = new THREE.ShaderMaterial({
       uniforms: {

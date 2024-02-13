@@ -15,9 +15,7 @@ uniform float lightDeskStrength;
 
 varying vec2 vUv;
 
-
-#pragma glslify: blend = require(glsl-blend/lighten)
-// #pragma glslify: blend = require(glsl-blend/screen)
+#include "../partials/blend.glsl"
 
 void main(){
 
@@ -28,15 +26,13 @@ void main(){
 
 
     float boardLightS = lightMapColor.r * lightBoardStrength;
-    bakedColor = blend(bakedColor, lightBoardColor, boardLightS);
+    bakedColor = blendLighten(bakedColor, lightBoardColor, boardLightS);
 
     float deskLightS = lightMapColor.g * lightDeskStrength;
-    bakedColor = blend(bakedColor, lightDeskColor, deskLightS);
+    bakedColor = blendLighten(bakedColor, lightDeskColor, deskLightS);
 
     float pcLightS = lightMapColor.b * lightPcStrength;
-    bakedColor = blend(bakedColor, lightPcColor, pcLightS);
-
-    // bakedColor = mix(bakedColor, lightBoardColor, lightMapColor * lightBoardStrength);
+    bakedColor = blendLighten(bakedColor, lightPcColor, pcLightS);
 
 
     gl_FragColor = vec4(bakedColor, 1.0);

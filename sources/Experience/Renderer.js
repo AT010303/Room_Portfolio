@@ -16,7 +16,7 @@ export default class Renderer {
     this.camera = this.experience.camera;
     this.cssScene = this.experience.cssScene;
 
-    this.usePostprocess = false;
+    this.usePostprocess = true;
 
     this.setInstance();
     this.setPostProcess();
@@ -47,7 +47,8 @@ export default class Renderer {
     // this.instance.shadowMap.type = THREE.PCFSoftShadowMap
     // this.instance.shadowMap.enabled = false
     // this.instance.toneMapping = THREE.NoToneMapping
-    // this.instance.toneMappingExposure = 1
+    this.instance.toneMapping = THREE.ACESFilmicToneMapping;
+    // this.instance.toneMappingExposure = 2
 
     this.context = this.instance.getContext();
 
@@ -82,6 +83,8 @@ export default class Renderer {
     /**
      * Effect composer
      */
+    // const RenderTargetClass = this.config.pixelRatio >= 2 ? THREE.WebGLRenderTarget : THREE.WebGLMultisampleRenderTarget
+
     this.renderTarget = new THREE.WebGLRenderTarget(
       this.config.width,
       this.config.height,

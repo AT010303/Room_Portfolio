@@ -33,5 +33,3 @@ float perlin2d(vec2 P){
   float n_xy = mix(n_x.x, n_x.y, fade_xy.y);
   return 2.3 * n_xy;
 }
-
-#pragma glslify: export(perlin2d)
