@@ -104,10 +104,11 @@ export default class Camera {
   setControles() {
     this.controls = new OrbitControls(this.instance, this.targetElement);
     this.controls.enableDamping = true;
+    this.controls.dampingFactor = 0.008;
     this.controls.screenSpacePanning = true;
     this.controls.enablePan = true;
     this.controls.enableKeys = false;
-    this.controls.rotateSpeed = 0.05;
+    this.controls.rotateSpeed = 0.1;
     this.controls.target.z = -1;
     this.controls.enableRotate = false;
     this.controls.enableZoom = false;
