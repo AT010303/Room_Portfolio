@@ -4,15 +4,17 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite serve --host",
     "build": "vite build",
     "eslint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "prettier": "prettier --write ."
   },
   "dependencies": {
+    "@react-three/fiber": "^8.15.16",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "three": "^0.161.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.55",
