@@ -7,8 +7,19 @@ import Experience from './Experience.jsx';
 
 const root = ReactDOM.createRoot(document.querySelector('#root'));
 
+const created = () => {};
+
 root.render(
-  <Canvas>
-    <Experience />
-  </Canvas>
+    <Canvas
+        flat
+        camera={{
+            fov: 35,
+            near: 0.1,
+            far: 200,
+            position: [-4, 3, 6]
+        }}
+        onCreated={created}
+    >
+        <Experience />
+    </Canvas>
 );
