@@ -15,13 +15,13 @@ const TextureMaterial = shaderMaterial(
 
         NightMix: 0,
 
-        lightBoardColor: new THREE.Color('#ff64a6'),
+        lightBoardColor: new THREE.Color('#ff2d88'),
         lightBoardStrength: 1.35,
 
         lightPcColor: new THREE.Color('#4b7eff'),
         lightPcStrength: 1.2,
 
-        lightDeskColor: new THREE.Color('#ffa27a'),
+        lightDeskColor: new THREE.Color('#ff7236'),
         lightDeskStrength: 1.55
     },
     vertexShader,
@@ -54,7 +54,7 @@ export default function RoomModel() {
         },
 
         boardColor: {
-            value: '#ff64a6',
+            value: '#ff2d88',
             label: 'Board Color'
         },
 
@@ -76,7 +76,7 @@ export default function RoomModel() {
             step: 0.01
         },
         deskColors: {
-            value: '#ffa27a',
+            value: '#ff7236',
             label: 'Desk Color'
         },
         deskColorStrngth: {
