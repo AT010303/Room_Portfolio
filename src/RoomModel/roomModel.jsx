@@ -1,16 +1,56 @@
-import { Center, useGLTF, useTexture } from '@react-three/drei';
+import { Center, shaderMaterial, useGLTF, useTexture } from '@react-three/drei';
+import { extend } from '@react-three/fiber';
 import * as THREE from 'three';
 
 import ChairTopModel from './ChairTopModel';
+import fragmentShader from './shaders/Room/fragment.glsl';
+import vertexShader from './shaders/Room/vertex.glsl';
+
+let colors = {};
+colors.boardColor = '#ff64a6';
+colors.pcColor = '#4b7eff';
+colors.deskColor = '#ffa27a';
+
+const TextureMaterial = shaderMaterial(
+    {
+        nbakedm: new THREE.Texture(),
+        dbakedm: new THREE.Texture(),
+        lightMapm: new THREE.Texture(),
+
+        NightMix: 0,
+
+        lightBoardColor: new THREE.Color(colors.boardColor),
+        lightBoardStrength: 1.35,
+
+        lightPcColor: new THREE.Color(colors.pcColor),
+        lightPcStrength: 1.2,
+
+        lightDeskColor: new THREE.Color(colors.deskColor),
+        lightDeskStrength: 1.55
+    },
+    vertexShader,
+    fragmentShader
+);
+
+extend({ TextureMaterial });
 
 export default function RoomModel() {
     const { nodes } = useGLTF('./assets/roombasedraco.glb');
-    // console.log(nodes);
 
-    const bakedTextureDay = useTexture('./assets/bakedTextureDaycmp.jpg');
-    bakedTextureDay.flipY = false;
-    bakedTextureDay.magFilter = THREE.NearestFilter;
-    bakedTextureDay.minFilter = THREE.NearestFilter;
+    const dBaked = useTexture('./assets/bakedTextureDaycmp.jpg');
+    dBaked.flipY = false;
+    dBaked.magFilter = THREE.NearestFilter;
+    dBaked.minFilter = THREE.NearestFilter;
+
+    const nBaked = useTexture('./assets/bakedTextureNightcmp.jpg');
+    nBaked.flipY = false;
+    nBaked.magFilter = THREE.NearestFilter;
+    nBaked.minFilter = THREE.NearestFilter;
+
+    const lightMap = useTexture('./assets/roomTextureLightMapcmp.jpg');
+    lightMap.flipY = false;
+    lightMap.magFilter = THREE.NearestFilter;
+    lightMap.minFilter = THREE.NearestFilter;
 
     return (
         <group>
@@ -20,7 +60,11 @@ export default function RoomModel() {
                     position={nodes.roomFurniture.position}
                     rotation={nodes.roomFurniture.rotation}
                 >
-                    <meshBasicMaterial map={bakedTextureDay} />
+                    <textureMaterial
+                        dbakedm={dBaked}
+                        nbakedm={nBaked}
+                        lightMapm={lightMap}
+                    />
                 </mesh>
 
                 <mesh
@@ -28,7 +72,11 @@ export default function RoomModel() {
                     position={nodes.deskShelfStuf.position}
                     rotation={nodes.deskShelfStuf.rotation}
                 >
-                    <meshBasicMaterial map={bakedTextureDay} />
+                    <textureMaterial
+                        dbakedm={dBaked}
+                        nbakedm={nBaked}
+                        lightMapm={lightMap}
+                    />
                 </mesh>
 
                 <mesh
@@ -36,7 +84,11 @@ export default function RoomModel() {
                     position={nodes.chairTvclockstuf.position}
                     rotation={nodes.chairTvclockstuf.rotation}
                 >
-                    <meshBasicMaterial map={bakedTextureDay} />
+                    <textureMaterial
+                        dbakedm={dBaked}
+                        nbakedm={nBaked}
+                        lightMapm={lightMap}
+                    />
                 </mesh>
 
                 <mesh
@@ -44,7 +96,11 @@ export default function RoomModel() {
                     position={nodes.plant.position}
                     rotation={nodes.plant.rotation}
                 >
-                    <meshBasicMaterial map={bakedTextureDay} />
+                    <textureMaterial
+                        dbakedm={dBaked}
+                        nbakedm={nBaked}
+                        lightMapm={lightMap}
+                    />
                 </mesh>
 
                 <mesh

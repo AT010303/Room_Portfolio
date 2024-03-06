@@ -1,8 +1,6 @@
 import { useGLTF, useTexture } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { useRef } from 'react';
-import * as THREE from 'three';
-
 
 export default function ChairTopModel() {
     const chairTop = useRef();
@@ -16,9 +14,6 @@ export default function ChairTopModel() {
     // console.log(nodes);
 
     const bakedTextureDay = useTexture('./assets/bakedTextureDaycmp.jpg');
-    bakedTextureDay.flipY = false;
-    bakedTextureDay.magFilter = THREE.NearestFilter;
-    bakedTextureDay.minFilter = THREE.NearestFilter;
 
     return (
         <group>
