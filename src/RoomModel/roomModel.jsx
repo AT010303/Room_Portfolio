@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 import { Center, shaderMaterial, useGLTF, useTexture } from '@react-three/drei';
 import { extend } from '@react-three/fiber';
+import { useControls } from 'leva';
 import * as THREE from 'three';
 
 import ChairTopModel from './ChairTopModel';
@@ -35,6 +37,52 @@ const TextureMaterial = shaderMaterial(
 extend({ TextureMaterial });
 
 export default function RoomModel() {
+
+    const {NightMix, boardColor, boardStrength, pcColor, pcColorStrength, deskColors, deskColorStrngth} = useControls({
+        NightMix: {
+            value: 0,
+            min: 0,
+            max: 1,
+            step: 0.01
+        },
+
+        boardColor : {
+            value: '#ff64a6',
+            label: 'Board Color'
+        },
+
+        boardStrength: {
+            value: 1.35,
+            min: 0,
+            max: 3,
+            step: 0.01
+        },
+
+        pcColor : {
+            value: '#4b7eff',
+            label: 'PC-Color'
+        },
+        pcColorStrength: {
+            value: 1.2,
+            min: 0,
+            max: 3,
+            step: 0.01
+        },
+        deskColors : {
+            value: '#ffa27a',
+            label: 'Desk Color'
+        
+        },
+        deskColorStrngth: {
+            value: 1.55,
+            min: 0,
+            max: 3,
+            step: 0.01
+        }
+    });
+
+    // console.log(NightMix, boardColor);
+
     const { nodes } = useGLTF('./assets/roombasedraco.glb');
 
     const dBaked = useTexture('./assets/bakedTextureDaycmp.jpg');
@@ -64,6 +112,13 @@ export default function RoomModel() {
                         dbakedm={dBaked}
                         nbakedm={nBaked}
                         lightMapm={lightMap}
+                        NightMix={NightMix}
+                        lightBoardColor = {boardColor}
+                        lightBoardStrength = {boardStrength}
+                        lightPcColor = {pcColor}
+                        lightPcStrength = {pcColorStrength}
+                        lightDeskColor = {deskColors}
+                        lightDeskStrength = {deskColorStrngth}
                     />
                 </mesh>
 
@@ -76,6 +131,13 @@ export default function RoomModel() {
                         dbakedm={dBaked}
                         nbakedm={nBaked}
                         lightMapm={lightMap}
+                        NightMix={NightMix}
+                        lightBoardColor = {boardColor}
+                        lightBoardStrength = {boardStrength}
+                        lightPcColor = {pcColor}
+                        lightPcStrength = {pcColorStrength}
+                        lightDeskColor = {deskColors}
+                        lightDeskStrength = {deskColorStrngth}
                     />
                 </mesh>
 
@@ -88,6 +150,13 @@ export default function RoomModel() {
                         dbakedm={dBaked}
                         nbakedm={nBaked}
                         lightMapm={lightMap}
+                        NightMix={NightMix}
+                        lightBoardColor = {boardColor}
+                        lightBoardStrength = {boardStrength}
+                        lightPcColor = {pcColor}
+                        lightPcStrength = {pcColorStrength}
+                        lightDeskColor = {deskColors}
+                        lightDeskStrength = {deskColorStrngth}
                     />
                 </mesh>
 
@@ -100,6 +169,13 @@ export default function RoomModel() {
                         dbakedm={dBaked}
                         nbakedm={nBaked}
                         lightMapm={lightMap}
+                        NightMix={NightMix}
+                        lightBoardColor = {boardColor}
+                        lightBoardStrength = {boardStrength}
+                        lightPcColor = {pcColor}
+                        lightPcStrength = {pcColorStrength}
+                        lightDeskColor = {deskColors}
+                        lightDeskStrength = {deskColorStrngth}
                     />
                 </mesh>
 
