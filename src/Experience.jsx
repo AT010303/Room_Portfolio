@@ -1,4 +1,4 @@
-import { CameraControls } from '@react-three/drei';
+import { CameraControls, Center } from '@react-three/drei';
 import { Perf } from 'r3f-perf';
 
 import RoomModel from './RoomModel/roomModel';
@@ -23,7 +23,9 @@ export default function Experience() {
                 azimuthRotateSpeed={0.1}
                 maxSpeed={20}
             />
-            <RoomModel />
+            <Center>
+                <RoomModel />
+            </Center>
         </>
     );
 }
