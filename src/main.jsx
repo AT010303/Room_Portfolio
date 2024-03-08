@@ -7,12 +7,13 @@ import { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 
 import Experience from './Experience.jsx';
+import { Loading } from './Loading.jsx';
 
 const root = ReactDOM.createRoot(document.querySelector('#root'));
 
 root.render(
     <>
-        <Suspense fallback:null>
+        <Suspense fallback={null}>
             <Canvas
                 camera={{
                     fov: 35,
@@ -29,6 +30,7 @@ root.render(
                 <Experience />
             </Canvas>
         </Suspense>
+        <Loading />
         <Loader />
     </>
 );
