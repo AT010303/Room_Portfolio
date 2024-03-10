@@ -65,7 +65,11 @@ export default function RoomModel() {
             step: 0.01
         }
     });
-
+    useGLTF.preload('./assets/roombasedraco.glb');
+    useGLTF.preload('./assets/chairtopDraco.glb');
+    useTexture.preload('./assets/bakedTextureDaycmp.jpg');
+    useTexture.preload('./assets/bakedTextureNightcmp.jpg');
+    useTexture.preload('./assets/roomTextureLightMapcmp.jpg');
     const { nodes } = useGLTF('./assets/roombasedraco.glb');
     const chair = useGLTF('./assets/chairtopDraco.glb');
 

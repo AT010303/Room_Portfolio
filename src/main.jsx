@@ -7,30 +7,30 @@ import { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 
 import Experience from './Experience.jsx';
-import { Loading } from './Loading.jsx';
 
 const root = ReactDOM.createRoot(document.querySelector('#root'));
 
 root.render(
     <>
-        <Suspense fallback={null}>
-            <Canvas
-                camera={{
-                    fov: 35,
-                    near: 0.1,
-                    far: 200,
-                    position: [10, 5, -10]
-                }}
-            >
+        <Canvas
+            camera={{
+                fov: 35,
+                near: 0.1,
+                far: 200,
+                position: [10, 5, -10]
+            }}
+        >
+            <Suspense fallback={null}>
                 <color args={['#201919']} attach="background" />
                 <EffectComposer
                     enabled:true
                     disableNormalPass:true
                 ></EffectComposer>
+
                 <Experience />
-            </Canvas>
-        </Suspense>
-        <Loading />
+            </Suspense>
+        </Canvas>
+
         <Loader />
     </>
 );
