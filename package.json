@@ -17,6 +17,7 @@
         "@react-three/postprocessing": "^2.16.2",
         "@vercel/analytics": "^1.2.2",
         "glsl-blend": "^1.0.3",
+        "gsap": "^3.12.5",
         "leva": "^0.9.35",
         "postprocessing": "^6.35.0",
         "r3f-perf": "^7.1.2",

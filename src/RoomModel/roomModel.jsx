@@ -25,12 +25,14 @@ export default function RoomModel() {
         },
         [toggle]
     );
+    console.log(toggle);
 
     useFrame(({ clock }) => {
         chairTop.current.rotation.y = Math.sin(clock.getElapsedTime() * 0.3);
     });
 
     const {
+        NightMix,
         boardColor,
         boardStrength,
         pcColor,
@@ -38,6 +40,13 @@ export default function RoomModel() {
         deskColors,
         deskColorStrngth
     } = useControls({
+        NightMix: {
+            value: 0,
+            min: 0,
+            max: 1,
+            step: 0.01
+        },
+
         boardColor: {
             value: '#ff2d88',
             label: 'Board Color'
@@ -98,7 +107,7 @@ export default function RoomModel() {
         dbakedm: dBaked,
         nbakedm: nBaked,
         lightMapm: lightMap,
-        NightMix: toggle,
+        NightMix: NightMix,
         lightBoardColor: boardColor,
         lightBoardStrength: boardStrength,
         lightPcColor: pcColor,
