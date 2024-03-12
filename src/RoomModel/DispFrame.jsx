@@ -1,6 +1,7 @@
 import { useGLTF } from '@react-three/drei';
 
 export default function DispFrame() {
+    useGLTF.preload('./assets/roombasedraco.glb');
     const { nodes } = useGLTF('./assets/roombasedraco.glb');
     return (
         <>

@@ -1,5 +1,6 @@
 import './style.css';
 
+import { Analytics } from '@vercel/analytics/react';
 import { Leva } from 'leva';
 import ReactDOM from 'react-dom/client';
 
@@ -11,5 +12,6 @@ root.render(
     <>
         <Experience />
         <Leva />
+        <Analytics />
     </>
 );

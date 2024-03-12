@@ -15,6 +15,7 @@
         "@react-three/drei": "^9.99.0",
         "@react-three/fiber": "^8.15.16",
         "@react-three/postprocessing": "^2.16.2",
+        "@vercel/analytics": "^1.2.2",
         "glsl-blend": "^1.0.3",
         "leva": "^0.9.35",
         "postprocessing": "^6.35.0",
