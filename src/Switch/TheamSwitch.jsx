@@ -1,17 +1,19 @@
 /* eslint-disable react/prop-types */
-import { a } from "@react-spring/three";
+import { a } from '@react-spring/three';
 import { meshBounds, useGLTF } from '@react-three/drei';
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from 'react';
 
-export default function TheamSwitch({x, set}) {
-
+export default function TheamSwitch({ x, set }) {
     useGLTF.preload('./assets/switch.glb');
     const { nodes } = useGLTF('./assets/switch.glb');
     // console.log(nodes.Sphere.position);
 
-    const [hovered, setHover ] = useState(false);
+    const [hovered, setHover] = useState(false);
 
-    useEffect(() => void (document.body.style.cursor = hovered ? "pointer" : "auto"), [hovered]);
+    useEffect(
+        () => void (document.body.style.cursor = hovered ? 'pointer' : 'auto'),
+        [hovered]
+    );
 
     const onClick = useCallback(() => set((toggle) => Number(!toggle)), [set]);
     const onPointerOver = useCallback(() => setHover(true), []);
@@ -23,20 +25,20 @@ export default function TheamSwitch({x, set}) {
 
     return (
         <>
-        <a.group  position-z={pZ} >
-            <a.mesh
-                geometry={nodes.Sphere.geometry}
-                position={nodes.Sphere.position}
-                rotation={nodes.Sphere.rotation}
-                raycast={meshBounds}
-                onClick={onClick}
-                rotation-x={rX}
-                onPointerOver={onPointerOver}
-                onPointerOut={onPointerOut}
-            >
-                <meshBasicMaterial color={'#555555'} roughness={0.5} />
-            </a.mesh>
-        </a.group>
+            <a.group position-z={pZ}>
+                <a.mesh
+                    geometry={nodes.Sphere.geometry}
+                    position={nodes.Sphere.position}
+                    rotation={nodes.Sphere.rotation}
+                    raycast={meshBounds}
+                    onClick={onClick}
+                    rotation-x={rX}
+                    onPointerOver={onPointerOver}
+                    onPointerOut={onPointerOut}
+                >
+                    <meshBasicMaterial color={'#555555'} roughness={0.5} />
+                </a.mesh>
+            </a.group>
 
             <mesh
                 geometry={nodes.switchBound.geometry}
@@ -45,7 +47,6 @@ export default function TheamSwitch({x, set}) {
             >
                 <meshBasicMaterial />
             </mesh>
-
         </>
     );
 }

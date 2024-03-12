@@ -1,8 +1,6 @@
 import { useGLTF, useTexture } from '@react-three/drei';
 
-
-
-export default function Backdrop(){
+export default function Backdrop() {
     useGLTF.preload('./assets/baclkdrop.glb');
     useTexture.preload('./assets/bakedTextureDaycmp.jpg');
     const { nodes } = useGLTF('./assets/baclkdrop.glb');
@@ -13,19 +11,14 @@ export default function Backdrop(){
     console.log(nodes.backdrop.position);
     return (
         <>
-        
-        <mesh
+            <mesh
                 geometry={nodes.backdrop.geometry}
-                position={[ 
-                    0.27389681339263916,
-                    47.20418991088867,
-                    0.3152056336402893]}
+                position={[
+                    0.27389681339263916, 47.20418991088867, 0.3152056336402893
+                ]}
                 rotation={nodes.backdrop.rotation}
-                
-                
-                
             >
-                <meshBasicMaterial map={dBaked}/>
+                <meshBasicMaterial map={dBaked} />
             </mesh>
         </>
     );

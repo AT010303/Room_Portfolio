@@ -4,7 +4,7 @@ export const CameraManager = () => {
     return (
         <CameraControls
             makeDefault
-            dollyToCursor={true }
+            dollyToCursor={true}
             dollySpeed={1.2}
             truckSpeed={0.5}
             minDistance={2}

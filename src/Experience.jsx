@@ -15,7 +15,7 @@ export default function Experience() {
                     fov: 35,
                     near: 0.1,
                     far: 200,
-                    position: [10, 8, -10],
+                    position: [10, 8, -10]
                 }}
             >
                 <color args={['#201919']} attach="background" />
@@ -25,9 +25,9 @@ export default function Experience() {
                 ></EffectComposer>
                 <Suspense fallback={null}>
                     <Perf position="top-left" />
-                    
+
                     <CameraManager />
-                        <RoomModel />
+                    <RoomModel />
                 </Suspense>
             </Canvas>
             <Loader />

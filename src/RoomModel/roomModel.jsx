@@ -1,4 +1,4 @@
-import { useSpring } from "@react-spring/core";
+import { useSpring } from '@react-spring/core';
 // import { a } from "@react-spring/web"
 import { Center, useGLTF, useTexture } from '@react-three/drei';
 import { extend, useFrame } from '@react-three/fiber';
@@ -18,10 +18,13 @@ export default function RoomModel() {
 
     const [toggle, set] = useState(0);
 
-    const [{ x }] = useSpring({x: toggle, config: {mass: 5, tension: 1000, friction: 50, precision: 0.0001}}, [toggle]);
-    
-    const animatedValue = useSpring({ x: toggle, from: { x: 0 }, to: { x: 1 }}, [toggle]);
-    console.log(animatedValue);
+    const [{ x }] = useSpring(
+        {
+            x: toggle,
+            config: { mass: 5, tension: 1000, friction: 50, precision: 0.0001 }
+        },
+        [toggle]
+    );
 
     useFrame(({ clock }) => {
         chairTop.current.rotation.y = Math.sin(clock.getElapsedTime() * 0.3);
@@ -91,8 +94,6 @@ export default function RoomModel() {
     lightMap.magFilter = THREE.NearestFilter;
     lightMap.minFilter = THREE.NearestFilter;
 
-    
-
     const TextureMaterial = {
         dbakedm: dBaked,
         nbakedm: nBaked,
@@ -109,50 +110,50 @@ export default function RoomModel() {
     return (
         <group>
             <Center>
-            <mesh
-                geometry={nodes.roomFurniture.geometry}
-                position={nodes.roomFurniture.position}
-                rotation={nodes.roomFurniture.rotation}
-            >
-                <textureMaterial {...TextureMaterial} />
-            </mesh>
+                <mesh
+                    geometry={nodes.roomFurniture.geometry}
+                    position={nodes.roomFurniture.position}
+                    rotation={nodes.roomFurniture.rotation}
+                >
+                    <textureMaterial {...TextureMaterial} />
+                </mesh>
 
-            <mesh
-                geometry={nodes.deskShelfStuf.geometry}
-                position={nodes.deskShelfStuf.position}
-                rotation={nodes.deskShelfStuf.rotation}
-            >
-                <textureMaterial {...TextureMaterial} />
-            </mesh>
+                <mesh
+                    geometry={nodes.deskShelfStuf.geometry}
+                    position={nodes.deskShelfStuf.position}
+                    rotation={nodes.deskShelfStuf.rotation}
+                >
+                    <textureMaterial {...TextureMaterial} />
+                </mesh>
 
-            <mesh
-                geometry={nodes.chairTvclockstuf.geometry}
-                position={nodes.chairTvclockstuf.position}
-                rotation={nodes.chairTvclockstuf.rotation}
-            >
-                <textureMaterial {...TextureMaterial} />
-            </mesh>
+                <mesh
+                    geometry={nodes.chairTvclockstuf.geometry}
+                    position={nodes.chairTvclockstuf.position}
+                    rotation={nodes.chairTvclockstuf.rotation}
+                >
+                    <textureMaterial {...TextureMaterial} />
+                </mesh>
 
-            <mesh
-                geometry={nodes.plant.geometry}
-                position={nodes.plant.position}
-                rotation={nodes.plant.rotation}
-            >
-                <textureMaterial {...TextureMaterial} />
-            </mesh>
+                <mesh
+                    geometry={nodes.plant.geometry}
+                    position={nodes.plant.position}
+                    rotation={nodes.plant.rotation}
+                >
+                    <textureMaterial {...TextureMaterial} />
+                </mesh>
 
-            <mesh
-                ref={chairTop}
-                geometry={chair.nodes.chairTop.geometry}
-                position={chair.nodes.chairTop.position}
-                rotation={chair.nodes.chairTop.rotation}
-            >
-                <textureMaterial {...TextureMaterial} />
-            </mesh>
-            <DispFrame />
-            <TheamSwitch x={x} set={set} />
+                <mesh
+                    ref={chairTop}
+                    geometry={chair.nodes.chairTop.geometry}
+                    position={chair.nodes.chairTop.position}
+                    rotation={chair.nodes.chairTop.rotation}
+                >
+                    <textureMaterial {...TextureMaterial} />
+                </mesh>
+                <DispFrame />
+                <TheamSwitch x={x} set={set} />
             </Center>
-            
+
             {/* <Backdrop /> */}
         </group>
     );
