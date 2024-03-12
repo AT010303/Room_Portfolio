@@ -1,9 +1,13 @@
-import { useGLTF, useTexture } from '@react-three/drei';
+import { useSpring } from "@react-spring/core";
+// import { a } from "@react-spring/web"
+import { Center, useGLTF, useTexture } from '@react-three/drei';
 import { extend, useFrame } from '@react-three/fiber';
 import { useControls } from 'leva';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import * as THREE from 'three';
 
+import TheamSwitch from '../Switch/TheamSwitch';
+// import Backdrop from './Backdrop';
 import DispFrame from './DispFrame';
 import TextureMaterial from './textures/TextureMaterial';
 
@@ -12,12 +16,18 @@ extend({ TextureMaterial });
 export default function RoomModel() {
     const chairTop = useRef();
 
+    const [toggle, set] = useState(0);
+
+    const [{ x }] = useSpring({x: toggle, config: {mass: 5, tension: 1000, friction: 50, precision: 0.0001}}, [toggle]);
+    
+    const animatedValue = useSpring({ x: toggle, from: { x: 0 }, to: { x: 1 }}, [toggle]);
+    console.log(animatedValue);
+
     useFrame(({ clock }) => {
         chairTop.current.rotation.y = Math.sin(clock.getElapsedTime() * 0.3);
     });
 
     const {
-        NightMix,
         boardColor,
         boardStrength,
         pcColor,
@@ -25,13 +35,6 @@ export default function RoomModel() {
         deskColors,
         deskColorStrngth
     } = useControls({
-        NightMix: {
-            value: 0,
-            min: 0,
-            max: 1,
-            step: 0.01
-        },
-
         boardColor: {
             value: '#ff2d88',
             label: 'Board Color'
@@ -88,11 +91,13 @@ export default function RoomModel() {
     lightMap.magFilter = THREE.NearestFilter;
     lightMap.minFilter = THREE.NearestFilter;
 
+    
+
     const TextureMaterial = {
         dbakedm: dBaked,
         nbakedm: nBaked,
         lightMapm: lightMap,
-        NightMix: NightMix,
+        NightMix: toggle,
         lightBoardColor: boardColor,
         lightBoardStrength: boardStrength,
         lightPcColor: pcColor,
@@ -103,6 +108,7 @@ export default function RoomModel() {
 
     return (
         <group>
+            <Center>
             <mesh
                 geometry={nodes.roomFurniture.geometry}
                 position={nodes.roomFurniture.position}
@@ -144,6 +150,10 @@ export default function RoomModel() {
                 <textureMaterial {...TextureMaterial} />
             </mesh>
             <DispFrame />
+            <TheamSwitch x={x} set={set} />
+            </Center>
+            
+            {/* <Backdrop /> */}
         </group>
     );
 }

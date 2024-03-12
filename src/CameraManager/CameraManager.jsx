@@ -4,10 +4,10 @@ export const CameraManager = () => {
     return (
         <CameraControls
             makeDefault
-            dollyToCursor={true}
+            dollyToCursor={true }
             dollySpeed={1.2}
             truckSpeed={0.5}
-            minDistance={3}
+            minDistance={2}
             maxDistance={25}
             smoothTime={2}
             maxAzimuthAngle={Math.PI}
@@ -17,6 +17,7 @@ export const CameraManager = () => {
             polarRotateSpeed={0.3}
             azimuthRotateSpeed={0.3}
             maxSpeed={20}
+            setTarget={[0, 5, 0]}
         />
     );
 };
