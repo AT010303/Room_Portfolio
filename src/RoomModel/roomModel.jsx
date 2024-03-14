@@ -2,8 +2,9 @@ import { useSpring } from '@react-spring/core';
 // import { a } from "@react-spring/web"
 import { Center, useGLTF, useTexture } from '@react-three/drei';
 import { extend, useFrame } from '@react-three/fiber';
+// import gsap from 'gsap';
 import { useControls } from 'leva';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 
 import TheamSwitch from '../Switch/TheamSwitch';
@@ -16,7 +17,30 @@ extend({ TextureMaterial });
 export default function RoomModel() {
     const chairTop = useRef();
 
-    const [toggle, set] = useState(0);
+    const [toggle, set] = useState(1);
+    const [nightMix, setNightMix] = useState(toggle);
+
+    useEffect(()=>{
+        if(toggle == 0){
+            if(nightMix<1){
+                const interval = setInterval(() => {
+            
+                    setNightMix(prevValue => prevValue + 0.01);
+                }, 10);
+                return () => clearInterval(interval);
+            }
+        }
+        else{
+            if(nightMix>0){
+                const interval = setInterval(() => {
+            
+                    setNightMix(prevValue => prevValue - 0.01);
+                }, 10);
+                return () => clearInterval(interval);
+            }
+        }         
+
+    }, [toggle, nightMix]);
 
     const [{ x }] = useSpring(
         {
@@ -32,7 +56,7 @@ export default function RoomModel() {
     });
 
     const {
-        NightMix,
+        // NightMix,
         boardColor,
         boardStrength,
         pcColor,
@@ -40,12 +64,12 @@ export default function RoomModel() {
         deskColors,
         deskColorStrngth
     } = useControls({
-        NightMix: {
-            value: 0,
-            min: 0,
-            max: 1,
-            step: 0.01
-        },
+        // NightMix: {
+        //     value: 0,
+        //     min: 0,
+        //     max: 1,
+        //     step: 0.01
+        // },
 
         boardColor: {
             value: '#ff2d88',
@@ -107,7 +131,7 @@ export default function RoomModel() {
         dbakedm: dBaked,
         nbakedm: nBaked,
         lightMapm: lightMap,
-        NightMix: NightMix,
+        NightMix: nightMix,
         lightBoardColor: boardColor,
         lightBoardStrength: boardStrength,
         lightPcColor: pcColor,
