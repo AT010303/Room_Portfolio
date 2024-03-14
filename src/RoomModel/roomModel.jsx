@@ -20,26 +20,22 @@ export default function RoomModel() {
     const [toggle, set] = useState(1);
     const [nightMix, setNightMix] = useState(toggle);
 
-    useEffect(()=>{
-        if(toggle == 0){
-            if(nightMix<1){
+    useEffect(() => {
+        if (toggle == 0) {
+            if (nightMix < 1) {
                 const interval = setInterval(() => {
-            
-                    setNightMix(prevValue => prevValue + 0.01);
+                    setNightMix((prevValue) => prevValue + 0.01);
+                }, 10);
+                return () => clearInterval(interval);
+            }
+        } else {
+            if (nightMix > 0) {
+                const interval = setInterval(() => {
+                    setNightMix((prevValue) => prevValue - 0.01);
                 }, 10);
                 return () => clearInterval(interval);
             }
         }
-        else{
-            if(nightMix>0){
-                const interval = setInterval(() => {
-            
-                    setNightMix(prevValue => prevValue - 0.01);
-                }, 10);
-                return () => clearInterval(interval);
-            }
-        }         
-
     }, [toggle, nightMix]);
 
     const [{ x }] = useSpring(
