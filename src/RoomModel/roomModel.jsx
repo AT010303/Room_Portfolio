@@ -2,7 +2,7 @@ import { useSpring } from '@react-spring/core';
 // import { a } from "@react-spring/web"
 import { Center, useGLTF, useTexture } from '@react-three/drei';
 import { extend, useFrame } from '@react-three/fiber';
-// import gsap from 'gsap';
+import { gsap } from 'gsap';
 import { useControls } from 'leva';
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
@@ -16,27 +16,59 @@ extend({ TextureMaterial });
 
 export default function RoomModel() {
     const chairTop = useRef();
+    const textureMatFur = useRef();
+    const textureMatDes = useRef();
+    const textureMatclock = useRef();
+    const textureMatplant = useRef();
+    const textureMatChaorTop = useRef();
 
-    const [toggle, set] = useState(1);
-    const [nightMix, setNightMix] = useState(toggle);
+    const [toggle, set] = useState(0);
+    // const [nightMix, setNightMix] = useState(toggle);
+
+    // useEffect(() => {
+    //     if (toggle == 0) {
+    //         if (nightMix < 1) {
+    //             const interval = setInterval(() => {
+    //                 setNightMix((prevValue) => prevValue + 0.01);
+    //             }, 10);
+    //             return () => clearInterval(interval);
+    //         }
+    //     } else {
+    //         if (nightMix > 0) {
+    //             const interval = setInterval(() => {
+    //                 setNightMix((prevValue) => prevValue - 0.01);
+    //             }, 10);
+    //             return () => clearInterval(interval);
+    //         }
+    //     }
+    // }, [toggle, nightMix]);
 
     useEffect(() => {
-        if (toggle == 0) {
-            if (nightMix < 1) {
-                const interval = setInterval(() => {
-                    setNightMix((prevValue) => prevValue + 0.01);
-                }, 10);
-                return () => clearInterval(interval);
-            }
-        } else {
-            if (nightMix > 0) {
-                const interval = setInterval(() => {
-                    setNightMix((prevValue) => prevValue - 0.01);
-                }, 10);
-                return () => clearInterval(interval);
-            }
-        }
-    }, [toggle, nightMix]);
+        gsap.to(textureMatclock.current.uniforms.NightMix, {
+            value: toggle ? 1 : 0,
+            duration: 1
+        });
+
+        gsap.to(textureMatFur.current.uniforms.NightMix, {
+            value: toggle ? 1 : 0,
+            duration: 1
+        });
+
+        gsap.to(textureMatDes.current.uniforms.NightMix, {
+            value: toggle ? 1 : 0,
+            duration: 1
+        });
+
+        gsap.to(textureMatplant.current.uniforms.NightMix, {
+            value: toggle ? 1 : 0,
+            duration: 1
+        });
+
+        gsap.to(textureMatChaorTop.current.uniforms.NightMix, {
+            value: toggle ? 1 : 0,
+            duration: 1
+        });
+    }, [toggle]);
 
     const [{ x }] = useSpring(
         {
@@ -52,7 +84,6 @@ export default function RoomModel() {
     });
 
     const {
-        // NightMix,
         boardColor,
         boardStrength,
         pcColor,
@@ -60,13 +91,6 @@ export default function RoomModel() {
         deskColors,
         deskColorStrngth
     } = useControls({
-        // NightMix: {
-        //     value: 0,
-        //     min: 0,
-        //     max: 1,
-        //     step: 0.01
-        // },
-
         boardColor: {
             value: '#ff2d88',
             label: 'Board Color'
@@ -127,7 +151,7 @@ export default function RoomModel() {
         dbakedm: dBaked,
         nbakedm: nBaked,
         lightMapm: lightMap,
-        NightMix: nightMix,
+        NightMix: 0,
         lightBoardColor: boardColor,
         lightBoardStrength: boardStrength,
         lightPcColor: pcColor,
@@ -144,7 +168,7 @@ export default function RoomModel() {
                     position={nodes.roomFurniture.position}
                     rotation={nodes.roomFurniture.rotation}
                 >
-                    <textureMaterial {...TextureMaterial} />
+                    <textureMaterial {...TextureMaterial} ref={textureMatFur} />
                 </mesh>
 
                 <mesh
@@ -152,7 +176,7 @@ export default function RoomModel() {
                     position={nodes.deskShelfStuf.position}
                     rotation={nodes.deskShelfStuf.rotation}
                 >
-                    <textureMaterial {...TextureMaterial} />
+                    <textureMaterial {...TextureMaterial} ref={textureMatDes} />
                 </mesh>
 
                 <mesh
@@ -160,7 +184,10 @@ export default function RoomModel() {
                     position={nodes.chairTvclockstuf.position}
                     rotation={nodes.chairTvclockstuf.rotation}
                 >
-                    <textureMaterial {...TextureMaterial} />
+                    <textureMaterial
+                        {...TextureMaterial}
+                        ref={textureMatclock}
+                    />
                 </mesh>
 
                 <mesh
@@ -168,7 +195,10 @@ export default function RoomModel() {
                     position={nodes.plant.position}
                     rotation={nodes.plant.rotation}
                 >
-                    <textureMaterial {...TextureMaterial} />
+                    <textureMaterial
+                        {...TextureMaterial}
+                        ref={textureMatplant}
+                    />
                 </mesh>
 
                 <mesh
@@ -177,7 +207,10 @@ export default function RoomModel() {
                     position={chair.nodes.chairTop.position}
                     rotation={chair.nodes.chairTop.rotation}
                 >
-                    <textureMaterial {...TextureMaterial} />
+                    <textureMaterial
+                        {...TextureMaterial}
+                        ref={textureMatChaorTop}
+                    />
                 </mesh>
                 <DispFrame />
                 <TheamSwitch x={x} set={set} />
