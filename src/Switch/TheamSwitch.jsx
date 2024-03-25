@@ -6,7 +6,6 @@ import { useCallback, useEffect, useState } from 'react';
 export default function TheamSwitch({ x, set }) {
     useGLTF.preload('./assets/switch.glb');
     const { nodes } = useGLTF('./assets/switch.glb');
-    // console.log(nodes.Sphere.position);
 
     const [hovered, setHover] = useState(false);
 
@@ -21,7 +20,6 @@ export default function TheamSwitch({ x, set }) {
 
     const pZ = x.to([0, 1], [0.1, 0.6]);
     const rX = x.to([0, 1], [0, Math.PI * 1.3]);
-    // const color = x.to([0, 1], ["#888", "#2a2a2a"]);
 
     return (
         <>
@@ -36,7 +34,7 @@ export default function TheamSwitch({ x, set }) {
                     onPointerOver={onPointerOver}
                     onPointerOut={onPointerOut}
                 >
-                    <meshBasicMaterial color={'#555555'} roughness={0.5} />
+                    <meshBasicMaterial color={'#555555'} />
                 </a.mesh>
             </a.group>
 

@@ -1,5 +1,4 @@
 import { useSpring } from '@react-spring/core';
-// import { a } from "@react-spring/web"
 import { Center, useGLTF, useTexture } from '@react-three/drei';
 import { extend, useFrame } from '@react-three/fiber';
 import { gsap } from 'gsap';
@@ -23,25 +22,6 @@ export default function RoomModel() {
     const textureMatChaorTop = useRef();
 
     const [toggle, set] = useState(0);
-    // const [nightMix, setNightMix] = useState(toggle);
-
-    // useEffect(() => {
-    //     if (toggle == 0) {
-    //         if (nightMix < 1) {
-    //             const interval = setInterval(() => {
-    //                 setNightMix((prevValue) => prevValue + 0.01);
-    //             }, 10);
-    //             return () => clearInterval(interval);
-    //         }
-    //     } else {
-    //         if (nightMix > 0) {
-    //             const interval = setInterval(() => {
-    //                 setNightMix((prevValue) => prevValue - 0.01);
-    //             }, 10);
-    //             return () => clearInterval(interval);
-    //         }
-    //     }
-    // }, [toggle, nightMix]);
 
     useEffect(() => {
         gsap.to(textureMatclock.current.uniforms.NightMix, {
@@ -77,7 +57,6 @@ export default function RoomModel() {
         },
         [toggle]
     );
-    console.log(toggle);
 
     useFrame(({ clock }) => {
         chairTop.current.rotation.y = Math.sin(clock.getElapsedTime() * 0.3);

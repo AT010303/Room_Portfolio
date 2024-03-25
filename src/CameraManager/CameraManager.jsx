@@ -1,9 +1,13 @@
 import { CameraControls } from '@react-three/drei';
 
+import { useCameraStore } from '../helper/CameraStore';
+
 export const CameraManager = () => {
+
+    const { controle } = useCameraStore();
     return (
         <CameraControls
-            makeDefault
+            enabled={controle}
             dollyToCursor={true}
             dollySpeed={1.2}
             truckSpeed={0.5}
@@ -17,7 +21,7 @@ export const CameraManager = () => {
             polarRotateSpeed={0.3}
             azimuthRotateSpeed={0.3}
             maxSpeed={20}
-            setTarget={[0, 5, 0]}
+            setTarget={[0, 0, 0]}
         />
     );
 };
