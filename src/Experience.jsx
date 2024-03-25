@@ -5,18 +5,23 @@ import { Perf } from 'r3f-perf';
 import { Suspense } from 'react';
 
 import { CameraManager } from './CameraManager/CameraManager';
+import { useCameraStore } from './helper/CameraStore';
 import RoomModel from './RoomModel/roomModel';
 
 export default function Experience() {
+
+    const { x, y, z } = useCameraStore();
     
     return (
+
+
         <>
             <Canvas
                 camera={{
                     fov: 35,
                     near: 0.1,
                     far: 200,
-                    position: [10, 8 , -10],
+                    position: [x, y , z],
                 }}
                
             >

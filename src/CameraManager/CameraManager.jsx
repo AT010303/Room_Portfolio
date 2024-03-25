@@ -1,10 +1,18 @@
 import { CameraControls } from '@react-three/drei';
+// import { useFrame } from '@react-three/fiber';
+import { useRef } from 'react';
 
 import { useCameraStore } from '../helper/CameraStore';
 
 export const CameraManager = () => {
+    const cameraControle = useRef();
 
+    console.log(cameraControle.current);
+
+
+    
     const { controle } = useCameraStore();
+
     return (
         <CameraControls
             enabled={controle}
@@ -21,7 +29,8 @@ export const CameraManager = () => {
             polarRotateSpeed={0.3}
             azimuthRotateSpeed={0.3}
             maxSpeed={20}
-            setTarget={[0, 0, 0]}
+            setTarget={[0, 5, 0]}
+            ref={cameraControle}
         />
     );
 };

@@ -53,9 +53,13 @@ export default function DispFrame() {
                 y: 8,
                 z: -10,
                 duration: 1,
-                ease: "power1.inOut"
+                ease: "power1.inOut",
+                onComplete:()=>{
+                    useCameraStore.setState({x : 10, y : 8, z : -10});
+                }
             });
             setTimeout(()=>{
+                useCameraStore.setState({x : 10, y : 8, z : -10});
                 useCameraStore.setState({controle: true});
             },1500);
             
@@ -69,9 +73,13 @@ export default function DispFrame() {
                 y: 4,
                 z: -5,
                 duration: 1,
-                ease: "power1.inOut"
+                ease: "power1.inOut",
+                onComplete:()=>{
+                    useCameraStore.setState({x : 5, y : 4, z : -5});
+                }
             });
             setTimeout(()=>{
+                useCameraStore.setState({x : 5, y : 4, z : -5});
                 useCameraStore.setState({controle: true});
             },1500);
              
