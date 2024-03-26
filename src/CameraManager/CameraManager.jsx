@@ -1,20 +1,30 @@
 import { CameraControls } from '@react-three/drei';
-// import { useFrame } from '@react-three/fiber';
 import { useRef } from 'react';
+import { useEffect } from 'react';
 
 import { useCameraStore } from '../helper/CameraStore';
 
 export const CameraManager = () => {
     const cameraControle = useRef();
-
-    console.log(cameraControle.current);
-
-
-    
     const { controle } = useCameraStore();
+
+    const cameraState = useCameraStore((state) => state.cameraState);
+
+    useEffect(() => {
+        if (cameraState === 'default') {
+            cameraControle.current.setLookAt(10, 8, -10, 0 , 0, 0, true);
+        }
+
+        if (cameraState === 'desktop') {
+
+            cameraControle.current.setPosition(5, 4, -5, true);
+        }
+    });
+
 
     return (
         <CameraControls
+            ref={cameraControle}
             enabled={controle}
             dollyToCursor={true}
             dollySpeed={1.2}
@@ -29,8 +39,7 @@ export const CameraManager = () => {
             polarRotateSpeed={0.3}
             azimuthRotateSpeed={0.3}
             maxSpeed={20}
-            setTarget={[0, 5, 0]}
-            ref={cameraControle}
+            enableTransition={true}
         />
     );
 };

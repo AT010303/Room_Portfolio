@@ -1,9 +1,4 @@
 import { useGLTF } from '@react-three/drei';
-import { useThree } from '@react-three/fiber';
-// import { useFrame } from '@react-three/fiber';
-import gsap from 'gsap';
-// import { useControls } from 'leva';
-import { useEffect } from 'react';
 
 import { useCameraStore } from '../helper/CameraStore';
 import PhotoFrame from './photoFrame';
@@ -18,77 +13,8 @@ export default function DispFrame() {
     const defaultState = useCameraStore((state) => state.default);
     const desktopState = useCameraStore((state) => state.desktop);
 
-    // const { controle } = useCameraStore();
-
-    const { camera } = useThree();
-
-    // const { cameraPosition } = useControls({
-    //     cameraPosition: {
-    //         value : {
-    //             x: 10,
-    //             y: 8,
-    //             z: -10,
-    //         },
-    //         step: 0.05
-    //     },
-    // });
-
-    // useFrame(()=>{
-    //     camera.position.x = cameraPosition.x;
-    //     camera.position.y = cameraPosition.y;
-    //     camera.position.z = cameraPosition.z;
-    // });
-
-    // console.log(cameraState);
-
+    console.log(cameraState);
     
-
-    useEffect(()=>{
-
-        if(cameraState === "default"){
-            
-            useCameraStore.setState({controle: false});
-            gsap.to(camera.position,{
-                x: 10,
-                y: 8,
-                z: -10,
-                duration: 1,
-                ease: "power1.inOut",
-                onComplete:()=>{
-                    useCameraStore.setState({x : 10, y : 8, z : -10});
-                }
-            });
-            setTimeout(()=>{
-                useCameraStore.setState({x : 10, y : 8, z : -10});
-                useCameraStore.setState({controle: true});
-            },1500);
-            
-            console.log("default");
-            console.log(camera.position);
-        }
-        if(cameraState === "desktop"){
-            useCameraStore.setState({controle: false});
-            gsap.to(camera.position,{
-                x: 5,
-                y: 4,
-                z: -5,
-                duration: 1,
-                ease: "power1.inOut",
-                onComplete:()=>{
-                    useCameraStore.setState({x : 5, y : 4, z : -5});
-                }
-            });
-            setTimeout(()=>{
-                useCameraStore.setState({x : 5, y : 4, z : -5});
-                useCameraStore.setState({controle: true});
-            },1500);
-             
-            console.log("desktop");
-            console.log(camera.position);
-        }
-
-    },[cameraState, camera]);
-
     return (
         <>
             <PhotoFrame />
