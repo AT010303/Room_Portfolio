@@ -1,33 +1,30 @@
 /* eslint-disable react-refresh/only-export-components */
 import { create } from 'zustand';
 
-
 export const useCameraStore = create((set) => ({
     x: 10,
     y: 8,
     z: -10,
 
-    setx: (x)=>{
+    setx: (x) => {
         set((state) => ({
             x: (state.x = x)
         }));
     },
-    sety: (y)=>{
+    sety: (y) => {
         set((state) => ({
             y: (state.y = y)
         }));
     },
-    setz: (z)=>{
+    setz: (z) => {
         set((state) => ({
             z: (state.z = z)
         }));
     },
 
-
     cameraState: 'default',
-    
-    default: () => {
 
+    default: () => {
         set((state) => ({
             cameraState: (state.cameraState = 'default')
         }));
@@ -37,17 +34,24 @@ export const useCameraStore = create((set) => ({
             cameraState: (state.cameraState = 'desktop')
         }));
     },
-
-    controle : true,
-
-    // enableControl: () => {
-    //     set((state) => ({
-    //         controle: (state.controle = true)
-    //     }));
-    // },
-    // disableControl: () => {
-    //     set((state) => ({
-    //         controle: (state.controle = false)
-    //     }));
-    // },
+    laptop: () => {
+        set((state) => ({
+            cameraState: (state.cameraState = 'laptop')
+        }));
+    },
+    tv: () => {
+        set((state) => ({
+            cameraState: (state.cameraState = 'tv')
+        }));
+    },
+    smartphone: () => {
+        set((state) => ({
+            cameraState: (state.cameraState = 'smartphone')
+        }));
+    },
+    displayBoard: () => {
+        set((state) => ({
+            cameraState: (state.cameraState = 'displayBoard')
+        }));
+    }
 }));

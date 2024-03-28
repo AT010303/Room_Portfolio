@@ -3,7 +3,6 @@ import { useGLTF } from '@react-three/drei';
 import { useCameraStore } from '../helper/CameraStore';
 import PhotoFrame from './photoFrame';
 
-
 export default function DispFrame() {
     useGLTF.preload('./assets/roombasedraco.glb');
     const { nodes } = useGLTF('./assets/roombasedraco.glb');
@@ -12,9 +11,12 @@ export default function DispFrame() {
 
     const defaultState = useCameraStore((state) => state.default);
     const desktopState = useCameraStore((state) => state.desktop);
+    const laptopState = useCameraStore((state) => state.laptop);
+    const tvState = useCameraStore((state) => state.tv);
+    const smartphoneState = useCameraStore((state) => state.smartphone);
 
     console.log(cameraState);
-    
+
     return (
         <>
             <PhotoFrame />
@@ -22,8 +24,9 @@ export default function DispFrame() {
                 geometry={nodes.monitor.geometry}
                 position={nodes.monitor.position}
                 rotation={nodes.monitor.rotation}
-                onClick={cameraState === "default" ? desktopState :defaultState}
-                
+                onClick={
+                    cameraState === 'default' ? desktopState : defaultState
+                }
             >
                 <meshBasicMaterial />
             </mesh>
@@ -32,6 +35,7 @@ export default function DispFrame() {
                 geometry={nodes.laptop.geometry}
                 position={nodes.laptop.position}
                 rotation={nodes.laptop.rotation}
+                onClick={cameraState === 'default' ? laptopState : defaultState}
             >
                 <meshBasicMaterial />
             </mesh>
@@ -40,6 +44,7 @@ export default function DispFrame() {
                 geometry={nodes.tvdisplay.geometry}
                 position={nodes.tvdisplay.position}
                 rotation={nodes.tvdisplay.rotation}
+                onClick={cameraState === 'default' ? tvState : defaultState}
             >
                 <meshBasicMaterial />
             </mesh>
@@ -48,6 +53,9 @@ export default function DispFrame() {
                 geometry={nodes.smartphone.geometry}
                 position={nodes.smartphone.position}
                 rotation={nodes.smartphone.rotation}
+                onClick={
+                    cameraState === 'default' ? smartphoneState : defaultState
+                }
             >
                 <meshBasicMaterial />
             </mesh>
