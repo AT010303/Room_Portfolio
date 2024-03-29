@@ -9,16 +9,49 @@ export const CameraManager = () => {
 
     const cameraState = useCameraStore((state) => state.cameraState);
 
+    const maxDistancce = useCameraStore((state) => state.maxDistancce);
+    const minDistance = useCameraStore((state) => state.minDistance);
+    const maxAzimuthAngle = useCameraStore((state) => state.maxAzimuthAngle);
+    const minAzimuthAngle = useCameraStore((state) => state.minAzimuthAngle);
+    const minPolarAngle = useCameraStore((state) => state.minPolarAngle);
+    const maxPolarAngle = useCameraStore((state) => state.maxPolarAngle);
+    const truckSpeed = useCameraStore((state) => state.truckSpeed);
+    const dollyToCursor = useCameraStore((state) => state.dollyToCursor);
+
     useEffect(() => {
         if (cameraState === 'default') {
+            useCameraStore.setState({ truckSpeed: 0.5 });
+            useCameraStore.setState({ dollyToCursor: true });
+            useCameraStore.setState({ minDistance: 2 });
+            useCameraStore.setState({ maxDistancce: 25 });
+            useCameraStore.setState({ minPolarAngle: Math.PI * 0.1 });
+            useCameraStore.setState({ maxPolarAngle: Math.PI * 0.45 });
+            useCameraStore.setState({ minAzimuthAngle: Math.PI * 0.5 });
+            useCameraStore.setState({ maxAzimuthAngle: Math.PI });
             cameraControle.current.setLookAt(10, 8, -10, 0, 0, 0, true);
         }
 
         if (cameraState === 'desktop') {
+            useCameraStore.setState({ truckSpeed: 0 });
+            useCameraStore.setState({ dollyToCursor: false });
+            useCameraStore.setState({ minDistance: 5.65 });
+            useCameraStore.setState({ maxDistancce: 8.5 });
+            useCameraStore.setState({ minPolarAngle: Math.PI* 0.5 });
+            useCameraStore.setState({ maxPolarAngle: Math.PI* 0.5 });
+            useCameraStore.setState({ minAzimuthAngle: Math.PI });
+            useCameraStore.setState({ maxAzimuthAngle: Math.PI });
             cameraControle.current.setLookAt(2.1, 0.3, 2, 2.1, 0.3, 8, true);
         }
 
         if (cameraState === 'laptop') {
+            useCameraStore.setState({ truckSpeed: 0 });
+            useCameraStore.setState({ dollyToCursor: false });
+            useCameraStore.setState({ minDistance: 4.2 });
+            useCameraStore.setState({ maxDistancce: 6 });
+            useCameraStore.setState({ minPolarAngle: Math.PI* 0.435 });
+            useCameraStore.setState({ maxPolarAngle: Math.PI* 0.435 });
+            useCameraStore.setState({ minAzimuthAngle: Math.PI*0.689 });
+            useCameraStore.setState({ maxAzimuthAngle: Math.PI* 0.689 });
             cameraControle.current.setLookAt(2, 0, 2.5, -2, -1, 5.2, true);
         }
 
@@ -31,24 +64,30 @@ export const CameraManager = () => {
         }
     });
 
+
+
+
     return (
         <CameraControls
             makeDefault={true}
             ref={cameraControle}
-            dollyToCursor={true}
+            dollyToCursor={dollyToCursor}
             dollySpeed={1.2}
-            truckSpeed={0.5}
-            minDistance={2}
-            maxDistance={25}
-            smoothTime={2}
-            maxAzimuthAngle={Math.PI}
-            minAzimuthAngle={Math.PI * 0.5}
-            minPolarAngle={Math.PI * 0.1}
-            maxPolarAngle={Math.PI * 0.45}
+            truckSpeed={truckSpeed}
+            minDistance={minDistance}
+            maxDistance={maxDistancce}
+            smoothTime={1}
+            maxAzimuthAngle={maxAzimuthAngle}
+            minAzimuthAngle={minAzimuthAngle}
+            minPolarAngle={minPolarAngle}
+            maxPolarAngle={maxPolarAngle}
             polarRotateSpeed={0.3}
             azimuthRotateSpeed={0.3}
             maxSpeed={20}
             enableTransition={true}
+            boundaryFriction={0}
+            boundaryEnclosesCamera={true}
+            interactiveArea={[0.5, 0.5, 1, 1]}
         />
     );
 };

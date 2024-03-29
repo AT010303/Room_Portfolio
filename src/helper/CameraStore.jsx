@@ -2,26 +2,7 @@
 import { create } from 'zustand';
 
 export const useCameraStore = create((set) => ({
-    x: 10,
-    y: 8,
-    z: -10,
-
-    setx: (x) => {
-        set((state) => ({
-            x: (state.x = x)
-        }));
-    },
-    sety: (y) => {
-        set((state) => ({
-            y: (state.y = y)
-        }));
-    },
-    setz: (z) => {
-        set((state) => ({
-            z: (state.z = z)
-        }));
-    },
-
+    // Camer State
     cameraState: 'default',
 
     default: () => {
@@ -53,5 +34,19 @@ export const useCameraStore = create((set) => ({
         set((state) => ({
             cameraState: (state.cameraState = 'displayBoard')
         }));
-    }
+    },
+
+    // camera properties
+
+    maxDistancce: 25,
+    minDistance: 2,
+    maxAzimuthAngle: Math.PI,
+    minAzimuthAngle: Math.PI * 0.5,
+    minPolarAngle: Math.PI * 0.1,
+    maxPolarAngle: Math.PI * 0.45,
+    truckSpeed: 0.5,
+    dollyToCursor: true,
+
+
+
 }));

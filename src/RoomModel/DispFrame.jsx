@@ -25,7 +25,7 @@ export default function DispFrame() {
                 position={nodes.monitor.position}
                 rotation={nodes.monitor.rotation}
                 onClick={
-                    cameraState === 'default' ? desktopState : defaultState
+                    cameraState === 'desktop' ? defaultState : desktopState
                 }
             >
                 <meshBasicMaterial />
@@ -35,7 +35,7 @@ export default function DispFrame() {
                 geometry={nodes.laptop.geometry}
                 position={nodes.laptop.position}
                 rotation={nodes.laptop.rotation}
-                onClick={cameraState === 'default' ? laptopState : defaultState}
+                onClick={cameraState === 'laptop' ? defaultState : laptopState}
             >
                 <meshBasicMaterial />
             </mesh>
@@ -44,7 +44,7 @@ export default function DispFrame() {
                 geometry={nodes.tvdisplay.geometry}
                 position={nodes.tvdisplay.position}
                 rotation={nodes.tvdisplay.rotation}
-                onClick={cameraState === 'default' ? tvState : defaultState}
+                onClick={cameraState === 'tv' ? defaultState : tvState}
             >
                 <meshBasicMaterial />
             </mesh>
@@ -53,9 +53,7 @@ export default function DispFrame() {
                 geometry={nodes.smartphone.geometry}
                 position={nodes.smartphone.position}
                 rotation={nodes.smartphone.rotation}
-                onClick={
-                    cameraState === 'default' ? smartphoneState : defaultState
-                }
+                onClick={cameraState === 'smartphone'? defaultState : smartphoneState }
             >
                 <meshBasicMaterial />
             </mesh>
