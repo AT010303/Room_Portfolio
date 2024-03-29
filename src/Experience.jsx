@@ -8,7 +8,6 @@ import { CameraManager } from './CameraManager/CameraManager';
 import RoomModel from './RoomModel/roomModel';
 
 export default function Experience() {
-
     return (
         <>
             <Canvas

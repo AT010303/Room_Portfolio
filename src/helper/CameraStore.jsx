@@ -46,8 +46,5 @@ export const useCameraStore = create((set) => ({
     maxPolarAngle: Math.PI * 0.45,
     truckSpeed: 0.5,
     dollyToCursor: true,
-    enable : true,
-
-
-
+    enable: true
 }));

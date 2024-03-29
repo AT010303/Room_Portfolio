@@ -54,7 +54,7 @@ export default function RoomModel() {
     const [{ x }] = useSpring(
         {
             x: toggle,
-            config: { mass: 5, tension: 1000, friction: 50, precision: 0.0001 }
+            config: { mass: 4, tension: 800, friction: 35, precision: 0.001 }
         },
         [toggle]
     );
@@ -150,8 +150,6 @@ export default function RoomModel() {
                     geometry={nodes.roomFurniture.geometry}
                     position={nodes.roomFurniture.position}
                     rotation={nodes.roomFurniture.rotation}
-                    
-                    
                 >
                     <textureMaterial {...TextureMaterial} ref={textureMatFur} />
                 </mesh>
@@ -160,7 +158,9 @@ export default function RoomModel() {
                     geometry={nodes.deskShelfStuf.geometry}
                     position={nodes.deskShelfStuf.position}
                     rotation={nodes.deskShelfStuf.rotation}
-                    onClick={cameraState === 'default' ? undefined : defaultState}
+                    onClick={
+                        cameraState === 'default' ? undefined : defaultState
+                    }
                 >
                     <textureMaterial {...TextureMaterial} ref={textureMatDes} />
                 </mesh>
@@ -169,7 +169,9 @@ export default function RoomModel() {
                     geometry={nodes.chairTvclockstuf.geometry}
                     position={nodes.chairTvclockstuf.position}
                     rotation={nodes.chairTvclockstuf.rotation}
-                    onClick={cameraState === 'default' ? undefined : defaultState}
+                    onClick={
+                        cameraState === 'default' ? undefined : defaultState
+                    }
                 >
                     <textureMaterial
                         {...TextureMaterial}
@@ -181,7 +183,9 @@ export default function RoomModel() {
                     geometry={nodes.plant.geometry}
                     position={nodes.plant.position}
                     rotation={nodes.plant.rotation}
-                    onClick={cameraState === 'default' ? undefined : defaultState}
+                    onClick={
+                        cameraState === 'default' ? undefined : defaultState
+                    }
                 >
                     <textureMaterial
                         {...TextureMaterial}
@@ -194,7 +198,9 @@ export default function RoomModel() {
                     geometry={chair.nodes.chairTop.geometry}
                     position={chair.nodes.chairTop.position}
                     rotation={chair.nodes.chairTop.rotation}
-                    onClick={cameraState === 'default' ? undefined : defaultState}
+                    onClick={
+                        cameraState === 'default' ? undefined : defaultState
+                    }
                 >
                     <textureMaterial
                         {...TextureMaterial}

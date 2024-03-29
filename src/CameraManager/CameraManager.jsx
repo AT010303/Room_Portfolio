@@ -37,8 +37,8 @@ export const CameraManager = () => {
             useCameraStore.setState({ dollyToCursor: false });
             useCameraStore.setState({ minDistance: 5.65 });
             useCameraStore.setState({ maxDistancce: 8.5 });
-            useCameraStore.setState({ minPolarAngle: Math.PI* 0.5 });
-            useCameraStore.setState({ maxPolarAngle: Math.PI* 0.5 });
+            useCameraStore.setState({ minPolarAngle: Math.PI * 0.5 });
+            useCameraStore.setState({ maxPolarAngle: Math.PI * 0.5 });
             useCameraStore.setState({ minAzimuthAngle: Math.PI });
             useCameraStore.setState({ maxAzimuthAngle: Math.PI });
             cameraControle.current.setLookAt(2.1, 0.3, 2, 2.1, 0.3, 8, true);
@@ -49,10 +49,10 @@ export const CameraManager = () => {
             useCameraStore.setState({ dollyToCursor: false });
             useCameraStore.setState({ minDistance: 4.2 });
             useCameraStore.setState({ maxDistancce: 6 });
-            useCameraStore.setState({ minPolarAngle: Math.PI* 0.435 });
-            useCameraStore.setState({ maxPolarAngle: Math.PI* 0.435 });
-            useCameraStore.setState({ minAzimuthAngle: Math.PI*0.689 });
-            useCameraStore.setState({ maxAzimuthAngle: Math.PI* 0.689 });
+            useCameraStore.setState({ minPolarAngle: Math.PI * 0.435 });
+            useCameraStore.setState({ maxPolarAngle: Math.PI * 0.435 });
+            useCameraStore.setState({ minAzimuthAngle: Math.PI * 0.689 });
+            useCameraStore.setState({ maxAzimuthAngle: Math.PI * 0.689 });
             cameraControle.current.setLookAt(2, 0, 2.5, -2, -1, 5.2, true);
         }
 
@@ -61,8 +61,8 @@ export const CameraManager = () => {
             useCameraStore.setState({ dollyToCursor: false });
             useCameraStore.setState({ minDistance: 5.6 });
             useCameraStore.setState({ maxDistancce: 6.5 });
-            useCameraStore.setState({ minPolarAngle: Math.PI* 0.5 });
-            useCameraStore.setState({ maxPolarAngle: Math.PI* 0.5 });
+            useCameraStore.setState({ minPolarAngle: Math.PI * 0.5 });
+            useCameraStore.setState({ maxPolarAngle: Math.PI * 0.5 });
             useCameraStore.setState({ minAzimuthAngle: 0 });
             useCameraStore.setState({ maxAzimuthAngle: 0 });
             cameraControle.current.setLookAt(2.5, -0.1, 1, 2.5, -0.1, -5, true);
@@ -73,16 +73,13 @@ export const CameraManager = () => {
             useCameraStore.setState({ dollyToCursor: false });
             useCameraStore.setState({ minDistance: 5 });
             useCameraStore.setState({ maxDistancce: 6.5 });
-            useCameraStore.setState({ minPolarAngle: Math.PI* 0.1 });
-            useCameraStore.setState({ maxPolarAngle: Math.PI*0.1 });
+            useCameraStore.setState({ minPolarAngle: Math.PI * 0.1 });
+            useCameraStore.setState({ maxPolarAngle: Math.PI * 0.1 });
             useCameraStore.setState({ minAzimuthAngle: Math.PI * 0.8 });
             useCameraStore.setState({ maxAzimuthAngle: Math.PI * 0.8 });
             cameraControle.current.setLookAt(1.9, 0.2, -1.5, 0.9, -5, 0, true);
         }
     });
-
-
-
 
     return (
         <CameraControls

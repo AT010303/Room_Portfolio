@@ -22,9 +22,7 @@ export default function DispFrame() {
                 geometry={nodes.monitor.geometry}
                 position={nodes.monitor.position}
                 rotation={nodes.monitor.rotation}
-                onClick={
-                    cameraState === 'desktop' ? undefined : desktopState
-                }
+                onClick={cameraState === 'desktop' ? undefined : desktopState}
             >
                 <meshBasicMaterial />
             </mesh>
@@ -51,7 +49,9 @@ export default function DispFrame() {
                 geometry={nodes.smartphone.geometry}
                 position={nodes.smartphone.position}
                 rotation={nodes.smartphone.rotation}
-                onClick={cameraState === 'smartphone'? undefined : smartphoneState }
+                onClick={
+                    cameraState === 'smartphone' ? undefined : smartphoneState
+                }
             >
                 <meshBasicMaterial />
             </mesh>
