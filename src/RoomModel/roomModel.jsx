@@ -6,6 +6,7 @@ import { useControls } from 'leva';
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 
+import { useCameraStore } from '../helper/CameraStore';
 import TheamSwitch from '../Switch/TheamSwitch';
 // import Backdrop from './Backdrop';
 import DispFrame from './DispFrame';
@@ -139,6 +140,9 @@ export default function RoomModel() {
         lightDeskStrength: deskColorStrngth
     };
 
+    const cameraState = useCameraStore((state) => state.cameraState);
+    const defaultState = useCameraStore((state) => state.default);
+
     return (
         <group>
             <Center>
@@ -146,6 +150,8 @@ export default function RoomModel() {
                     geometry={nodes.roomFurniture.geometry}
                     position={nodes.roomFurniture.position}
                     rotation={nodes.roomFurniture.rotation}
+                    
+                    
                 >
                     <textureMaterial {...TextureMaterial} ref={textureMatFur} />
                 </mesh>
@@ -154,6 +160,7 @@ export default function RoomModel() {
                     geometry={nodes.deskShelfStuf.geometry}
                     position={nodes.deskShelfStuf.position}
                     rotation={nodes.deskShelfStuf.rotation}
+                    onClick={cameraState === 'default' ? undefined : defaultState}
                 >
                     <textureMaterial {...TextureMaterial} ref={textureMatDes} />
                 </mesh>
@@ -162,6 +169,7 @@ export default function RoomModel() {
                     geometry={nodes.chairTvclockstuf.geometry}
                     position={nodes.chairTvclockstuf.position}
                     rotation={nodes.chairTvclockstuf.rotation}
+                    onClick={cameraState === 'default' ? undefined : defaultState}
                 >
                     <textureMaterial
                         {...TextureMaterial}
@@ -173,6 +181,7 @@ export default function RoomModel() {
                     geometry={nodes.plant.geometry}
                     position={nodes.plant.position}
                     rotation={nodes.plant.rotation}
+                    onClick={cameraState === 'default' ? undefined : defaultState}
                 >
                     <textureMaterial
                         {...TextureMaterial}
@@ -185,6 +194,7 @@ export default function RoomModel() {
                     geometry={chair.nodes.chairTop.geometry}
                     position={chair.nodes.chairTop.position}
                     rotation={chair.nodes.chairTop.rotation}
+                    onClick={cameraState === 'default' ? undefined : defaultState}
                 >
                     <textureMaterial
                         {...TextureMaterial}

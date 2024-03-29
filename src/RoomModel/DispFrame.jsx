@@ -8,8 +8,6 @@ export default function DispFrame() {
     const { nodes } = useGLTF('./assets/roombasedraco.glb');
 
     const cameraState = useCameraStore((state) => state.cameraState);
-
-    const defaultState = useCameraStore((state) => state.default);
     const desktopState = useCameraStore((state) => state.desktop);
     const laptopState = useCameraStore((state) => state.laptop);
     const tvState = useCameraStore((state) => state.tv);
@@ -25,7 +23,7 @@ export default function DispFrame() {
                 position={nodes.monitor.position}
                 rotation={nodes.monitor.rotation}
                 onClick={
-                    cameraState === 'desktop' ? defaultState : desktopState
+                    cameraState === 'desktop' ? undefined : desktopState
                 }
             >
                 <meshBasicMaterial />
@@ -35,7 +33,7 @@ export default function DispFrame() {
                 geometry={nodes.laptop.geometry}
                 position={nodes.laptop.position}
                 rotation={nodes.laptop.rotation}
-                onClick={cameraState === 'laptop' ? defaultState : laptopState}
+                onClick={cameraState === 'laptop' ? undefined : laptopState}
             >
                 <meshBasicMaterial />
             </mesh>
@@ -44,7 +42,7 @@ export default function DispFrame() {
                 geometry={nodes.tvdisplay.geometry}
                 position={nodes.tvdisplay.position}
                 rotation={nodes.tvdisplay.rotation}
-                onClick={cameraState === 'tv' ? defaultState : tvState}
+                onClick={cameraState === 'tv' ? undefined : tvState}
             >
                 <meshBasicMaterial />
             </mesh>
@@ -53,7 +51,7 @@ export default function DispFrame() {
                 geometry={nodes.smartphone.geometry}
                 position={nodes.smartphone.position}
                 rotation={nodes.smartphone.rotation}
-                onClick={cameraState === 'smartphone'? defaultState : smartphoneState }
+                onClick={cameraState === 'smartphone'? undefined : smartphoneState }
             >
                 <meshBasicMaterial />
             </mesh>

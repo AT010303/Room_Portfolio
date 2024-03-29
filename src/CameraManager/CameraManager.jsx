@@ -17,6 +17,7 @@ export const CameraManager = () => {
     const maxPolarAngle = useCameraStore((state) => state.maxPolarAngle);
     const truckSpeed = useCameraStore((state) => state.truckSpeed);
     const dollyToCursor = useCameraStore((state) => state.dollyToCursor);
+    const enable = useCameraStore((state) => state.enable);
 
     useEffect(() => {
         if (cameraState === 'default') {
@@ -56,11 +57,27 @@ export const CameraManager = () => {
         }
 
         if (cameraState === 'tv') {
+            useCameraStore.setState({ truckSpeed: 0 });
+            useCameraStore.setState({ dollyToCursor: false });
+            useCameraStore.setState({ minDistance: 5.6 });
+            useCameraStore.setState({ maxDistancce: 6.5 });
+            useCameraStore.setState({ minPolarAngle: Math.PI* 0.5 });
+            useCameraStore.setState({ maxPolarAngle: Math.PI* 0.5 });
+            useCameraStore.setState({ minAzimuthAngle: 0 });
+            useCameraStore.setState({ maxAzimuthAngle: 0 });
             cameraControle.current.setLookAt(2.5, -0.1, 1, 2.5, -0.1, -5, true);
         }
 
         if (cameraState === 'smartphone') {
-            cameraControle.current.setLookAt(2, 0, -1.5, 1, -5, 0, true);
+            useCameraStore.setState({ truckSpeed: 0 });
+            useCameraStore.setState({ dollyToCursor: false });
+            useCameraStore.setState({ minDistance: 5 });
+            useCameraStore.setState({ maxDistancce: 6.5 });
+            useCameraStore.setState({ minPolarAngle: Math.PI* 0.1 });
+            useCameraStore.setState({ maxPolarAngle: Math.PI*0.1 });
+            useCameraStore.setState({ minAzimuthAngle: Math.PI * 0.8 });
+            useCameraStore.setState({ maxAzimuthAngle: Math.PI * 0.8 });
+            cameraControle.current.setLookAt(1.9, 0.2, -1.5, 0.9, -5, 0, true);
         }
     });
 
@@ -76,7 +93,7 @@ export const CameraManager = () => {
             truckSpeed={truckSpeed}
             minDistance={minDistance}
             maxDistance={maxDistancce}
-            smoothTime={1}
+            smoothTime={0.8}
             maxAzimuthAngle={maxAzimuthAngle}
             minAzimuthAngle={minAzimuthAngle}
             minPolarAngle={minPolarAngle}
@@ -88,6 +105,7 @@ export const CameraManager = () => {
             boundaryFriction={0}
             boundaryEnclosesCamera={true}
             interactiveArea={[0.5, 0.5, 1, 1]}
+            enabled={enable}
         />
     );
 };
