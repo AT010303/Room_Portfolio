@@ -5,7 +5,6 @@ import { Perf } from 'r3f-perf';
 import { Suspense } from 'react';
 
 import { CameraManager } from './CameraManager/CameraManager';
-// import DesktopiFrame from './RoomModel/iframes/desktopiFrame';
 import RoomModel from './RoomModel/roomModel';
 
 export default function Experience() {
@@ -25,7 +24,6 @@ export default function Experience() {
                     disableNormalPass:true
                 ></EffectComposer>
                 <Suspense fallback={null}>
-                    {/* <DesktopiFrame /> */}
                     <Perf position="top-left" />
                     <CameraManager />
                     <RoomModel />
