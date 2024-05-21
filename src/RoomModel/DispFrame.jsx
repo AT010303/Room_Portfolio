@@ -1,6 +1,7 @@
 import { useGLTF } from '@react-three/drei';
 
 import { useCameraStore } from '../helper/CameraStore';
+import DesktopiFrame from './iframes/desktopiFrame';
 import PhotoFrame from './photoFrame';
 
 export default function DispFrame() {
@@ -13,10 +14,11 @@ export default function DispFrame() {
     const tvState = useCameraStore((state) => state.tv);
     const smartphoneState = useCameraStore((state) => state.smartphone);
 
-    console.log(cameraState);
+    // console.log(nodes);
 
     return (
         <>
+            <DesktopiFrame />
             <PhotoFrame />
             <mesh
                 geometry={nodes.monitor.geometry}
@@ -24,7 +26,7 @@ export default function DispFrame() {
                 rotation={nodes.monitor.rotation}
                 onClick={cameraState === 'desktop' ? undefined : desktopState}
             >
-                <meshBasicMaterial />
+                <meshBasicMaterial transparent={true} opacity={0} />
             </mesh>
 
             <mesh
