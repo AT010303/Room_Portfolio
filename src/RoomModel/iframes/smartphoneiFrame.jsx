@@ -13,17 +13,17 @@ export default function SmartphoneiFrame() {
             rotation-z={-Math.PI / 6}
             transform
             wrapperClass="htmlPhoneScreen"
-            distanceFactor={0.36}
+            distanceFactor={0.359}
             position={[1.6395, 1.125, -1.373]}
             zIndexRange={cameraState === 'smartphone' ? [10, 1] : [-1, 0]}
         >
             <iframe
+                width={310}
+                height={640}
                 title="embed"
                 src="https://portfolio-inner-theta.vercel.app/"
-                frameBorder={0}
+                style={{ border: 'none', borderRadius: '22px' }}
             />
         </Html>
     );
 }
-
-//{x: 1.45686674118042, y: 2.0877959728240967, z: 2.7166295051574707}

@@ -7,11 +7,3 @@ body,
     width: 100%;
     height: 100%;
 }
-
-.htmlPhoneScreen iframe {
-    width: 310px;
-    height: 640px;
-    background: #000;
-    border: none;
-    border-radius: 20px;
-}

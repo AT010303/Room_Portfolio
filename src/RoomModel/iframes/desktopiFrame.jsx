@@ -20,7 +20,7 @@ export default function DesktopiFrame() {
                     height={850}
                     title="embed"
                     src="https://portfolio-inner-theta.vercel.app/"
-                    frameBorder={0}
+                    style={{ border: 'none' }}
                 />
             </Html>
         </group>
