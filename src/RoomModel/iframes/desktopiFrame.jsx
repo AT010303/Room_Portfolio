@@ -1,20 +1,13 @@
-import { Html, Mask, useGLTF } from '@react-three/drei';
+import { Html } from '@react-three/drei';
 
 import { useCameraStore } from '../../helper/CameraStore';
 
 export default function DesktopiFrame() {
-    const { nodes } = useGLTF('./assets/roombasedraco.glb');
 
     const cameraState = useCameraStore((state) => state.cameraState);
     return (
         <group>
-            <Mask
-                id={1}
-                colorWrite={false}
-                depthWrite={false}
-                geometry={nodes.monitor.geometry}
-                position={[0, 0, 0]}
-            >
+            
                 <Html
                     rotation-y={Math.PI}
                     transform
@@ -32,7 +25,6 @@ export default function DesktopiFrame() {
                         frameBorder={0}
                     />
                 </Html>
-            </Mask>
         </group>
     );
 }

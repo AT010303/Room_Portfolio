@@ -36,7 +36,7 @@ export const CameraManager = () => {
             useCameraStore.setState({ truckSpeed: 0 });
             useCameraStore.setState({ dollyToCursor: false });
             useCameraStore.setState({ minDistance: 5.65 });
-            useCameraStore.setState({ maxDistancce: 8.5 });
+            useCameraStore.setState({ maxDistancce: 7.1 });
             useCameraStore.setState({ minPolarAngle: Math.PI * 0.5 });
             useCameraStore.setState({ maxPolarAngle: Math.PI * 0.5 });
             useCameraStore.setState({ minAzimuthAngle: Math.PI });
