@@ -8,7 +8,8 @@ import * as THREE from 'three';
 
 import { useCameraStore } from '../helper/CameraStore';
 import TheamSwitch from '../Switch/TheamSwitch';
-// import Backdrop from './Backdrop';
+import Backdrop from './Backdrop';
+import Clock from './clock';
 import DispFrame from './DispFrame';
 import TextureMaterial from './textures/TextureMaterial';
 
@@ -106,18 +107,20 @@ export default function RoomModel() {
     });
     useGLTF.preload('./assets/roombasedraco.glb');
     useGLTF.preload('./assets/chairtopDraco.glb');
-    useTexture.preload('./assets/bakedTextureDaycmp.jpg');
-    useTexture.preload('./assets/bakedTextureNightcmp.jpg');
+    useTexture.preload('./assets/new/bakedTextureDay.jpg');
+
+    //   D:\Web\portfolio\public\assets\new\roomTextureNight.jpg
+    useTexture.preload('./assets/new/roomTextureNight.jpg');
     useTexture.preload('./assets/roomTextureLightMapcmp.jpg');
     const { nodes } = useGLTF('./assets/roombasedraco.glb');
     const chair = useGLTF('./assets/chairtopDraco.glb');
 
-    const dBaked = useTexture('./assets/bakedTextureDaycmp.jpg');
+    const dBaked = useTexture('./assets/new/bakedTextureDay.jpg');
     dBaked.flipY = false;
     dBaked.magFilter = THREE.NearestFilter;
     dBaked.minFilter = THREE.NearestFilter;
 
-    const nBaked = useTexture('./assets/bakedTextureNightcmp.jpg');
+    const nBaked = useTexture('./assets/new/roomTextureNight.jpg');
     nBaked.flipY = false;
     nBaked.magFilter = THREE.NearestFilter;
     nBaked.minFilter = THREE.NearestFilter;
@@ -208,10 +211,12 @@ export default function RoomModel() {
                     />
                 </mesh>
                 <DispFrame />
+                <Clock />
                 <TheamSwitch x={x} set={set} />
             </Center>
 
-            {/* <Backdrop /> */}
+            <Backdrop />
+            
         </group>
     );
 }

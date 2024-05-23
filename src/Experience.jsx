@@ -1,4 +1,4 @@
-import { Loader } from '@react-three/drei';
+import { Environment, Loader } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import { EffectComposer } from '@react-three/postprocessing';
 import { Perf } from 'r3f-perf';
@@ -17,6 +17,7 @@ export default function Experience() {
                     far: 200,
                     position: [10, 8, -10]
                 }}
+                
             >
                 <color args={['#201919']} attach="background" />
                 <EffectComposer
@@ -28,6 +29,8 @@ export default function Experience() {
                     <CameraManager />
                     <RoomModel />
                 </Suspense>
+                <ambientLight intensity={1.5} />
+                <Environment preset="city" />
             </Canvas>
             <Loader />
         </>

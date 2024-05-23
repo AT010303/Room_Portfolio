@@ -18,7 +18,7 @@ export default function Backdrop() {
                 ]}
                 rotation={nodes.backdrop.rotation}
             >
-                <meshBasicMaterial map={dBaked} />
+                <meshStandardMaterial color={'#575757'} />
             </mesh>
         </>
     );
