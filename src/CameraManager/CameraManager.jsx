@@ -71,8 +71,8 @@ export const CameraManager = () => {
         if (cameraState === 'smartphone') {
             useCameraStore.setState({ truckSpeed: 0 });
             useCameraStore.setState({ dollyToCursor: false });
-            useCameraStore.setState({ minDistance: 34.5 });
-            useCameraStore.setState({ maxDistancce: 38 });
+            useCameraStore.setState({ minDistance: 8.8 });
+            useCameraStore.setState({ maxDistancce: 9.2 });
             useCameraStore.setState({ minPolarAngle: Math.PI * 0.03 });
             useCameraStore.setState({ maxPolarAngle: Math.PI * 0.036 });
             useCameraStore.setState({ minAzimuthAngle: Math.PI * 0.83 });
