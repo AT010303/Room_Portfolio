@@ -7,12 +7,12 @@ export default function Windows({ toggle }) {
     const { nodes } = useGLTF('./assets/windows.glb');
     console.log(nodes);
 
-    var color = !toggle ? [2.5, 1, 0.5] : [0.8, 0.8, 3];
+    var color = !toggle ? [2, 0.8, 0.5] : [0.6, 0.8, 3];
 
     return (
         <>
             <EffectComposer>
-                <Bloom mipmapBlur />
+                <Bloom mipmapBlur intensity={0.7} />
             </EffectComposer>
             <mesh
                 geometry={nodes.Plane.geometry}
