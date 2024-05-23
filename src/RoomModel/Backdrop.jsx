@@ -8,7 +8,6 @@ export default function Backdrop() {
     const dBaked = useTexture('./assets/bakedTextureDaycmp.jpg');
     dBaked.flipY = false;
 
-    console.log(nodes.backdrop.position);
     return (
         <>
             <mesh

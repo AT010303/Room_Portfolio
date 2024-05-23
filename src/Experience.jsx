@@ -17,7 +17,6 @@ export default function Experience() {
                     far: 200,
                     position: [10, 8, -10]
                 }}
-                
             >
                 <color args={['#201919']} attach="background" />
                 <EffectComposer
@@ -29,8 +28,8 @@ export default function Experience() {
                     <CameraManager />
                     <RoomModel />
                 </Suspense>
-                <ambientLight intensity={1.5} />
-                <Environment preset="city" />
+                <ambientLight color={'#ffffff'} intensity={1} />
+                <Environment preset="studio" />
             </Canvas>
             <Loader />
         </>

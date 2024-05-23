@@ -8,10 +8,11 @@ import * as THREE from 'three';
 
 import { useCameraStore } from '../helper/CameraStore';
 import TheamSwitch from '../Switch/TheamSwitch';
-import Backdrop from './Backdrop';
+// import Backdrop from './Backdrop';
 import Clock from './clock';
 import DispFrame from './DispFrame';
 import TextureMaterial from './textures/TextureMaterial';
+import Windows from './Windows';
 
 extend({ TextureMaterial });
 
@@ -109,7 +110,6 @@ export default function RoomModel() {
     useGLTF.preload('./assets/chairtopDraco.glb');
     useTexture.preload('./assets/new/bakedTextureDay.jpg');
 
-    //   D:\Web\portfolio\public\assets\new\roomTextureNight.jpg
     useTexture.preload('./assets/new/roomTextureNight.jpg');
     useTexture.preload('./assets/roomTextureLightMapcmp.jpg');
     const { nodes } = useGLTF('./assets/roombasedraco.glb');
@@ -212,11 +212,11 @@ export default function RoomModel() {
                 </mesh>
                 <DispFrame />
                 <Clock />
+                <Windows toggle={toggle} />
                 <TheamSwitch x={x} set={set} />
             </Center>
 
-            <Backdrop />
-            
+            {/* <Backdrop /> */}
         </group>
     );
 }

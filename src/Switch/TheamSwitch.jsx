@@ -33,8 +33,10 @@ export default function TheamSwitch({ x, set }) {
                     rotation-x={rX}
                     onPointerOver={onPointerOver}
                     onPointerOut={onPointerOut}
+                    castShadow={true}
+                    receiveShadow={true}
                 >
-                    <meshBasicMaterial color={'#555555'} />
+                    <meshBasicMaterial color={'#efefef'} />
                 </a.mesh>
             </a.group>
 
@@ -42,8 +44,10 @@ export default function TheamSwitch({ x, set }) {
                 geometry={nodes.switchBound.geometry}
                 position={nodes.switchBound.position}
                 rotation={nodes.switchBound.rotation}
+                castShadow={true}
+                receiveShadow={true}
             >
-                <meshBasicMaterial />
+                <meshBasicMaterial color={'#000000'} />
             </mesh>
         </>
     );
