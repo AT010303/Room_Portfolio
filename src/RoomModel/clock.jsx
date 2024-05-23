@@ -11,14 +11,6 @@ export default function Clock() {
     const minute = useRef();
     const second = useRef();
 
-    var date2 = new Date();
-    var hours2 = date2.getHours();
-    var minutes2 = date2.getMinutes();
-    var seconds2 = date2.getSeconds();
-    var milliseconds2 = date2.getMilliseconds();
-    var smoothSeconds2 = seconds2 + milliseconds2 / 1000;
-    minutes2 = minutes2 + smoothSeconds2 / 60;
-
     useFrame(() => {
         var date = new Date();
         var hours = date.getHours();
@@ -40,7 +32,7 @@ export default function Clock() {
             <mesh
                 geometry={nodes.clockMinute.geometry}
                 position={nodes.clockMinute.position}
-                rotation={[0, 0, THREE.MathUtils.degToRad(6 * minutes2)]}
+                rotation={[0, 0, 0]}
                 ref={minute}
             >
                 <meshBasicMaterial color={'#000000'} />
@@ -48,7 +40,7 @@ export default function Clock() {
             <mesh
                 geometry={nodes.clockSecond.geometry}
                 position={nodes.clockSecond.position}
-                rotation={[0, 0, THREE.MathUtils.degToRad(6 * smoothSeconds2)]}
+                rotation={[0, 0, 0]}
                 ref={second}
             >
                 <meshBasicMaterial color={'#000000'} />
@@ -56,11 +48,7 @@ export default function Clock() {
             <mesh
                 geometry={nodes.clockHour.geometry}
                 position={nodes.clockHour.position}
-                rotation={[
-                    0,
-                    0,
-                    THREE.MathUtils.degToRad(0.5 * (60 * hours2 + minutes2))
-                ]}
+                rotation={[0, 0, 0]}
                 ref={hour}
             >
                 <meshBasicMaterial color={'#000000'} />
