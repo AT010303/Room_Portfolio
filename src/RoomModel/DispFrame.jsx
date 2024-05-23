@@ -2,6 +2,7 @@ import { useGLTF } from '@react-three/drei';
 
 import { useCameraStore } from '../helper/CameraStore';
 import DesktopiFrame from './iframes/desktopiFrame';
+import SmartphoneiFrame from './iframes/smartphoneiFrame';
 import PhotoFrame from './photoFrame';
 
 export default function DispFrame() {
@@ -14,10 +15,11 @@ export default function DispFrame() {
     const tvState = useCameraStore((state) => state.tv);
     const smartphoneState = useCameraStore((state) => state.smartphone);
 
-    // console.log(nodes);
+    console.log(nodes);
 
     return (
         <>
+            <SmartphoneiFrame />
             <DesktopiFrame />
             <PhotoFrame />
             <mesh
@@ -28,7 +30,7 @@ export default function DispFrame() {
             >
                 <meshBasicMaterial
                     transparent={true}
-                    opacity={0}
+                    opacity={1}
                     color={'#000000'}
                 />
             </mesh>

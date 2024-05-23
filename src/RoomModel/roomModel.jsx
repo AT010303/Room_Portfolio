@@ -153,6 +153,9 @@ export default function RoomModel() {
                     geometry={nodes.roomFurniture.geometry}
                     position={nodes.roomFurniture.position}
                     rotation={nodes.roomFurniture.rotation}
+                    onClick={
+                        cameraState === 'default' ? undefined : defaultState
+                    }
                 >
                     <textureMaterial {...TextureMaterial} ref={textureMatFur} />
                 </mesh>
