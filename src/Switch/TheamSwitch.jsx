@@ -36,7 +36,7 @@ export default function TheamSwitch({ x, set }) {
                     castShadow={true}
                     receiveShadow={true}
                 >
-                    <meshBasicMaterial color={'#efefef'} />
+                    <meshBasicMaterial color={'#d9d9d9'} />
                 </a.mesh>
             </a.group>
 

@@ -12,7 +12,7 @@ export default function Windows({ toggle }) {
     return (
         <>
             <EffectComposer>
-                <Bloom mipmapBlur intensity={0.7} />
+                <Bloom mipmapBlur intensity={0.9} />
             </EffectComposer>
             <mesh
                 geometry={nodes.Plane.geometry}

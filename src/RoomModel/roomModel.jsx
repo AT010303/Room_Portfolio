@@ -108,19 +108,19 @@ export default function RoomModel() {
     });
     useGLTF.preload('./assets/roombasedraco.glb');
     useGLTF.preload('./assets/chairtopDraco.glb');
-    useTexture.preload('./assets/new/bakedTextureDay.jpg');
-
-    useTexture.preload('./assets/new/roomTextureNight.jpg');
+    useTexture.preload('./assets/new/bakedTextureDaycmp.jpg');
+    useTexture.preload('./assets/new/roomTextureNightcmp.jpg');
     useTexture.preload('./assets/roomTextureLightMapcmp.jpg');
+
     const { nodes } = useGLTF('./assets/roombasedraco.glb');
     const chair = useGLTF('./assets/chairtopDraco.glb');
 
-    const dBaked = useTexture('./assets/new/bakedTextureDay.jpg');
+    const dBaked = useTexture('./assets/new/bakedTextureDaycmp.jpg');
     dBaked.flipY = false;
     dBaked.magFilter = THREE.NearestFilter;
     dBaked.minFilter = THREE.NearestFilter;
 
-    const nBaked = useTexture('./assets/new/roomTextureNight.jpg');
+    const nBaked = useTexture('./assets/new/roomTextureNightcmp.jpg');
     nBaked.flipY = false;
     nBaked.magFilter = THREE.NearestFilter;
     nBaked.minFilter = THREE.NearestFilter;

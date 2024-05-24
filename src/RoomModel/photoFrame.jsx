@@ -11,7 +11,7 @@ export default function PhotoFrame() {
                 position={nodes.frame1.position}
                 rotation={nodes.frame1.rotation}
             >
-                <meshBasicMaterial color={'#efefef'} />
+                <meshBasicMaterial color={'#d9d9d9'} />
             </mesh>
 
             <mesh
@@ -19,7 +19,7 @@ export default function PhotoFrame() {
                 position={nodes.frame2.position}
                 rotation={nodes.frame2.rotation}
             >
-                <meshBasicMaterial color={'#efefef'} />
+                <meshBasicMaterial color={'#d9d9d9'} />
             </mesh>
 
             <mesh
@@ -27,7 +27,7 @@ export default function PhotoFrame() {
                 position={nodes.frame3.position}
                 rotation={nodes.frame3.rotation}
             >
-                <meshBasicMaterial color={'#efefef'} />
+                <meshBasicMaterial color={'#d9d9d9'} />
             </mesh>
         </>
     );

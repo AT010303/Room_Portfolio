@@ -41,7 +41,7 @@ export default function DispFrame() {
                 rotation={nodes.laptop.rotation}
                 onClick={cameraState === 'laptop' ? undefined : laptopState}
             >
-                <meshBasicMaterial color={'#efefef'} />
+                <meshBasicMaterial color={'#d9d9d9'} />
             </mesh>
 
             <mesh
@@ -50,7 +50,7 @@ export default function DispFrame() {
                 rotation={nodes.tvdisplay.rotation}
                 onClick={cameraState === 'tv' ? undefined : tvState}
             >
-                <meshBasicMaterial color={'#efefef'} />
+                <meshBasicMaterial color={'#d9d9d9'} />
             </mesh>
 
             <mesh
@@ -61,7 +61,7 @@ export default function DispFrame() {
                     cameraState === 'smartphone' ? undefined : smartphoneState
                 }
             >
-                <meshBasicMaterial color={'#efefef'} />
+                <meshBasicMaterial color={'#d9d9d9'} />
             </mesh>
         </>
     );

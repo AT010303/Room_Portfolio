@@ -1,4 +1,4 @@
-import { Environment, Loader } from '@react-three/drei';
+import { Loader } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import { EffectComposer } from '@react-three/postprocessing';
 import { Perf } from 'r3f-perf';
@@ -10,6 +10,7 @@ import RoomModel from './RoomModel/roomModel';
 export default function Experience() {
     return (
         <>
+        <Suspense fallback={null}>
             <Canvas
                 camera={{
                     fov: 35,
@@ -17,20 +18,24 @@ export default function Experience() {
                     far: 200,
                     position: [10, 8, -10]
                 }}
+                dpr={1}
+                legacy={true}
+                
+                
             >
+                
                 <color args={['#201919']} attach="background" />
                 <EffectComposer
                     enabled:true
                     disableNormalPass:true
                 ></EffectComposer>
-                <Suspense fallback={null}>
+                
                     <Perf position="top-left" />
                     <CameraManager />
                     <RoomModel />
-                </Suspense>
-                <ambientLight color={'#ffffff'} intensity={1} />
-                <Environment preset="studio" />
+                
             </Canvas>
+            </Suspense>
             <Loader />
         </>
     );
