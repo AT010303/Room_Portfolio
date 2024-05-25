@@ -5,7 +5,7 @@ import { Bloom, EffectComposer } from '@react-three/postprocessing';
 export default function Windows({ toggle }) {
     useGLTF.preload('./assets/windows.glb');
     const { nodes } = useGLTF('./assets/windows.glb');
-    console.log(nodes);
+    // console.log(nodes);
 
     var color = !toggle ? [2, 0.8, 0.5] : [0.6, 0.8, 3];
 

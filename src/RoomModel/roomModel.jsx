@@ -11,6 +11,7 @@ import TheamSwitch from '../Switch/TheamSwitch';
 // import Backdrop from './Backdrop';
 import Clock from './clock';
 import DispFrame from './DispFrame';
+import DispItem from './dispItem';
 import TextureMaterial from './textures/TextureMaterial';
 import Windows from './Windows';
 
@@ -214,6 +215,7 @@ export default function RoomModel() {
                     />
                 </mesh>
                 <DispFrame />
+                <DispItem toggle={toggle} />
                 <Clock />
                 <Windows toggle={toggle} />
                 <TheamSwitch x={x} set={set} />

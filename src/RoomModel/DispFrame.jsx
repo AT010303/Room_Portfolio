@@ -15,7 +15,7 @@ export default function DispFrame() {
     const tvState = useCameraStore((state) => state.tv);
     const smartphoneState = useCameraStore((state) => state.smartphone);
 
-    console.log(nodes);
+    // console.log(nodes);
 
     return (
         <>
