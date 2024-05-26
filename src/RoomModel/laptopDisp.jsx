@@ -3,15 +3,12 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { useCameraStore } from '../helper/CameraStore';
 
-
 export default function LaptopDisp() {
-
     const Autumn = useRef();
     const christmas = useRef();
     const clarity = useRef();
     const comeAndGet = useRef();
     const sunflower = useRef();
-
 
     useGLTF.preload('./assets/laptopDisp/music.glb');
     const { nodes } = useGLTF('./assets/laptopDisp/music.glb');
@@ -20,12 +17,12 @@ export default function LaptopDisp() {
     useTexture.preload('./assets/laptopDisp/AutumnPlay.jpg');
     const AutumnPause = useTexture('./assets/laptopDisp/AutumnPaus.jpg');
     // const AutumnPlay = useTexture('./assets/laptopDisp/AutumnPlay.jpg');
-    
-    
 
     useTexture.preload('./assets/laptopDisp/christmasLightPaus.jpg');
     useTexture.preload('./assets/laptopDisp/christmasLightPlay.jpg');
-    const christmasPause = useTexture('./assets/laptopDisp/christmasLightPaus.jpg');
+    const christmasPause = useTexture(
+        './assets/laptopDisp/christmasLightPaus.jpg'
+    );
     // const christmasPlay = useTexture('./assets/laptopDisp/christmasLightPlay.jpg');
 
     useTexture.preload('./assets/laptopDisp/clarityPaus.jpg');
@@ -35,7 +32,9 @@ export default function LaptopDisp() {
 
     useTexture.preload('./assets/laptopDisp/comeAndGetYourLovePause.jpg');
     useTexture.preload('./assets/laptopDisp/comeAndGetYourLovePlay.jpg');
-    const comeAndGetPause = useTexture('./assets/laptopDisp/comeAndGetYourLovePause.jpg');
+    const comeAndGetPause = useTexture(
+        './assets/laptopDisp/comeAndGetYourLovePause.jpg'
+    );
     // const comeAndGetPlay = useTexture('./assets/laptopDisp/comeAndGetYourLovePlay.jpg');
 
     useTexture.preload('./assets/laptopDisp/sunflowerPaus.jpg');
@@ -43,9 +42,7 @@ export default function LaptopDisp() {
     const sunflowerPause = useTexture('./assets/laptopDisp/sunflowerPaus.jpg');
     // const sunflowerPlay = useTexture('./assets/laptopDisp/sunflowerPlay.jpg');
 
-
     const [hovered, setHover] = useState(false);
-
 
     useEffect(
         () => void (document.body.style.cursor = hovered ? 'pointer' : 'auto'),
@@ -54,7 +51,6 @@ export default function LaptopDisp() {
 
     const onPointerOver = useCallback(() => setHover(true), []);
     const onPointerOut = useCallback(() => setHover(false), []);
-
 
     const cameraState = useCameraStore((state) => state.cameraState);
     return (
@@ -67,10 +63,8 @@ export default function LaptopDisp() {
                 ref={Autumn}
                 onPointerOver={cameraState === 'laptop' ? onPointerOver : null}
                 onPointerOut={cameraState === 'laptop' ? onPointerOut : null}
-                
-                
             >
-                <meshBasicMaterial map={AutumnPause } toneMapped={false}/>
+                <meshBasicMaterial map={AutumnPause} toneMapped={false} />
             </mesh>
             <mesh
                 geometry={nodes.music2.geometry}
@@ -103,7 +97,7 @@ export default function LaptopDisp() {
                 onPointerOver={cameraState === 'laptop' ? onPointerOver : null}
                 onPointerOut={cameraState === 'laptop' ? onPointerOut : null}
             >
-                <meshBasicMaterial map={comeAndGetPause} toneMapped={false}/>
+                <meshBasicMaterial map={comeAndGetPause} toneMapped={false} />
             </mesh>
             <mesh
                 geometry={nodes.music5.geometry}
@@ -114,10 +108,8 @@ export default function LaptopDisp() {
                 onPointerOver={cameraState === 'laptop' ? onPointerOver : null}
                 onPointerOut={cameraState === 'laptop' ? onPointerOut : null}
             >
-                <meshBasicMaterial map={sunflowerPause} toneMapped={false}/>
+                <meshBasicMaterial map={sunflowerPause} toneMapped={false} />
             </mesh>
-
-            
         </>
     );
 }

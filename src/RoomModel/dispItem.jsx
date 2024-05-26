@@ -115,9 +115,19 @@ export default function DispItem({ toggle }) {
                 geometry={nodes.desktop.geometry}
                 position={nodes.desktop.position}
                 rotation={nodes.desktop.rotation}
-                onClick={cameraState === 'displayBoard' ?(cameraState === 'desktop' ? undefined : desktopState) : null}
-                onPointerOver={cameraState === 'displayBoard' ? onPointerOver : null}
-                onPointerOut={cameraState === 'displayBoard' ? onPointerOut : null}
+                onClick={
+                    cameraState === 'displayBoard'
+                        ? cameraState === 'desktop'
+                            ? undefined
+                            : desktopState
+                        : null
+                }
+                onPointerOver={
+                    cameraState === 'displayBoard' ? onPointerOver : null
+                }
+                onPointerOut={
+                    cameraState === 'displayBoard' ? onPointerOut : null
+                }
             >
                 <textureMaterial {...TextureMaterialDisps} ref={desktopdisp} />
             </mesh>
@@ -126,9 +136,19 @@ export default function DispItem({ toggle }) {
                 geometry={nodes.music.geometry}
                 position={nodes.music.position}
                 rotation={nodes.music.rotation}
-                onClick={cameraState === 'displayBoard' ?(cameraState === 'laptop' ? undefined : laptopState): null}
-                onPointerOver={cameraState === 'displayBoard' ? onPointerOver : null}
-                onPointerOut={cameraState === 'displayBoard' ? onPointerOut : null}
+                onClick={
+                    cameraState === 'displayBoard'
+                        ? cameraState === 'laptop'
+                            ? undefined
+                            : laptopState
+                        : null
+                }
+                onPointerOver={
+                    cameraState === 'displayBoard' ? onPointerOver : null
+                }
+                onPointerOut={
+                    cameraState === 'displayBoard' ? onPointerOut : null
+                }
             >
                 <textureMaterial {...TextureMaterialDisps} ref={musicdisp} />
             </mesh>
@@ -136,9 +156,19 @@ export default function DispItem({ toggle }) {
                 geometry={nodes.home.geometry}
                 position={nodes.home.position}
                 rotation={nodes.home.rotation}
-                onClick={cameraState === 'displayBoard' ?(cameraState === 'default' ? undefined : defaultState):null}
-                onPointerOver={cameraState === 'displayBoard' ? onPointerOver : null}
-                onPointerOut={cameraState === 'displayBoard' ? onPointerOut : null}
+                onClick={
+                    cameraState === 'displayBoard'
+                        ? cameraState === 'default'
+                            ? undefined
+                            : defaultState
+                        : null
+                }
+                onPointerOver={
+                    cameraState === 'displayBoard' ? onPointerOver : null
+                }
+                onPointerOut={
+                    cameraState === 'displayBoard' ? onPointerOut : null
+                }
             >
                 <textureMaterial {...TextureMaterialDisps} ref={homedisp} />
             </mesh>
@@ -148,10 +178,18 @@ export default function DispItem({ toggle }) {
                 position={nodes.smartphone.position}
                 rotation={nodes.smartphone.rotation}
                 onClick={
-                    cameraState === 'displayBoard' ?(cameraState === 'smartphone' ? undefined : smartphoneState) : null
+                    cameraState === 'displayBoard'
+                        ? cameraState === 'smartphone'
+                            ? undefined
+                            : smartphoneState
+                        : null
                 }
-                onPointerOver={cameraState === 'displayBoard' ? onPointerOver : null}
-                onPointerOut={cameraState === 'displayBoard' ? onPointerOut : null}
+                onPointerOver={
+                    cameraState === 'displayBoard' ? onPointerOver : null
+                }
+                onPointerOut={
+                    cameraState === 'displayBoard' ? onPointerOut : null
+                }
             >
                 <textureMaterial
                     {...TextureMaterialDisps}
@@ -163,9 +201,19 @@ export default function DispItem({ toggle }) {
                 geometry={nodes.tv.geometry}
                 position={nodes.tv.position}
                 rotation={nodes.tv.rotation}
-                onClick={cameraState === 'displayBoard' ?(cameraState === 'tv' ? undefined : tvState):null}
-                onPointerOver={cameraState === 'displayBoard' ? onPointerOver : null}
-                onPointerOut={cameraState === 'displayBoard' ? onPointerOut : null}
+                onClick={
+                    cameraState === 'displayBoard'
+                        ? cameraState === 'tv'
+                            ? undefined
+                            : tvState
+                        : null
+                }
+                onPointerOver={
+                    cameraState === 'displayBoard' ? onPointerOver : null
+                }
+                onPointerOut={
+                    cameraState === 'displayBoard' ? onPointerOut : null
+                }
             >
                 <textureMaterial {...TextureMaterialDisps} ref={tvdisp} />
             </mesh>

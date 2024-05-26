@@ -29,7 +29,6 @@ export default function DispFrame() {
     const onPointerOver = useCallback(() => setHover(true), []);
     const onPointerOut = useCallback(() => setHover(false), []);
 
-
     useTexture.preload('./assets/smartphoneWallpaper.jpg');
     useTexture.preload('./assets/SpotifyClone.jpg');
     const desktopWallpaper = useVideoTexture('./assets/desktopWallpaper.mp4');
@@ -58,8 +57,12 @@ export default function DispFrame() {
                 position={nodes.laptop.position}
                 rotation={nodes.laptop.rotation}
                 onClick={cameraState === 'laptop' ? undefined : laptopState}
-                onPointerOver={cameraState === 'default' ? onPointerOver : undefined}
-                onPointerOut={cameraState === 'default' ? onPointerOut : undefined}
+                onPointerOver={
+                    cameraState === 'default' ? onPointerOver : undefined
+                }
+                onPointerOut={
+                    cameraState === 'default' ? onPointerOut : undefined
+                }
             >
                 <meshBasicMaterial map={musicBg} toneMapped={false} />
             </mesh>
@@ -69,8 +72,12 @@ export default function DispFrame() {
                 position={nodes.tvdisplay.position}
                 rotation={nodes.tvdisplay.rotation}
                 onClick={cameraState === 'tv' ? undefined : tvState}
-                onPointerOver={cameraState === 'default' ? onPointerOver : undefined}
-                onPointerOut={cameraState === 'default' ? onPointerOut : undefined}
+                onPointerOver={
+                    cameraState === 'default' ? onPointerOver : undefined
+                }
+                onPointerOut={
+                    cameraState === 'default' ? onPointerOut : undefined
+                }
             >
                 <meshBasicMaterial color={'#d9d9d9'} />
             </mesh>
@@ -87,7 +94,11 @@ export default function DispFrame() {
             >
                 <meshBasicMaterial
                     color={cameraState === 'smartphone' ? null : '#d9d9d9'}
-                    map={cameraState !== 'smartphone' ? smartphoneWallpaper : null}
+                    map={
+                        cameraState !== 'smartphone'
+                            ? smartphoneWallpaper
+                            : null
+                    }
                 />
             </mesh>
 
@@ -100,8 +111,12 @@ export default function DispFrame() {
                         ? undefined
                         : displayBoardState
                 }
-                onPointerOver={cameraState === 'default' ? onPointerOver : undefined}
-                onPointerOut={cameraState === 'default' ? onPointerOut : undefined}
+                onPointerOver={
+                    cameraState === 'default' ? onPointerOver : undefined
+                }
+                onPointerOut={
+                    cameraState === 'default' ? onPointerOut : undefined
+                }
             >
                 <meshBasicMaterial
                     transparent={true}
