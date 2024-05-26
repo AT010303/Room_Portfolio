@@ -87,6 +87,26 @@ export const CameraManager = () => {
                 true
             );
         }
+
+        if (cameraState === 'displayBoard') {
+            useCameraStore.setState({ truckSpeed: 0 });
+            useCameraStore.setState({ dollyToCursor: true });
+            useCameraStore.setState({ minDistance: 4 });
+            useCameraStore.setState({ maxDistancce: 8 });
+            useCameraStore.setState({ minPolarAngle: Math.PI * 0.4999 });
+            useCameraStore.setState({ maxPolarAngle: Math.PI * 0.5 });
+            useCameraStore.setState({ minAzimuthAngle: Math.PI * 0.5 });
+            useCameraStore.setState({ maxAzimuthAngle: Math.PI * 0.50001 });
+            cameraControle.current.setLookAt(
+                -2,
+                0.12,
+                -1.5,
+                -8,
+                0.12,
+                -1.5,
+                true
+            );
+        }
     });
 
     return (

@@ -14,6 +14,7 @@ export default function DispFrame() {
     const laptopState = useCameraStore((state) => state.laptop);
     const tvState = useCameraStore((state) => state.tv);
     const smartphoneState = useCameraStore((state) => state.smartphone);
+    const displayBoardState = useCameraStore((state) => state.displayBoard);
 
     // console.log(nodes);
 
@@ -62,6 +63,24 @@ export default function DispFrame() {
                 }
             >
                 <meshBasicMaterial color={'#d9d9d9'} />
+            </mesh>
+
+            <mesh
+                position={[-5.2, 2.95, -1.95]}
+                rotation={[0, Math.PI / 2, 0]}
+                scale={[2.8, 1.6, 1]}
+                onClick={
+                    cameraState === 'displayBoard'
+                        ? undefined
+                        : displayBoardState
+                }
+            >
+                <meshBasicMaterial
+                    transparent={true}
+                    opacity={0}
+                    color={'#d9d9d9'}
+                />
+                <planeGeometry />
             </mesh>
         </>
     );
