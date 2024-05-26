@@ -64,7 +64,6 @@ export default function DispItem({ toggle }) {
     nBakeddisp.magFilter = THREE.NearestFilter;
     nBakeddisp.minFilter = THREE.NearestFilter;
 
-    console.log(nodes);
     const TextureMaterialDisps = {
         dbakedm: dBakeddisp,
         nbakedm: nBakeddisp,
@@ -173,5 +172,3 @@ export default function DispItem({ toggle }) {
         </>
     );
 }
-
-// -5.276787281036377, y: 2.1407999992370605, z: -0.5567218065261841

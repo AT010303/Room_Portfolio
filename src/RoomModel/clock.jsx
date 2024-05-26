@@ -12,12 +12,12 @@ export default function Clock() {
     const second = useRef();
 
     useFrame(() => {
-        var date = new Date();
-        var hours = date.getHours();
-        var minutes = date.getMinutes();
-        var seconds = date.getSeconds();
-        var milliseconds = date.getMilliseconds();
-        var smoothSeconds = seconds + milliseconds / 1000;
+        let date = new Date();
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        let seconds = date.getSeconds();
+        let milliseconds = date.getMilliseconds();
+        let smoothSeconds = seconds + milliseconds / 1000;
         minutes = minutes + smoothSeconds / 60;
 
         second.current.rotation.z = THREE.MathUtils.degToRad(6 * smoothSeconds);

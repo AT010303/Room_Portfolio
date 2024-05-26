@@ -1,4 +1,5 @@
 import { useGLTF } from '@react-three/drei';
+import { useCallback, useEffect, useState } from 'react';
 
 import { useCameraStore } from '../helper/CameraStore';
 import DesktopiFrame from './iframes/desktopiFrame';
@@ -16,7 +17,15 @@ export default function DispFrame() {
     const smartphoneState = useCameraStore((state) => state.smartphone);
     const displayBoardState = useCameraStore((state) => state.displayBoard);
 
-    // console.log(nodes);
+    const [hovered, setHover] = useState(false);
+
+    useEffect(
+        () => void (document.body.style.cursor = hovered ? 'pointer' : 'auto'),
+        [hovered]
+    );
+
+    const onPointerOver = useCallback(() => setHover(true), []);
+    const onPointerOut = useCallback(() => setHover(false), []);
 
     return (
         <>
@@ -28,12 +37,10 @@ export default function DispFrame() {
                 position={nodes.monitor.position}
                 rotation={nodes.monitor.rotation}
                 onClick={cameraState === 'desktop' ? undefined : desktopState}
+                onPointerOver={onPointerOver}
+                onPointerOut={onPointerOut}
             >
-                <meshBasicMaterial
-                    transparent={true}
-                    opacity={1}
-                    color={'#000000'}
-                />
+                <meshBasicMaterial color={'#0a0a0a'} />
             </mesh>
 
             <mesh
@@ -41,6 +48,8 @@ export default function DispFrame() {
                 position={nodes.laptop.position}
                 rotation={nodes.laptop.rotation}
                 onClick={cameraState === 'laptop' ? undefined : laptopState}
+                onPointerOver={onPointerOver}
+                onPointerOut={onPointerOut}
             >
                 <meshBasicMaterial color={'#d9d9d9'} />
             </mesh>
@@ -50,6 +59,8 @@ export default function DispFrame() {
                 position={nodes.tvdisplay.position}
                 rotation={nodes.tvdisplay.rotation}
                 onClick={cameraState === 'tv' ? undefined : tvState}
+                onPointerOver={onPointerOver}
+                onPointerOut={onPointerOut}
             >
                 <meshBasicMaterial color={'#d9d9d9'} />
             </mesh>
@@ -61,8 +72,12 @@ export default function DispFrame() {
                 onClick={
                     cameraState === 'smartphone' ? undefined : smartphoneState
                 }
+                onPointerOver={onPointerOver}
+                onPointerOut={onPointerOut}
             >
-                <meshBasicMaterial color={'#d9d9d9'} />
+                <meshBasicMaterial
+                    color={cameraState !== 'smartphone' ? '#0a0a0a' : '#d9d9d9'}
+                />
             </mesh>
 
             <mesh
@@ -74,6 +89,8 @@ export default function DispFrame() {
                         ? undefined
                         : displayBoardState
                 }
+                onPointerOver={onPointerOver}
+                onPointerOut={onPointerOut}
             >
                 <meshBasicMaterial
                     transparent={true}
