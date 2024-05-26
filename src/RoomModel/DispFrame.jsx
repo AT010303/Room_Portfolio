@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useCameraStore } from '../helper/CameraStore';
 import DesktopiFrame from './iframes/desktopiFrame';
 import SmartphoneiFrame from './iframes/smartphoneiFrame';
+import LaptopDisp from './laptopDisp';
 import PhotoFrame from './photoFrame';
 
 export default function DispFrame() {
@@ -16,6 +17,7 @@ export default function DispFrame() {
     const tvState = useCameraStore((state) => state.tv);
     const smartphoneState = useCameraStore((state) => state.smartphone);
     const displayBoardState = useCameraStore((state) => state.displayBoard);
+    // const defaultState = useCameraStore((state) => state.default);
 
     const [hovered, setHover] = useState(false);
 
@@ -27,11 +29,16 @@ export default function DispFrame() {
     const onPointerOver = useCallback(() => setHover(true), []);
     const onPointerOut = useCallback(() => setHover(false), []);
 
+
+    useTexture.preload('./assets/smartphoneWallpaper.jpg');
+    useTexture.preload('./assets/SpotifyClone.jpg');
     const desktopWallpaper = useVideoTexture('./assets/desktopWallpaper.mp4');
     const smartphoneWallpaper = useTexture('./assets/smartphoneWallpaper.jpg');
-    // console.log(nodes.monitor.rotation);
+    const musicBg = useTexture('./assets/SpotifyClone.jpg');
+
     return (
         <>
+            <LaptopDisp />
             <SmartphoneiFrame />
             <DesktopiFrame />
             <PhotoFrame />
@@ -51,10 +58,10 @@ export default function DispFrame() {
                 position={nodes.laptop.position}
                 rotation={nodes.laptop.rotation}
                 onClick={cameraState === 'laptop' ? undefined : laptopState}
-                onPointerOver={onPointerOver}
-                onPointerOut={onPointerOut}
+                onPointerOver={cameraState === 'default' ? onPointerOver : undefined}
+                onPointerOut={cameraState === 'default' ? onPointerOut : undefined}
             >
-                <meshBasicMaterial color={'#d9d9d9'} />
+                <meshBasicMaterial map={musicBg} toneMapped={false} />
             </mesh>
 
             <mesh
@@ -62,8 +69,8 @@ export default function DispFrame() {
                 position={nodes.tvdisplay.position}
                 rotation={nodes.tvdisplay.rotation}
                 onClick={cameraState === 'tv' ? undefined : tvState}
-                onPointerOver={onPointerOver}
-                onPointerOut={onPointerOut}
+                onPointerOver={cameraState === 'default' ? onPointerOver : undefined}
+                onPointerOut={cameraState === 'default' ? onPointerOut : undefined}
             >
                 <meshBasicMaterial color={'#d9d9d9'} />
             </mesh>
@@ -93,8 +100,8 @@ export default function DispFrame() {
                         ? undefined
                         : displayBoardState
                 }
-                onPointerOver={onPointerOver}
-                onPointerOut={onPointerOut}
+                onPointerOver={cameraState === 'default' ? onPointerOver : undefined}
+                onPointerOut={cameraState === 'default' ? onPointerOut : undefined}
             >
                 <meshBasicMaterial
                     transparent={true}
