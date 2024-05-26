@@ -1,4 +1,4 @@
-import { useGLTF } from '@react-three/drei';
+import { useGLTF, useTexture, useVideoTexture } from '@react-three/drei';
 import { useCallback, useEffect, useState } from 'react';
 
 import { useCameraStore } from '../helper/CameraStore';
@@ -27,6 +27,9 @@ export default function DispFrame() {
     const onPointerOver = useCallback(() => setHover(true), []);
     const onPointerOut = useCallback(() => setHover(false), []);
 
+    const desktopWallpaper = useVideoTexture('./assets/desktopWallpaper.mp4');
+    const smartphoneWallpaper = useTexture('./assets/smartphoneWallpaper.jpg');
+    // console.log(nodes.monitor.rotation);
     return (
         <>
             <SmartphoneiFrame />
@@ -40,7 +43,7 @@ export default function DispFrame() {
                 onPointerOver={onPointerOver}
                 onPointerOut={onPointerOut}
             >
-                <meshBasicMaterial color={'#0a0a0a'} />
+                <meshBasicMaterial map={desktopWallpaper} toneMapped={false} />
             </mesh>
 
             <mesh
@@ -76,7 +79,8 @@ export default function DispFrame() {
                 onPointerOut={onPointerOut}
             >
                 <meshBasicMaterial
-                    color={cameraState !== 'smartphone' ? '#0a0a0a' : '#d9d9d9'}
+                    color={cameraState === 'smartphone' ? null : '#d9d9d9'}
+                    map={cameraState !== 'smartphone' ? smartphoneWallpaper : null}
                 />
             </mesh>
 

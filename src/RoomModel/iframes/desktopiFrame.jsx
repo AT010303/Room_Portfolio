@@ -36,5 +36,3 @@ export default function DesktopiFrame() {
         </group>
     );
 }
-
-//{x: 1.45686674118042, y: 2.0877959728240967, z: 2.7166295051574707}
