@@ -1,4 +1,5 @@
-import { useGLTF, useTexture } from '@react-three/drei';
+/* eslint-disable react/prop-types */
+import { useTexture } from '@react-three/drei';
 import { extend } from '@react-three/fiber';
 import { gsap } from 'gsap';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -8,8 +9,7 @@ import { useCameraStore } from '../helper/CameraStore';
 import TextureMaterial from './textures/TextureMaterial';
 extend({ TextureMaterial });
 
-// eslint-disable-next-line react/prop-types
-export default function DispItem({ toggle }) {
+export default function DispItem({ toggle, nodes }) {
     const dispItem = useRef();
     const desktopdisp = useRef();
     const musicdisp = useRef();
@@ -44,22 +44,21 @@ export default function DispItem({ toggle }) {
         });
     }, [toggle]);
 
-    useGLTF.preload('./assets/new/dispItem.glb');
-    useTexture.preload('./assets/new/boardBakedD.jpg');
+    useTexture.preload('./assets/boardBakedDcmp.jpg');
+    useTexture.preload('./assets/boardBakedNcmp.jpg');
+    useTexture.preload('./assets/boardBakedLMAPcmp.jpg');
 
-    const { nodes } = useGLTF('./assets/new/dispItem.glb');
-
-    const dBakeddisp = useTexture('./assets/new/boardBakedD.jpg');
+    const dBakeddisp = useTexture('./assets/boardBakedDcmp.jpg');
     dBakeddisp.flipY = false;
     dBakeddisp.magFilter = THREE.NearestFilter;
     dBakeddisp.minFilter = THREE.NearestFilter;
 
-    const nBakeddisp = useTexture('./assets/new/boardBakedN.jpg');
+    const nBakeddisp = useTexture('./assets/boardBakedNcmp.jpg');
     nBakeddisp.flipY = false;
     nBakeddisp.magFilter = THREE.NearestFilter;
     nBakeddisp.minFilter = THREE.NearestFilter;
 
-    const lightMapdisp = useTexture('./assets/new/boardBakedLMAP.jpg');
+    const lightMapdisp = useTexture('./assets/boardBakedLMAPcmp.jpg');
     nBakeddisp.flipY = false;
     nBakeddisp.magFilter = THREE.NearestFilter;
     nBakeddisp.minFilter = THREE.NearestFilter;

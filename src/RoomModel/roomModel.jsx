@@ -12,6 +12,7 @@ import TheamSwitch from '../Switch/TheamSwitch';
 import Clock from './clock';
 import DispFrame from './DispFrame';
 import DispItem from './dispItem';
+import PhotoFrame from './photoFrame';
 import TextureMaterial from './textures/TextureMaterial';
 import Windows from './Windows';
 
@@ -21,29 +22,17 @@ export default function RoomModel() {
     const chairTop = useRef();
     const textureMatFur = useRef();
     const textureMatDes = useRef();
-    const textureMatclock = useRef();
-    const textureMatplant = useRef();
     const textureMatChaorTop = useRef();
 
     const [toggle, set] = useState(0);
 
     useEffect(() => {
-        gsap.to(textureMatclock.current.uniforms.NightMix, {
-            value: toggle ? 1 : 0,
-            duration: 1
-        });
-
         gsap.to(textureMatFur.current.uniforms.NightMix, {
             value: toggle ? 1 : 0,
             duration: 1
         });
 
         gsap.to(textureMatDes.current.uniforms.NightMix, {
-            value: toggle ? 1 : 0,
-            duration: 1
-        });
-
-        gsap.to(textureMatplant.current.uniforms.NightMix, {
             value: toggle ? 1 : 0,
             duration: 1
         });
@@ -107,21 +96,24 @@ export default function RoomModel() {
             step: 0.01
         }
     });
-    useGLTF.preload('./assets/roombasedraco.glb');
+
+    useGLTF.preload('./assets/RoomModel.glb');
     useGLTF.preload('./assets/chairtopDraco.glb');
-    useTexture.preload('./assets/new/bakedTextureDaycmp.jpg');
-    useTexture.preload('./assets/new/roomTextureNightcmp.jpg');
+    useTexture.preload('./assets/bakedTextureDaycmp.jpg');
+    useTexture.preload('./assets/roomTextureNightcmp.jpg');
     useTexture.preload('./assets/roomTextureLightMapcmp.jpg');
 
-    const { nodes } = useGLTF('./assets/roombasedraco.glb');
+    const roomModel = useGLTF('./assets/RoomModel.glb');
     const chair = useGLTF('./assets/chairtopDraco.glb');
 
-    const dBaked = useTexture('./assets/new/bakedTextureDaycmp.jpg');
+    console.log(roomModel);
+
+    const dBaked = useTexture('./assets/bakedTextureDaycmp.jpg');
     dBaked.flipY = false;
     dBaked.magFilter = THREE.NearestFilter;
     dBaked.minFilter = THREE.NearestFilter;
 
-    const nBaked = useTexture('./assets/new/roomTextureNightcmp.jpg');
+    const nBaked = useTexture('./assets/roomTextureNightcmp.jpg');
     nBaked.flipY = false;
     nBaked.magFilter = THREE.NearestFilter;
     nBaked.minFilter = THREE.NearestFilter;
@@ -151,50 +143,22 @@ export default function RoomModel() {
         <group>
             <Center>
                 <mesh
-                    geometry={nodes.roomFurniture.geometry}
-                    position={nodes.roomFurniture.position}
-                    rotation={nodes.roomFurniture.rotation}
+                    geometry={roomModel.nodes.roomFurniture.geometry}
+                    position={roomModel.nodes.roomFurniture.position}
+                    rotation={roomModel.nodes.roomFurniture.rotation}
                 >
                     <textureMaterial {...TextureMaterial} ref={textureMatFur} />
                 </mesh>
 
                 <mesh
-                    geometry={nodes.deskShelfStuf.geometry}
-                    position={nodes.deskShelfStuf.position}
-                    rotation={nodes.deskShelfStuf.rotation}
+                    geometry={roomModel.nodes.deskShelfStuf.geometry}
+                    position={roomModel.nodes.deskShelfStuf.position}
+                    rotation={roomModel.nodes.deskShelfStuf.rotation}
                     onClick={
                         cameraState === 'default' ? undefined : defaultState
                     }
                 >
                     <textureMaterial {...TextureMaterial} ref={textureMatDes} />
-                </mesh>
-
-                <mesh
-                    geometry={nodes.chairTvclockstuf.geometry}
-                    position={nodes.chairTvclockstuf.position}
-                    rotation={nodes.chairTvclockstuf.rotation}
-                    onClick={
-                        cameraState === 'default' ? undefined : defaultState
-                    }
-                >
-                    <textureMaterial
-                        {...TextureMaterial}
-                        ref={textureMatclock}
-                    />
-                </mesh>
-
-                <mesh
-                    geometry={nodes.plant.geometry}
-                    position={nodes.plant.position}
-                    rotation={nodes.plant.rotation}
-                    onClick={
-                        cameraState === 'default' ? undefined : defaultState
-                    }
-                >
-                    <textureMaterial
-                        {...TextureMaterial}
-                        ref={textureMatplant}
-                    />
                 </mesh>
 
                 <mesh
@@ -211,11 +175,12 @@ export default function RoomModel() {
                         ref={textureMatChaorTop}
                     />
                 </mesh>
-                <DispFrame nodes={nodes} />
-                <DispItem toggle={toggle} />
+                <PhotoFrame toggle={toggle} nodes={roomModel.nodes} />
+                <DispFrame nodes={roomModel.nodes} />
+                <DispItem toggle={toggle} nodes={roomModel.nodes} />
                 <Clock />
-                <Windows toggle={toggle} />
-                <TheamSwitch x={x} set={set} />
+                <Windows toggle={toggle} nodes={roomModel.nodes} />
+                <TheamSwitch x={x} set={set} nodes={roomModel.nodes} />
             </Center>
 
             {/* <Backdrop /> */}

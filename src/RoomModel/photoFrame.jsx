@@ -1,30 +1,62 @@
 /* eslint-disable react/prop-types */
+import { useTexture } from '@react-three/drei';
+import { extend } from '@react-three/fiber';
+import { gsap } from 'gsap';
+import { useEffect, useRef } from 'react';
+import * as THREE from 'three';
 
-export default function PhotoFrame({ nodes }) {
+import TextureMaterial from './textures/TextureMaterial';
+extend({ TextureMaterial });
+
+export default function PhotoFrame({ toggle, nodes }) {
+    const frame = useRef();
+    useTexture.preload('./assets/bakeFrameDaycmp.jpg');
+    useTexture.preload('./assets/bakeFrameNightcmp.jpg');
+    useTexture.preload('./assets/bakeFrameLightMapcmp.jpg');
+
+    const dayFrame = useTexture('./assets/bakeFrameDaycmp.jpg');
+    dayFrame.flipY = false;
+    dayFrame.magFilter = THREE.NearestFilter;
+    dayFrame.minFilter = THREE.NearestFilter;
+
+    const nightFrame = useTexture('./assets/bakeFrameNightcmp.jpg');
+    nightFrame.flipY = false;
+    nightFrame.magFilter = THREE.NearestFilter;
+    nightFrame.minFilter = THREE.NearestFilter;
+
+    const lightMapFrame = useTexture('./assets/bakeFrameLightMapcmp.jpg');
+    lightMapFrame.flipY = false;
+    lightMapFrame.magFilter = THREE.NearestFilter;
+    lightMapFrame.minFilter = THREE.NearestFilter;
+
+    const FrameMaterial = {
+        dbakedm: dayFrame,
+        nbakedm: nightFrame,
+        lightMapm: lightMapFrame,
+        NightMix: 0,
+        lightBoardColor: '#fff',
+        lightBoardStrength: 0,
+        lightPcColor: '#fff',
+        lightPcStrength: 0,
+        lightDeskColor: '#fff',
+        lightDeskStrength: 0
+    };
+
+    useEffect(() => {
+        gsap.to(frame.current.uniforms.NightMix, {
+            value: toggle ? 1 : 0,
+            duration: 1
+        });
+    }, [toggle]);
+
     return (
         <>
             <mesh
-                geometry={nodes.frame1.geometry}
-                position={nodes.frame1.position}
-                rotation={nodes.frame1.rotation}
+                geometry={nodes.frame.geometry}
+                position={nodes.frame.position}
+                rotation={nodes.frame.rotation}
             >
-                <meshBasicMaterial color={'#d9d9d9'} />
-            </mesh>
-
-            <mesh
-                geometry={nodes.frame2.geometry}
-                position={nodes.frame2.position}
-                rotation={nodes.frame2.rotation}
-            >
-                <meshBasicMaterial color={'#d9d9d9'} />
-            </mesh>
-
-            <mesh
-                geometry={nodes.frame3.geometry}
-                position={nodes.frame3.position}
-                rotation={nodes.frame3.rotation}
-            >
-                <meshBasicMaterial color={'#d9d9d9'} />
+                <textureMaterial {...FrameMaterial} ref={frame} />
             </mesh>
         </>
     );

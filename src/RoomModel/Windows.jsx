@@ -1,11 +1,7 @@
-import { useGLTF } from '@react-three/drei';
+/* eslint-disable react/prop-types */
 import { Bloom, EffectComposer } from '@react-three/postprocessing';
 
-// eslint-disable-next-line react/prop-types
-export default function Windows({ toggle }) {
-    useGLTF.preload('./assets/windows.glb');
-    const { nodes } = useGLTF('./assets/windows.glb');
-
+export default function Windows({ toggle, nodes }) {
     let color = !toggle ? [2, 0.8, 0.5] : [0.6, 0.8, 3];
 
     return (
@@ -14,9 +10,9 @@ export default function Windows({ toggle }) {
                 <Bloom mipmapBlur intensity={0.9} />
             </EffectComposer>
             <mesh
-                geometry={nodes.Plane.geometry}
-                position={nodes.Plane.position}
-                rotation={nodes.Plane.rotation}
+                geometry={nodes.window.geometry}
+                position={nodes.window.position}
+                rotation={nodes.window.rotation}
             >
                 <meshBasicMaterial toneMapped={false} color={color} />
             </mesh>

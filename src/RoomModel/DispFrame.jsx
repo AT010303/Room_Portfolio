@@ -6,7 +6,6 @@ import { useCameraStore } from '../helper/CameraStore';
 import DesktopiFrame from './iframes/desktopiFrame';
 import SmartphoneiFrame from './iframes/smartphoneiFrame';
 import LaptopDisp from './laptopDisp';
-import PhotoFrame from './photoFrame';
 
 export default function DispFrame({ nodes }) {
     const cameraState = useCameraStore((state) => state.cameraState);
@@ -15,7 +14,6 @@ export default function DispFrame({ nodes }) {
     const tvState = useCameraStore((state) => state.tv);
     const smartphoneState = useCameraStore((state) => state.smartphone);
     const displayBoardState = useCameraStore((state) => state.displayBoard);
-    // const defaultState = useCameraStore((state) => state.default);
 
     const [hovered, setHover] = useState(false);
 
@@ -35,10 +33,9 @@ export default function DispFrame({ nodes }) {
 
     return (
         <>
-            <LaptopDisp />
+            <LaptopDisp nodes={nodes} />
             <SmartphoneiFrame />
             <DesktopiFrame />
-            <PhotoFrame nodes={nodes} />
             <mesh
                 geometry={nodes.monitor.geometry}
                 position={nodes.monitor.position}
@@ -81,9 +78,9 @@ export default function DispFrame({ nodes }) {
             </mesh>
 
             <mesh
-                geometry={nodes.smartphone.geometry}
-                position={nodes.smartphone.position}
-                rotation={nodes.smartphone.rotation}
+                geometry={nodes.smartphoneDisp.geometry}
+                position={nodes.smartphoneDisp.position}
+                rotation={nodes.smartphoneDisp.rotation}
                 onClick={
                     cameraState === 'smartphone' ? undefined : smartphoneState
                 }

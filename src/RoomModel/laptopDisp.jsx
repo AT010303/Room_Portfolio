@@ -1,18 +1,16 @@
-import { useGLTF, useTexture } from '@react-three/drei';
+/* eslint-disable react/prop-types */
+import { useTexture } from '@react-three/drei';
 import { Howl } from 'howler';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { useCameraStore } from '../helper/CameraStore';
 
-export default function LaptopDisp() {
+export default function LaptopDisp({ nodes }) {
     const autumn = useRef();
     const christmas = useRef();
     const clarity = useRef();
     const comeAndGet = useRef();
     const sunflower = useRef();
-
-    useGLTF.preload('./assets/laptopDisp/music.glb');
-    const { nodes } = useGLTF('./assets/laptopDisp/music.glb');
 
     useTexture.preload('./assets/laptopDisp/AutumnPaus.jpg');
     useTexture.preload('./assets/laptopDisp/AutumnPlay.jpg');

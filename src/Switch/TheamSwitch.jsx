@@ -1,12 +1,9 @@
 /* eslint-disable react/prop-types */
 import { a } from '@react-spring/three';
-import { meshBounds, useGLTF } from '@react-three/drei';
+import { meshBounds } from '@react-three/drei';
 import { useCallback, useEffect, useState } from 'react';
 
-export default function TheamSwitch({ x, set }) {
-    useGLTF.preload('./assets/switch.glb');
-    const { nodes } = useGLTF('./assets/switch.glb');
-
+export default function TheamSwitch({ x, set, nodes }) {
     const [hovered, setHover] = useState(false);
 
     useEffect(
