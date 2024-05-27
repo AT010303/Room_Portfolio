@@ -21,8 +21,12 @@ export default function LaptopDisp() {
 
     useTexture.preload('./assets/laptopDisp/christmasLightPaus.jpg');
     useTexture.preload('./assets/laptopDisp/christmasLightPlay.jpg');
-    const christmasPause = useTexture('./assets/laptopDisp/christmasLightPaus.jpg');
-    const christmasPlay = useTexture('./assets/laptopDisp/christmasLightPlay.jpg');
+    const christmasPause = useTexture(
+        './assets/laptopDisp/christmasLightPaus.jpg'
+    );
+    const christmasPlay = useTexture(
+        './assets/laptopDisp/christmasLightPlay.jpg'
+    );
 
     useTexture.preload('./assets/laptopDisp/clarityPaus.jpg');
     useTexture.preload('./assets/laptopDisp/clarityPlay.jpg');
@@ -31,8 +35,12 @@ export default function LaptopDisp() {
 
     useTexture.preload('./assets/laptopDisp/comeAndGetYourLovePause.jpg');
     useTexture.preload('./assets/laptopDisp/comeAndGetYourLovePlay.jpg');
-    const comeAndGetPause = useTexture('./assets/laptopDisp/comeAndGetYourLovePause.jpg');
-    const comeAndGetPlay = useTexture('./assets/laptopDisp/comeAndGetYourLovePlay.jpg');
+    const comeAndGetPause = useTexture(
+        './assets/laptopDisp/comeAndGetYourLovePause.jpg'
+    );
+    const comeAndGetPlay = useTexture(
+        './assets/laptopDisp/comeAndGetYourLovePlay.jpg'
+    );
 
     useTexture.preload('./assets/laptopDisp/sunflowerPaus.jpg');
     useTexture.preload('./assets/laptopDisp/sunflowerPlay.jpg');
@@ -40,7 +48,7 @@ export default function LaptopDisp() {
     const sunflowerPlay = useTexture('./assets/laptopDisp/sunflowerPlay.jpg');
 
     const [hovered, setHover] = useState(false);
-    
+
     // State to manage the currently playing mesh
     const [playingMesh, setPlayingMesh] = useState(null);
 
@@ -65,12 +73,12 @@ export default function LaptopDisp() {
             ComeAndGet: new Howl({ src: [audioFiles.ComeAndGet] }),
             Sunflower: new Howl({ src: [audioFiles.Sunflower] })
         };
-        
+
         // Cleanup Howl instances on component unmount
         return () => {
-            Object.values(sounds.current).forEach(sound => sound.unload());
+            Object.values(sounds.current).forEach((sound) => sound.unload());
         };
-    },[audioFiles]);
+    }, [audioFiles]);
 
     useEffect(() => {
         document.body.style.cursor = hovered ? 'pointer' : 'auto';
@@ -83,7 +91,7 @@ export default function LaptopDisp() {
 
     const handleMeshClick = (mesh) => {
         // Stop all sounds
-        Object.values(sounds.current).forEach(sound => sound.stop());
+        Object.values(sounds.current).forEach((sound) => sound.stop());
 
         if (playingMesh !== mesh) {
             // Play the selected sound
@@ -107,7 +115,10 @@ export default function LaptopDisp() {
                 onPointerOut={cameraState === 'laptop' ? onPointerOut : null}
                 onClick={() => handleMeshClick('Autumn')}
             >
-                <meshBasicMaterial map={playingMesh === 'Autumn' ? AutumnPlay : AutumnPause} toneMapped={false} />
+                <meshBasicMaterial
+                    map={playingMesh === 'Autumn' ? AutumnPlay : AutumnPause}
+                    toneMapped={false}
+                />
             </mesh>
             <mesh
                 geometry={nodes.music2.geometry}
@@ -119,7 +130,14 @@ export default function LaptopDisp() {
                 onPointerOut={cameraState === 'laptop' ? onPointerOut : null}
                 onClick={() => handleMeshClick('Christmas')}
             >
-                <meshBasicMaterial map={playingMesh === 'Christmas' ? christmasPlay : christmasPause} toneMapped={false} />
+                <meshBasicMaterial
+                    map={
+                        playingMesh === 'Christmas'
+                            ? christmasPlay
+                            : christmasPause
+                    }
+                    toneMapped={false}
+                />
             </mesh>
             <mesh
                 geometry={nodes.music3.geometry}
@@ -131,7 +149,10 @@ export default function LaptopDisp() {
                 onPointerOut={cameraState === 'laptop' ? onPointerOut : null}
                 onClick={() => handleMeshClick('Clarity')}
             >
-                <meshBasicMaterial map={playingMesh === 'Clarity' ? clarityPlay : clarityPause} toneMapped={false} />
+                <meshBasicMaterial
+                    map={playingMesh === 'Clarity' ? clarityPlay : clarityPause}
+                    toneMapped={false}
+                />
             </mesh>
             <mesh
                 geometry={nodes.music4.geometry}
@@ -143,7 +164,14 @@ export default function LaptopDisp() {
                 onPointerOut={cameraState === 'laptop' ? onPointerOut : null}
                 onClick={() => handleMeshClick('ComeAndGet')}
             >
-                <meshBasicMaterial map={playingMesh === 'ComeAndGet' ? comeAndGetPlay : comeAndGetPause} toneMapped={false} />
+                <meshBasicMaterial
+                    map={
+                        playingMesh === 'ComeAndGet'
+                            ? comeAndGetPlay
+                            : comeAndGetPause
+                    }
+                    toneMapped={false}
+                />
             </mesh>
             <mesh
                 geometry={nodes.music5.geometry}
@@ -155,7 +183,14 @@ export default function LaptopDisp() {
                 onPointerOut={cameraState === 'laptop' ? onPointerOut : null}
                 onClick={() => handleMeshClick('Sunflower')}
             >
-                <meshBasicMaterial map={playingMesh === 'Sunflower' ? sunflowerPlay : sunflowerPause} toneMapped={false} />
+                <meshBasicMaterial
+                    map={
+                        playingMesh === 'Sunflower'
+                            ? sunflowerPlay
+                            : sunflowerPause
+                    }
+                    toneMapped={false}
+                />
             </mesh>
         </>
     );
