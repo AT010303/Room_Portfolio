@@ -1,4 +1,5 @@
-import { useGLTF, useTexture, useVideoTexture } from '@react-three/drei';
+/* eslint-disable react/prop-types */
+import { useTexture, useVideoTexture } from '@react-three/drei';
 import { useCallback, useEffect, useState } from 'react';
 
 import { useCameraStore } from '../helper/CameraStore';
@@ -7,10 +8,7 @@ import SmartphoneiFrame from './iframes/smartphoneiFrame';
 import LaptopDisp from './laptopDisp';
 import PhotoFrame from './photoFrame';
 
-export default function DispFrame() {
-    useGLTF.preload('./assets/roombasedraco.glb');
-    const { nodes } = useGLTF('./assets/roombasedraco.glb');
-
+export default function DispFrame({ nodes }) {
     const cameraState = useCameraStore((state) => state.cameraState);
     const desktopState = useCameraStore((state) => state.desktop);
     const laptopState = useCameraStore((state) => state.laptop);
@@ -40,7 +38,7 @@ export default function DispFrame() {
             <LaptopDisp />
             <SmartphoneiFrame />
             <DesktopiFrame />
-            <PhotoFrame />
+            <PhotoFrame nodes={nodes} />
             <mesh
                 geometry={nodes.monitor.geometry}
                 position={nodes.monitor.position}

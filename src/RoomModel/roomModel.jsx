@@ -211,7 +211,7 @@ export default function RoomModel() {
                         ref={textureMatChaorTop}
                     />
                 </mesh>
-                <DispFrame />
+                <DispFrame nodes={nodes} />
                 <DispItem toggle={toggle} />
                 <Clock />
                 <Windows toggle={toggle} />
