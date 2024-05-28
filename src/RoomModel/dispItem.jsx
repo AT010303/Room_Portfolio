@@ -95,6 +95,12 @@ export default function DispItem({ toggle, nodes }) {
                 geometry={nodes.dispItem.geometry}
                 position={nodes.dispItem.position}
                 rotation={nodes.dispItem.rotation}
+                onPointerover={
+                    cameraState === 'displayBoard' ? onPointerOut : null
+                }
+                onPointerOut={
+                    cameraState === 'displayBoard' ? onPointerOut : null
+                }
             >
                 <textureMaterial {...TextureMaterialDisps} ref={dispItem} />
             </mesh>

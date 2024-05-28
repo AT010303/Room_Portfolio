@@ -26,6 +26,7 @@ export default function DispFrame({ nodes }) {
     const onPointerOut = useCallback(() => setHover(false), []);
 
     const desktopWallpaper = useVideoTexture('./assets/desktopWallpaper.mp4');
+    const tvWallpaper = useVideoTexture('./assets/marioWallpaper.mp4');
     const smartphoneWallpaper = useTexture('./assets/smartphoneWallpaper.jpg');
     const musicBg = useTexture('./assets/SpotifyClone.jpg');
 
@@ -72,7 +73,7 @@ export default function DispFrame({ nodes }) {
                     cameraState === 'default' ? onPointerOut : undefined
                 }
             >
-                <meshBasicMaterial color={'#d9d9d9'} />
+                <meshBasicMaterial map={tvWallpaper} toneMapped={false} />
             </mesh>
 
             <mesh

@@ -33,7 +33,7 @@ export default function TheamSwitch({ x, set, nodes }) {
                     castShadow={true}
                     receiveShadow={true}
                 >
-                    <meshBasicMaterial color={'#d9d9d9'} />
+                    <meshBasicMaterial color={'#e8f8ff'} />
                 </a.mesh>
             </a.group>
 
@@ -44,7 +44,7 @@ export default function TheamSwitch({ x, set, nodes }) {
                 castShadow={true}
                 receiveShadow={true}
             >
-                <meshBasicMaterial color={'#000000'} />
+                <meshBasicMaterial color={'#131313'} />
             </mesh>
         </>
     );

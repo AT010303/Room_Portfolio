@@ -12,6 +12,6 @@ root.render(
     <>
         <Experience />
         <Leva />
-        <Analytics />
+        <Analytics mode={'production'} />
     </>
 );
