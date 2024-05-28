@@ -87,7 +87,7 @@ export default function DispFrame({ nodes }) {
                 onPointerOut={onPointerOut}
             >
                 <meshBasicMaterial
-                    color={cameraState === 'smartphone' ? null : '#d9d9d9'}
+                    color={cameraState === 'smartphone' ? null : '#000000'}
                     map={
                         cameraState !== 'smartphone'
                             ? smartphoneWallpaper

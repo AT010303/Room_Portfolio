@@ -18,15 +18,15 @@ export default function SmartphoneiFrame() {
                     rotation-z={-Math.PI / 6}
                     transform
                     wrapperClass="htmlPhoneScreen"
-                    distanceFactor={0.359}
+                    distanceFactor={0.285}
                     position={[1.6395, 1.125, -1.373]}
                     zIndexRange={
                         cameraState === 'smartphone' ? [10, 1] : [-1, 0]
                     }
                 >
                     <iframe
-                        width={310}
-                        height={640}
+                        width={392}
+                        height={809}
                         title="embed"
                         src="https://at010303-inner.vercel.app/"
                         style={{ border: 'none', borderRadius: '22px' }}
