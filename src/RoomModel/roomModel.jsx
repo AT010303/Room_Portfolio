@@ -8,7 +8,6 @@ import * as THREE from 'three';
 
 import { useCameraStore } from '../helper/CameraStore';
 import TheamSwitch from '../Switch/TheamSwitch';
-// import Backdrop from './Backdrop';
 import Clock from './clock';
 import DispFrame from './DispFrame';
 import DispItem from './dispItem';
@@ -97,16 +96,10 @@ export default function RoomModel() {
         }
     });
 
-    useGLTF.preload('./assets/RoomModel.glb');
-    useGLTF.preload('./assets/chairtopDraco.glb');
-    useTexture.preload('./assets/bakedTextureDaycmp.jpg');
-    useTexture.preload('./assets/roomTextureNightcmp.jpg');
-    useTexture.preload('./assets/roomTextureLightMapcmp.jpg');
-
     const roomModel = useGLTF('./assets/RoomModel.glb');
     const chair = useGLTF('./assets/chairtopDraco.glb');
 
-    console.log(roomModel);
+    // console.log(roomModel);
 
     const dBaked = useTexture('./assets/bakedTextureDaycmp.jpg');
     dBaked.flipY = false;
@@ -182,8 +175,12 @@ export default function RoomModel() {
                 <Windows toggle={toggle} nodes={roomModel.nodes} />
                 <TheamSwitch x={x} set={set} nodes={roomModel.nodes} />
             </Center>
-
-            {/* <Backdrop /> */}
         </group>
     );
 }
+
+useGLTF.preload('./assets/RoomModel.glb');
+useGLTF.preload('./assets/chairtopDraco.glb');
+useTexture.preload('./assets/bakedTextureDaycmp.jpg');
+useTexture.preload('./assets/roomTextureNightcmp.jpg');
+useTexture.preload('./assets/roomTextureLightMapcmp.jpg');

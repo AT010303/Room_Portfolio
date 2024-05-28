@@ -12,13 +12,9 @@ export default function LaptopDisp({ nodes }) {
     const comeAndGet = useRef();
     const sunflower = useRef();
 
-    useTexture.preload('./assets/laptopDisp/AutumnPaus.jpg');
-    useTexture.preload('./assets/laptopDisp/AutumnPlay.jpg');
     const AutumnPause = useTexture('./assets/laptopDisp/AutumnPaus.jpg');
     const AutumnPlay = useTexture('./assets/laptopDisp/AutumnPlay.jpg');
 
-    useTexture.preload('./assets/laptopDisp/christmasLightPaus.jpg');
-    useTexture.preload('./assets/laptopDisp/christmasLightPlay.jpg');
     const christmasPause = useTexture(
         './assets/laptopDisp/christmasLightPaus.jpg'
     );
@@ -26,13 +22,9 @@ export default function LaptopDisp({ nodes }) {
         './assets/laptopDisp/christmasLightPlay.jpg'
     );
 
-    useTexture.preload('./assets/laptopDisp/clarityPaus.jpg');
-    useTexture.preload('./assets/laptopDisp/clarityPlay.jpg');
     const clarityPause = useTexture('./assets/laptopDisp/clarityPaus.jpg');
     const clarityPlay = useTexture('./assets/laptopDisp/clarityPlay.jpg');
 
-    useTexture.preload('./assets/laptopDisp/comeAndGetYourLovePause.jpg');
-    useTexture.preload('./assets/laptopDisp/comeAndGetYourLovePlay.jpg');
     const comeAndGetPause = useTexture(
         './assets/laptopDisp/comeAndGetYourLovePause.jpg'
     );
@@ -40,8 +32,6 @@ export default function LaptopDisp({ nodes }) {
         './assets/laptopDisp/comeAndGetYourLovePlay.jpg'
     );
 
-    useTexture.preload('./assets/laptopDisp/sunflowerPaus.jpg');
-    useTexture.preload('./assets/laptopDisp/sunflowerPlay.jpg');
     const sunflowerPause = useTexture('./assets/laptopDisp/sunflowerPaus.jpg');
     const sunflowerPlay = useTexture('./assets/laptopDisp/sunflowerPlay.jpg');
 
@@ -193,3 +183,14 @@ export default function LaptopDisp({ nodes }) {
         </>
     );
 }
+
+useTexture.preload('./assets/laptopDisp/AutumnPaus.jpg');
+useTexture.preload('./assets/laptopDisp/AutumnPlay.jpg');
+useTexture.preload('./assets/laptopDisp/christmasLightPaus.jpg');
+useTexture.preload('./assets/laptopDisp/christmasLightPlay.jpg');
+useTexture.preload('./assets/laptopDisp/clarityPaus.jpg');
+useTexture.preload('./assets/laptopDisp/clarityPlay.jpg');
+useTexture.preload('./assets/laptopDisp/comeAndGetYourLovePause.jpg');
+useTexture.preload('./assets/laptopDisp/comeAndGetYourLovePlay.jpg');
+useTexture.preload('./assets/laptopDisp/sunflowerPaus.jpg');
+useTexture.preload('./assets/laptopDisp/sunflowerPlay.jpg');

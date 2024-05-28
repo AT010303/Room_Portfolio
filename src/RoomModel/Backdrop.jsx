@@ -1,8 +1,6 @@
 import { useGLTF, useTexture } from '@react-three/drei';
 
 export default function Backdrop() {
-    useGLTF.preload('./assets/baclkdrop.glb');
-    useTexture.preload('./assets/bakedTextureDaycmp.jpg');
     const { nodes } = useGLTF('./assets/baclkdrop.glb');
 
     const dBaked = useTexture('./assets/bakedTextureDaycmp.jpg');
@@ -22,3 +20,6 @@ export default function Backdrop() {
         </>
     );
 }
+
+useGLTF.preload('./assets/baclkdrop.glb');
+useTexture.preload('./assets/bakedTextureDaycmp.jpg');

@@ -10,9 +10,6 @@ extend({ TextureMaterial });
 
 export default function PhotoFrame({ toggle, nodes }) {
     const frame = useRef();
-    useTexture.preload('./assets/bakeFrameDaycmp.jpg');
-    useTexture.preload('./assets/bakeFrameNightcmp.jpg');
-    useTexture.preload('./assets/bakeFrameLightMapcmp.jpg');
 
     const dayFrame = useTexture('./assets/bakeFrameDaycmp.jpg');
     dayFrame.flipY = false;
@@ -61,3 +58,7 @@ export default function PhotoFrame({ toggle, nodes }) {
         </>
     );
 }
+
+useTexture.preload('./assets/bakeFrameDaycmp.jpg');
+useTexture.preload('./assets/bakeFrameNightcmp.jpg');
+useTexture.preload('./assets/bakeFrameLightMapcmp.jpg');

@@ -44,10 +44,6 @@ export default function DispItem({ toggle, nodes }) {
         });
     }, [toggle]);
 
-    useTexture.preload('./assets/boardBakedDcmp.jpg');
-    useTexture.preload('./assets/boardBakedNcmp.jpg');
-    useTexture.preload('./assets/boardBakedLMAPcmp.jpg');
-
     const dBakeddisp = useTexture('./assets/boardBakedDcmp.jpg');
     dBakeddisp.flipY = false;
     dBakeddisp.magFilter = THREE.NearestFilter;
@@ -219,3 +215,7 @@ export default function DispItem({ toggle, nodes }) {
         </>
     );
 }
+
+useTexture.preload('./assets/boardBakedDcmp.jpg');
+useTexture.preload('./assets/boardBakedNcmp.jpg');
+useTexture.preload('./assets/boardBakedLMAPcmp.jpg');

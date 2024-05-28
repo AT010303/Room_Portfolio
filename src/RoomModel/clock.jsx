@@ -4,7 +4,6 @@ import { useRef } from 'react';
 import * as THREE from 'three';
 
 export default function Clock() {
-    useGLTF.preload('./assets/clock.glb');
     const { nodes } = useGLTF('./assets/clock.glb');
 
     const hour = useRef();
@@ -56,3 +55,5 @@ export default function Clock() {
         </>
     );
 }
+
+useGLTF.preload('./assets/clock.glb');
