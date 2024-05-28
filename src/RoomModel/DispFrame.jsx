@@ -66,12 +66,8 @@ export default function DispFrame({ nodes }) {
                 position={nodes.tvdisplay.position}
                 rotation={nodes.tvdisplay.rotation}
                 onClick={cameraState === 'tv' ? undefined : tvState}
-                onPointerOver={
-                    cameraState === 'default' ? onPointerOver : undefined
-                }
-                onPointerOut={
-                    cameraState === 'default' ? onPointerOut : undefined
-                }
+                onPointerOver={onPointerOver}
+                onPointerOut={onPointerOut}
             >
                 <meshBasicMaterial map={tvWallpaper} toneMapped={false} />
             </mesh>
