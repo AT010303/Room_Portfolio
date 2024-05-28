@@ -18,15 +18,13 @@ export default function Experience() {
                     position: [10, 8, -10]
                 }}
             >
-                <EffectComposer enabled:true disableNormalPass:true />
-
-                {/* <Perf  /> */}
-                <CameraManager />
                 <Suspense fallback={null}>
+                    <EffectComposer enabled:true disableNormalPass:true />
+                    {/* <Perf  /> */}
+                    <CameraManager />
                     <RoomModel />
                 </Suspense>
             </Canvas>
-
             <Loader />
         </>
     );
