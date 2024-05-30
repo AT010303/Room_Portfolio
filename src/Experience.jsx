@@ -1,6 +1,5 @@
 import { Loader } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
-import { EffectComposer } from '@react-three/postprocessing';
 // import { Perf } from 'r3f-perf';
 import { Suspense } from 'react';
 
@@ -15,11 +14,12 @@ export default function Experience() {
                     fov: 35,
                     near: 0.1,
                     far: 200,
-                    position: [10, 8, -10]
+                    position: [10, 8, -10],
+                    dpr: [1, 2],
+                    linear: true
                 }}
             >
                 <Suspense fallback={null}>
-                    <EffectComposer enabled:true disableNormalPass:true />
                     {/* <Perf  /> */}
                     <CameraManager />
                     <RoomModel />

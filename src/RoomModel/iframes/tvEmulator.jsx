@@ -10,23 +10,25 @@ export default function TvEmulator() {
     const toggle = cameraState === 'tv' ? true : false;
     return (
         <group>
-           {toggle && ( <Html
-                transform
-                wrapperClass="htmlScreen"
-                distanceFactor={0.925}
-                occlude="blending"
-                position={[2.28, 2.72, -3.6]}
-                zIndexRange={cameraState === 'tv' ? [2, 1] : [-1, 0]}
-            >
-                <EmulatorJS
-                    width={1610}
-                    height={852}
-                    EJS_core="gba"
-                    EJS_gameUrl={rom}
-                    EJS_startOnLoaded={true}
-                    EJS_Buttons={{ fullscreen: false }}
-                />
-            </Html>)}
+            {toggle && (
+                <Html
+                    transform
+                    wrapperClass="htmlScreen"
+                    distanceFactor={0.925}
+                    occlude="blending"
+                    position={[2.28, 2.72, -3.6]}
+                    zIndexRange={cameraState === 'tv' ? [2, 1] : [-1, 0]}
+                >
+                    <EmulatorJS
+                        width={1610}
+                        height={852}
+                        EJS_core="gba"
+                        EJS_gameUrl={rom}
+                        EJS_startOnLoaded={true}
+                        EJS_Buttons={{ fullscreen: false }}
+                    />
+                </Html>
+            )}
         </group>
     );
 }
