@@ -7,24 +7,35 @@ import * as THREE from 'three';
 const Clock = React.memo(() => {
     const { nodes } = useGLTF('./assets/clock.glb');
 
-    const hour = useRef();
-    const minute = useRef();
-    const second = useRef();
+    const hourRef = useRef();
+    const minuteRef = useRef();
+    const secondRef = useRef();
 
     useFrame(() => {
-        let date = new Date();
-        let hours = date.getHours();
-        let minutes = date.getMinutes();
-        let seconds = date.getSeconds();
-        let milliseconds = date.getMilliseconds();
-        let smoothSeconds = seconds + milliseconds / 1000;
-        minutes = minutes + smoothSeconds / 60;
+        const date = new Date();
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+        const seconds = date.getSeconds();
+        const milliseconds = date.getMilliseconds();
+        const smoothSeconds = seconds + milliseconds / 1000;
+        const smoothMinutes = minutes + smoothSeconds / 60;
+        const smoothHours = hours + smoothMinutes / 60;
 
-        second.current.rotation.z = THREE.MathUtils.degToRad(6 * smoothSeconds);
-        minute.current.rotation.z = THREE.MathUtils.degToRad(6 * minutes);
-        hour.current.rotation.z = THREE.MathUtils.degToRad(
-            0.5 * (60 * hours + minutes)
-        );
+        if (secondRef.current) {
+            secondRef.current.rotation.z = THREE.MathUtils.degToRad(
+                6 * smoothSeconds
+            );
+        }
+        if (minuteRef.current) {
+            minuteRef.current.rotation.z = THREE.MathUtils.degToRad(
+                6 * smoothMinutes
+            );
+        }
+        if (hourRef.current) {
+            hourRef.current.rotation.z = THREE.MathUtils.degToRad(
+                30 * smoothHours
+            );
+        }
     });
 
     return (
@@ -33,7 +44,7 @@ const Clock = React.memo(() => {
                 geometry={nodes.clockMinute.geometry}
                 position={nodes.clockMinute.position}
                 rotation={[0, 0, 0]}
-                ref={minute}
+                ref={minuteRef}
             >
                 <meshBasicMaterial color={'#000000'} />
             </mesh>
@@ -41,7 +52,7 @@ const Clock = React.memo(() => {
                 geometry={nodes.clockSecond.geometry}
                 position={nodes.clockSecond.position}
                 rotation={[0, 0, 0]}
-                ref={second}
+                ref={secondRef}
             >
                 <meshBasicMaterial color={'#000000'} />
             </mesh>
@@ -49,7 +60,7 @@ const Clock = React.memo(() => {
                 geometry={nodes.clockHour.geometry}
                 position={nodes.clockHour.position}
                 rotation={[0, 0, 0]}
-                ref={hour}
+                ref={hourRef}
             >
                 <meshBasicMaterial color={'#000000'} />
             </mesh>

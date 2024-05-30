@@ -3,7 +3,7 @@
 import { useTexture } from '@react-three/drei';
 import { extend } from '@react-three/fiber';
 import { gsap } from 'gsap';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 
 import { useCameraStore } from '../helper/CameraStore';
@@ -11,54 +11,35 @@ import TextureMaterial from './textures/TextureMaterial';
 extend({ TextureMaterial });
 
 const DispItem = React.memo(({ toggle, nodes }) => {
-    const dispItem = useRef();
-    const desktopdisp = useRef();
-    const musicdisp = useRef();
-    const homedisp = useRef();
-    const smartphonedisp = useRef();
-    const tvdisp = useRef();
+    const dispItemRefs = useRef({
+        dispItem: null,
+        desktopdisp: null,
+        musicdisp: null,
+        homedisp: null,
+        smartphonedisp: null,
+        tvdisp: null
+    });
 
     useEffect(() => {
-        gsap.to(dispItem.current.uniforms.NightMix, {
-            value: toggle ? 1 : 0,
-            duration: 1
-        });
-        gsap.to(desktopdisp.current.uniforms.NightMix, {
-            value: toggle ? 1 : 0,
-            duration: 1
-        });
-        gsap.to(musicdisp.current.uniforms.NightMix, {
-            value: toggle ? 1 : 0,
-            duration: 1
-        });
-        gsap.to(homedisp.current.uniforms.NightMix, {
-            value: toggle ? 1 : 0,
-            duration: 1
-        });
-        gsap.to(smartphonedisp.current.uniforms.NightMix, {
-            value: toggle ? 1 : 0,
-            duration: 1
-        });
-        gsap.to(tvdisp.current.uniforms.NightMix, {
-            value: toggle ? 1 : 0,
-            duration: 1
+        const refs = dispItemRefs.current;
+        Object.keys(refs).forEach((key) => {
+            gsap.to(refs[key]?.uniforms.NightMix, {
+                value: toggle ? 1 : 0,
+                duration: 1
+            });
         });
     }, [toggle]);
 
     const dBakeddisp = useTexture('./assets/boardBakedDcmp.jpg');
-    dBakeddisp.flipY = false;
-    dBakeddisp.magFilter = THREE.NearestFilter;
-    dBakeddisp.minFilter = THREE.NearestFilter;
-
     const nBakeddisp = useTexture('./assets/boardBakedNcmp.jpg');
-    nBakeddisp.flipY = false;
-    nBakeddisp.magFilter = THREE.NearestFilter;
-    nBakeddisp.minFilter = THREE.NearestFilter;
-
     const lightMapdisp = useTexture('./assets/boardBakedLMAPcmp.jpg');
-    nBakeddisp.flipY = false;
-    nBakeddisp.magFilter = THREE.NearestFilter;
-    nBakeddisp.minFilter = THREE.NearestFilter;
+
+    const textures = [dBakeddisp, nBakeddisp, lightMapdisp];
+    textures.forEach((texture) => {
+        texture.flipY = false;
+        texture.magFilter = THREE.NearestFilter;
+        texture.minFilter = THREE.NearestFilter;
+    });
 
     const TextureMaterialDisps = {
         dbakedm: dBakeddisp,
@@ -75,36 +56,49 @@ const DispItem = React.memo(({ toggle, nodes }) => {
 
     const [hovered, setHover] = useState(false);
 
-    useEffect(
-        () => void (document.body.style.cursor = hovered ? 'pointer' : 'auto'),
-        [hovered]
-    );
+    useEffect(() => {
+        document.body.style.cursor = hovered ? 'pointer' : 'auto';
+    }, [hovered]);
 
-    const onPointerOver = useCallback(() => setHover(true), []);
-    const onPointerOut = useCallback(() => setHover(false), []);
+    const onPointerOver = () => setHover(true);
+    const onPointerOut = () => setHover(false);
 
     const cameraState = useCameraStore((state) => state.cameraState);
-    const defaultState = useCameraStore((state) => state.default);
-    const desktopState = useCameraStore((state) => state.desktop);
-    const laptopState = useCameraStore((state) => state.laptop);
-    const tvState = useCameraStore((state) => state.tv);
-    const smartphoneState = useCameraStore((state) => state.smartphone);
+    const states = {
+        default: useCameraStore((state) => state.default),
+        desktop: useCameraStore((state) => state.desktop),
+        laptop: useCameraStore((state) => state.laptop),
+        tv: useCameraStore((state) => state.tv),
+        smartphone: useCameraStore((state) => state.smartphone)
+    };
+
+    const createMesh = (name, state, refName) => (
+        <mesh
+            geometry={nodes[name].geometry}
+            position={nodes[name].position}
+            rotation={nodes[name].rotation}
+            onClick={
+                cameraState === 'displayBoard'
+                    ? cameraState === state
+                        ? undefined
+                        : states[state]
+                    : null
+            }
+            onPointerOver={
+                cameraState === 'displayBoard' ? onPointerOver : null
+            }
+            onPointerOut={cameraState === 'displayBoard' ? onPointerOut : null}
+        >
+            <textureMaterial
+                {...TextureMaterialDisps}
+                ref={(el) => (dispItemRefs.current[refName] = el)}
+            />
+        </mesh>
+    );
 
     return (
         <>
-            <mesh
-                geometry={nodes.dispItem.geometry}
-                position={nodes.dispItem.position}
-                rotation={nodes.dispItem.rotation}
-                onPointerover={
-                    cameraState === 'displayBoard' ? onPointerOut : null
-                }
-                onPointerOut={
-                    cameraState === 'displayBoard' ? onPointerOut : null
-                }
-            >
-                <textureMaterial {...TextureMaterialDisps} ref={dispItem} />
-            </mesh>
+            {createMesh('dispItem', 'displayBoard', 'dispItem')}
             <mesh
                 geometry={nodes.rope.geometry}
                 position={nodes.rope.position}
@@ -112,113 +106,11 @@ const DispItem = React.memo(({ toggle, nodes }) => {
             >
                 <meshBasicMaterial color={'#160000'} />
             </mesh>
-
-            <mesh
-                geometry={nodes.desktop.geometry}
-                position={nodes.desktop.position}
-                rotation={nodes.desktop.rotation}
-                onClick={
-                    cameraState === 'displayBoard'
-                        ? cameraState === 'desktop'
-                            ? undefined
-                            : desktopState
-                        : null
-                }
-                onPointerOver={
-                    cameraState === 'displayBoard' ? onPointerOver : null
-                }
-                onPointerOut={
-                    cameraState === 'displayBoard' ? onPointerOut : null
-                }
-            >
-                <textureMaterial {...TextureMaterialDisps} ref={desktopdisp} />
-            </mesh>
-
-            <mesh
-                geometry={nodes.music.geometry}
-                position={nodes.music.position}
-                rotation={nodes.music.rotation}
-                onClick={
-                    cameraState === 'displayBoard'
-                        ? cameraState === 'laptop'
-                            ? undefined
-                            : laptopState
-                        : null
-                }
-                onPointerOver={
-                    cameraState === 'displayBoard' ? onPointerOver : null
-                }
-                onPointerOut={
-                    cameraState === 'displayBoard' ? onPointerOut : null
-                }
-            >
-                <textureMaterial {...TextureMaterialDisps} ref={musicdisp} />
-            </mesh>
-            <mesh
-                geometry={nodes.home.geometry}
-                position={nodes.home.position}
-                rotation={nodes.home.rotation}
-                onClick={
-                    cameraState === 'displayBoard'
-                        ? cameraState === 'default'
-                            ? undefined
-                            : defaultState
-                        : null
-                }
-                onPointerOver={
-                    cameraState === 'displayBoard' ? onPointerOver : null
-                }
-                onPointerOut={
-                    cameraState === 'displayBoard' ? onPointerOut : null
-                }
-            >
-                <textureMaterial {...TextureMaterialDisps} ref={homedisp} />
-            </mesh>
-
-            <mesh
-                geometry={nodes.smartphone.geometry}
-                position={nodes.smartphone.position}
-                rotation={nodes.smartphone.rotation}
-                onClick={
-                    cameraState === 'displayBoard'
-                        ? cameraState === 'smartphone'
-                            ? undefined
-                            : smartphoneState
-                        : null
-                }
-                onPointerOver={
-                    cameraState === 'displayBoard' ? onPointerOver : null
-                }
-                onPointerOut={
-                    cameraState === 'displayBoard' ? onPointerOut : null
-                }
-            >
-                <textureMaterial
-                    {...TextureMaterialDisps}
-                    ref={smartphonedisp}
-                />
-            </mesh>
-
-            <mesh
-                geometry={nodes.tv.geometry}
-                position={nodes.tv.position}
-                rotation={nodes.tv.rotation}
-                onClick={
-                    cameraState === 'displayBoard'
-                        ? cameraState === 'tv'
-                            ? undefined
-                            : tvState
-                        : null
-                }
-                onPointerOver={
-                    cameraState === 'displayBoard' ? onPointerOver : null
-                }
-                onPointerOut={
-                    cameraState === 'displayBoard' ? onPointerOut : null
-                }
-            >
-                <textureMaterial {...TextureMaterialDisps} ref={tvdisp} />
-            </mesh>
+            {createMesh('desktop', 'desktop', 'desktopdisp')}
+            {createMesh('music', 'laptop', 'musicdisp')}
+            {createMesh('home', 'default', 'homedisp')}
+            {createMesh('smartphone', 'smartphone', 'smartphonedisp')}
+            {createMesh('tv', 'tv', 'tvdisp')}
         </>
     );
 });

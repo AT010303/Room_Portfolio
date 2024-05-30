@@ -1,17 +1,21 @@
 /* eslint-disable react/display-name */
 import { Html } from '@react-three/drei';
-import React, { useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
 
 import { useCameraStore } from '../../helper/CameraStore';
 
 const SmartphoneiFrame = React.memo(() => {
     const cameraState = useCameraStore((state) => state.cameraState);
-    const iframeRef = useRef();
-    const toggle = cameraState === 'smartphone' ? true : false;
+    const iframeRef = useRef(null);
+
+    const isSmartphone = useMemo(
+        () => cameraState === 'smartphone',
+        [cameraState]
+    );
 
     return (
         <group>
-            {toggle && (
+            {isSmartphone && (
                 <Html
                     occlude="blending"
                     rotation-y={Math.PI}
@@ -21,9 +25,7 @@ const SmartphoneiFrame = React.memo(() => {
                     wrapperClass="htmlPhoneScreen"
                     distanceFactor={0.285}
                     position={[1.6395, 1.125, -1.373]}
-                    zIndexRange={
-                        cameraState === 'smartphone' ? [10, 1] : [-1, 0]
-                    }
+                    zIndexRange={[2, 1]}
                 >
                     <iframe
                         width={392}

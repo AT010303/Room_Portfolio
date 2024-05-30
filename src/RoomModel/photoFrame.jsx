@@ -3,7 +3,7 @@
 import { useTexture } from '@react-three/drei';
 import { extend } from '@react-three/fiber';
 import { gsap } from 'gsap';
-import React, { useEffect, useMemo,useRef } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import * as THREE from 'three';
 
 import TextureMaterial from './textures/TextureMaterial';

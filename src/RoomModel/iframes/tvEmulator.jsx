@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
 import { Html } from '@react-three/drei';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { EmulatorJS } from 'react-emulatorjs';
 
 import { useCameraStore } from '../../helper/CameraStore';
@@ -9,17 +9,18 @@ const TvEmulator = React.memo(() => {
     const rom = './assets/SuperMarioAdvance4.gba';
 
     const cameraState = useCameraStore((state) => state.cameraState);
-    const toggle = cameraState === 'tv' ? true : false;
+    const isTv = useMemo(() => cameraState === 'tv', [cameraState]);
+
     return (
         <group>
-            {toggle && (
+            {isTv && (
                 <Html
                     transform
                     wrapperClass="htmlScreen"
                     distanceFactor={0.925}
                     occlude="blending"
                     position={[2.28, 2.72, -3.6]}
-                    zIndexRange={cameraState === 'tv' ? [2, 1] : [-1, 0]}
+                    zIndexRange={[2, 1]}
                 >
                     <EmulatorJS
                         width={1610}

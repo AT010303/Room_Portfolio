@@ -19,10 +19,9 @@ const DispFrame = React.memo(({ nodes }) => {
 
     const [hovered, setHover] = useState(false);
 
-    useEffect(
-        () => void (document.body.style.cursor = hovered ? 'pointer' : 'auto'),
-        [hovered]
-    );
+    useEffect(() => {
+        document.body.style.cursor = hovered ? 'pointer' : 'auto';
+    }, [hovered]);
 
     const onPointerOver = useCallback(() => setHover(true), []);
     const onPointerOut = useCallback(() => setHover(false), []);
@@ -42,7 +41,7 @@ const DispFrame = React.memo(({ nodes }) => {
                 geometry={nodes.monitor.geometry}
                 position={nodes.monitor.position}
                 rotation={nodes.monitor.rotation}
-                onClick={cameraState === 'desktop' ? undefined : desktopState}
+                onClick={cameraState !== 'desktop' ? desktopState : undefined}
                 onPointerOver={onPointerOver}
                 onPointerOut={onPointerOut}
             >
@@ -53,7 +52,7 @@ const DispFrame = React.memo(({ nodes }) => {
                 geometry={nodes.laptop.geometry}
                 position={nodes.laptop.position}
                 rotation={nodes.laptop.rotation}
-                onClick={cameraState === 'laptop' ? undefined : laptopState}
+                onClick={cameraState !== 'laptop' ? laptopState : undefined}
                 onPointerOver={
                     cameraState === 'default' ? onPointerOver : undefined
                 }
@@ -68,7 +67,7 @@ const DispFrame = React.memo(({ nodes }) => {
                 geometry={nodes.tvdisplay.geometry}
                 position={nodes.tvdisplay.position}
                 rotation={nodes.tvdisplay.rotation}
-                onClick={cameraState === 'tv' ? undefined : tvState}
+                onClick={cameraState !== 'tv' ? tvState : undefined}
                 onPointerOver={onPointerOver}
                 onPointerOut={onPointerOut}
             >
@@ -80,7 +79,7 @@ const DispFrame = React.memo(({ nodes }) => {
                 position={nodes.smartphoneDisp.position}
                 rotation={nodes.smartphoneDisp.rotation}
                 onClick={
-                    cameraState === 'smartphone' ? undefined : smartphoneState
+                    cameraState !== 'smartphone' ? smartphoneState : undefined
                 }
                 onPointerOver={onPointerOver}
                 onPointerOut={onPointerOut}
@@ -93,9 +92,9 @@ const DispFrame = React.memo(({ nodes }) => {
                 rotation={[0, Math.PI / 2, 0]}
                 scale={[2.8, 1.6, 1]}
                 onClick={
-                    cameraState === 'displayBoard'
-                        ? undefined
-                        : displayBoardState
+                    cameraState !== 'displayBoard'
+                        ? displayBoardState
+                        : undefined
                 }
                 onPointerOver={
                     cameraState === 'default' ? onPointerOver : undefined

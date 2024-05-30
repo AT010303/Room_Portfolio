@@ -8,7 +8,7 @@ const Windows = React.memo(({ toggle, nodes }) => {
 
     return (
         <>
-            <EffectComposer>
+            <EffectComposer autoClear>
                 <Bloom mipmapBlur intensity={0.9} />
             </EffectComposer>
             <mesh

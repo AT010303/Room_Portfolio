@@ -4,7 +4,7 @@ import { Center, useGLTF, useTexture } from '@react-three/drei';
 import { extend, useFrame } from '@react-three/fiber';
 import { gsap } from 'gsap';
 import { useControls } from 'leva';
-import React, { useEffect, useMemo ,useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
 
 import { useCameraStore } from '../helper/CameraStore';
@@ -28,16 +28,33 @@ const RoomModel = React.memo(() => {
 
     useEffect(() => {
         const nightMix = toggle ? 1 : 0;
-        gsap.to(textureMatFur.current.uniforms.NightMix, { value: nightMix, duration: 1 });
-        gsap.to(textureMatDes.current.uniforms.NightMix, { value: nightMix, duration: 1 });
-        gsap.to(textureMatChaorTop.current.uniforms.NightMix, { value: nightMix, duration: 1 });
+        gsap.to(textureMatFur.current.uniforms.NightMix, {
+            value: nightMix,
+            duration: 1
+        });
+        gsap.to(textureMatDes.current.uniforms.NightMix, {
+            value: nightMix,
+            duration: 1
+        });
+        gsap.to(textureMatChaorTop.current.uniforms.NightMix, {
+            value: nightMix,
+            duration: 1
+        });
     }, [toggle]);
 
-    const [{ x }] = useSpring({ x: toggle, config: { mass: 4, tension: 800, friction: 35, precision: 0.001 } }, [toggle]);
+    const [{ x }] = useSpring(
+        {
+            x: toggle,
+            config: { mass: 4, tension: 800, friction: 35, precision: 0.001 }
+        },
+        [toggle]
+    );
 
     useFrame(({ clock }) => {
         if (chairTop.current) {
-            chairTop.current.rotation.y = Math.sin(clock.getElapsedTime() * 0.3);
+            chairTop.current.rotation.y = Math.sin(
+                clock.getElapsedTime() * 0.3
+            );
         }
     });
 
@@ -68,21 +85,24 @@ const RoomModel = React.memo(() => {
     lightMap.magFilter = THREE.NearestFilter;
     lightMap.minFilter = THREE.NearestFilter;
 
-    const textureMaterialProps = useMemo(() => ({
-        dbakedm: dBaked,
-        nbakedm: nBaked,
-        lightMapm: lightMap,
-        NightMix: 0,
-        lightBoardColor: controls.boardColor,
-        lightBoardStrength: controls.boardStrength,
-        lightPcColor: controls.pcColor,
-        lightPcStrength: controls.pcColorStrength,
-        lightDeskColor: controls.deskColors,
-        lightDeskStrength: controls.deskColorStrngth
-    }), [dBaked, nBaked, lightMap, controls]);
+    const textureMaterialProps = useMemo(
+        () => ({
+            dbakedm: dBaked,
+            nbakedm: nBaked,
+            lightMapm: lightMap,
+            NightMix: 0,
+            lightBoardColor: controls.boardColor,
+            lightBoardStrength: controls.boardStrength,
+            lightPcColor: controls.pcColor,
+            lightPcStrength: controls.pcColorStrength,
+            lightDeskColor: controls.deskColors,
+            lightDeskStrength: controls.deskColorStrngth
+        }),
+        [dBaked, nBaked, lightMap, controls]
+    );
 
-    const cameraState = useCameraStore(state => state.cameraState);
-    const defaultState = useCameraStore(state => state.default);
+    const cameraState = useCameraStore((state) => state.cameraState);
+    const defaultState = useCameraStore((state) => state.default);
 
     return (
         <group>
@@ -92,16 +112,24 @@ const RoomModel = React.memo(() => {
                     position={roomModel.nodes.roomFurniture.position}
                     rotation={roomModel.nodes.roomFurniture.rotation}
                 >
-                    <textureMaterial {...textureMaterialProps} ref={textureMatFur} />
+                    <textureMaterial
+                        {...textureMaterialProps}
+                        ref={textureMatFur}
+                    />
                 </mesh>
 
                 <mesh
                     geometry={roomModel.nodes.deskShelfStuf.geometry}
                     position={roomModel.nodes.deskShelfStuf.position}
                     rotation={roomModel.nodes.deskShelfStuf.rotation}
-                    onClick={cameraState === 'default' ? undefined : defaultState}
+                    onClick={
+                        cameraState === 'default' ? undefined : defaultState
+                    }
                 >
-                    <textureMaterial {...textureMaterialProps} ref={textureMatDes} />
+                    <textureMaterial
+                        {...textureMaterialProps}
+                        ref={textureMatDes}
+                    />
                 </mesh>
 
                 <mesh
@@ -109,9 +137,14 @@ const RoomModel = React.memo(() => {
                     geometry={chair.nodes.chairTop.geometry}
                     position={chair.nodes.chairTop.position}
                     rotation={chair.nodes.chairTop.rotation}
-                    onClick={cameraState === 'default' ? undefined : defaultState}
+                    onClick={
+                        cameraState === 'default' ? undefined : defaultState
+                    }
                 >
-                    <textureMaterial {...textureMaterialProps} ref={textureMatChaorTop} />
+                    <textureMaterial
+                        {...textureMaterialProps}
+                        ref={textureMatChaorTop}
+                    />
                 </mesh>
                 <PhotoFrame toggle={toggle} nodes={roomModel.nodes} />
                 <DispFrame nodes={roomModel.nodes} />
