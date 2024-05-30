@@ -1,11 +1,12 @@
+/* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
 import { useTexture } from '@react-three/drei';
 import { Howl } from 'howler';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import { useCameraStore } from '../helper/CameraStore';
 
-export default function LaptopDisp({ nodes }) {
+const LaptopDisp = React.memo(({ nodes }) => {
     const autumn = useRef();
     const christmas = useRef();
     const clarity = useRef();
@@ -182,7 +183,9 @@ export default function LaptopDisp({ nodes }) {
             </mesh>
         </>
     );
-}
+});
+
+export default LaptopDisp;
 
 useTexture.preload('./assets/laptopDisp/AutumnPaus.jpg');
 useTexture.preload('./assets/laptopDisp/AutumnPlay.jpg');

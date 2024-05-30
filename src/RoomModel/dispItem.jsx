@@ -1,15 +1,16 @@
+/* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
 import { useTexture } from '@react-three/drei';
 import { extend } from '@react-three/fiber';
 import { gsap } from 'gsap';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 
 import { useCameraStore } from '../helper/CameraStore';
 import TextureMaterial from './textures/TextureMaterial';
 extend({ TextureMaterial });
 
-export default function DispItem({ toggle, nodes }) {
+const DispItem = React.memo(({ toggle, nodes }) => {
     const dispItem = useRef();
     const desktopdisp = useRef();
     const musicdisp = useRef();
@@ -220,7 +221,9 @@ export default function DispItem({ toggle, nodes }) {
             </mesh>
         </>
     );
-}
+});
+
+export default DispItem;
 
 useTexture.preload('./assets/boardBakedDcmp.jpg');
 useTexture.preload('./assets/boardBakedNcmp.jpg');

@@ -1,9 +1,10 @@
+/* eslint-disable react/display-name */
 import { Html } from '@react-three/drei';
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 
 import { useCameraStore } from '../../helper/CameraStore';
 
-export default function DesktopiFrame() {
+const DesktopiFrame = React.memo(() => {
     const cameraState = useCameraStore((state) => state.cameraState);
     const iframeRef = useRef();
     const toggle = cameraState === 'desktop' ? true : false;
@@ -35,4 +36,6 @@ export default function DesktopiFrame() {
             )}
         </group>
     );
-}
+});
+
+export default DesktopiFrame;

@@ -1,6 +1,7 @@
+/* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
 import { useTexture, useVideoTexture } from '@react-three/drei';
-import { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { useCameraStore } from '../helper/CameraStore';
 import DesktopiFrame from './iframes/desktopiFrame';
@@ -8,7 +9,7 @@ import SmartphoneiFrame from './iframes/smartphoneiFrame';
 import TvEmulator from './iframes/tvEmulator';
 import LaptopDisp from './laptopDisp';
 
-export default function DispFrame({ nodes }) {
+const DispFrame = React.memo(({ nodes }) => {
     const cameraState = useCameraStore((state) => state.cameraState);
     const desktopState = useCameraStore((state) => state.desktop);
     const laptopState = useCameraStore((state) => state.laptop);
@@ -112,7 +113,9 @@ export default function DispFrame({ nodes }) {
             </mesh>
         </>
     );
-}
+});
+
+export default DispFrame;
 
 useTexture.preload('./assets/smartphoneWallpaper.jpg');
 useTexture.preload('./assets/SpotifyClone.jpg');

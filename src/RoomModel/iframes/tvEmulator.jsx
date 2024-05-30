@@ -1,9 +1,11 @@
+/* eslint-disable react/display-name */
 import { Html } from '@react-three/drei';
+import React from 'react';
 import { EmulatorJS } from 'react-emulatorjs';
 
 import { useCameraStore } from '../../helper/CameraStore';
 
-export default function TvEmulator() {
+const TvEmulator = React.memo(() => {
     const rom = './assets/SuperMarioAdvance4.gba';
 
     const cameraState = useCameraStore((state) => state.cameraState);
@@ -31,4 +33,6 @@ export default function TvEmulator() {
             )}
         </group>
     );
-}
+});
+
+export default TvEmulator;

@@ -1,14 +1,15 @@
+/* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
 import { useTexture } from '@react-three/drei';
 import { extend } from '@react-three/fiber';
 import { gsap } from 'gsap';
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
 import TextureMaterial from './textures/TextureMaterial';
 extend({ TextureMaterial });
 
-export default function PhotoFrame({ toggle, nodes }) {
+const PhotoFrame = React.memo(({ toggle, nodes }) => {
     const frame = useRef();
 
     const dayFrame = useTexture('./assets/bakeFrameDaycmp.jpg');
@@ -57,7 +58,9 @@ export default function PhotoFrame({ toggle, nodes }) {
             </mesh>
         </>
     );
-}
+});
+
+export default PhotoFrame;
 
 useTexture.preload('./assets/bakeFrameDaycmp.jpg');
 useTexture.preload('./assets/bakeFrameNightcmp.jpg');

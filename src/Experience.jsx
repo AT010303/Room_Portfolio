@@ -1,12 +1,13 @@
+/* eslint-disable react/display-name */
 import { Loader } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
-// import { Perf } from 'r3f-perf';
-import { Suspense } from 'react';
+import { Perf } from 'r3f-perf';
+import React, { Suspense } from 'react';
 
 import { CameraManager } from './CameraManager/CameraManager';
 import RoomModel from './RoomModel/roomModel';
 
-export default function Experience() {
+const Experience = React.memo(() => {
     return (
         <>
             <Canvas
@@ -20,7 +21,7 @@ export default function Experience() {
                 }}
             >
                 <Suspense fallback={null}>
-                    {/* <Perf  /> */}
+                    <Perf position={'top-left'} />
                     <CameraManager />
                     <RoomModel />
                 </Suspense>
@@ -28,4 +29,6 @@ export default function Experience() {
             <Loader />
         </>
     );
-}
+});
+
+export default Experience;

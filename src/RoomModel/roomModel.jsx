@@ -1,9 +1,10 @@
+/* eslint-disable react/display-name */
 import { useSpring } from '@react-spring/core';
 import { Center, useGLTF, useTexture } from '@react-three/drei';
 import { extend, useFrame } from '@react-three/fiber';
 import { gsap } from 'gsap';
 import { useControls } from 'leva';
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 
 import { useCameraStore } from '../helper/CameraStore';
@@ -17,7 +18,7 @@ import Windows from './Windows';
 
 extend({ TextureMaterial });
 
-export default function RoomModel() {
+const RoomModel = React.memo(() => {
     const chairTop = useRef();
     const textureMatFur = useRef();
     const textureMatDes = useRef();
@@ -99,8 +100,6 @@ export default function RoomModel() {
     const roomModel = useGLTF('./assets/RoomModel.glb');
     const chair = useGLTF('./assets/chairtopDraco.glb');
 
-    // console.log(roomModel);
-
     const dBaked = useTexture('./assets/bakedTextureDaycmp.jpg');
     dBaked.flipY = false;
     dBaked.magFilter = THREE.NearestFilter;
@@ -177,7 +176,9 @@ export default function RoomModel() {
             </Center>
         </group>
     );
-}
+});
+
+export default RoomModel;
 
 useGLTF.preload('./assets/RoomModel.glb');
 useGLTF.preload('./assets/chairtopDraco.glb');

@@ -1,9 +1,10 @@
+/* eslint-disable react/display-name */
 import { Html } from '@react-three/drei';
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 
 import { useCameraStore } from '../../helper/CameraStore';
 
-export default function SmartphoneiFrame() {
+const SmartphoneiFrame = React.memo(() => {
     const cameraState = useCameraStore((state) => state.cameraState);
     const iframeRef = useRef();
     const toggle = cameraState === 'smartphone' ? true : false;
@@ -36,4 +37,6 @@ export default function SmartphoneiFrame() {
             )}
         </group>
     );
-}
+});
+
+export default SmartphoneiFrame;

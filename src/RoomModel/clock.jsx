@@ -1,9 +1,10 @@
+/* eslint-disable react/display-name */
 import { useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import * as THREE from 'three';
 
-export default function Clock() {
+const Clock = React.memo(() => {
     const { nodes } = useGLTF('./assets/clock.glb');
 
     const hour = useRef();
@@ -54,6 +55,8 @@ export default function Clock() {
             </mesh>
         </>
     );
-}
+});
+
+export default Clock;
 
 useGLTF.preload('./assets/clock.glb');
