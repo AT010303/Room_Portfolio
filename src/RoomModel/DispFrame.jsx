@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useCameraStore } from '../helper/CameraStore';
 import DesktopiFrame from './iframes/desktopiFrame';
 import SmartphoneiFrame from './iframes/smartphoneiFrame';
+import TvEmulator from './iframes/tvEmulator';
 import LaptopDisp from './laptopDisp';
 
 export default function DispFrame({ nodes }) {
@@ -35,6 +36,7 @@ export default function DispFrame({ nodes }) {
             <LaptopDisp nodes={nodes} />
             <SmartphoneiFrame />
             <DesktopiFrame />
+            <TvEmulator />
             <mesh
                 geometry={nodes.monitor.geometry}
                 position={nodes.monitor.position}
