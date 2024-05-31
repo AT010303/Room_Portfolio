@@ -12,9 +12,9 @@ extend({ TextureMaterial });
 const PhotoFrame = React.memo(({ toggle, nodes }) => {
     const frame = useRef();
 
-    const dayFrame = useTexture('./assets/bakeFrameDaycmp.jpg');
-    const nightFrame = useTexture('./assets/bakeFrameNightcmp.jpg');
-    const lightMapFrame = useTexture('./assets/bakeFrameLightMapcmp.jpg');
+    const dayFrame = useTexture('./assets/bakeFrameDaycmp.webp');
+    const nightFrame = useTexture('./assets/bakeFrameNightcmp.webp');
+    const lightMapFrame = useTexture('./assets/bakeFrameLightMapcmp.webp');
 
     const textureProps = useMemo(() => {
         dayFrame.flipY = false;
@@ -57,6 +57,6 @@ const PhotoFrame = React.memo(({ toggle, nodes }) => {
 
 export default PhotoFrame;
 
-useTexture.preload('./assets/bakeFrameDaycmp.jpg');
-useTexture.preload('./assets/bakeFrameNightcmp.jpg');
-useTexture.preload('./assets/bakeFrameLightMapcmp.jpg');
+useTexture.preload('./assets/bakeFrameDaycmp.webp');
+useTexture.preload('./assets/bakeFrameNightcmp.webp');
+useTexture.preload('./assets/bakeFrameLightMapcmp.webp');

@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import { Loader } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
-// import { Perf } from 'r3f-perf';
+import { Perf } from 'r3f-perf';
 import React, { Suspense } from 'react';
 
 import { CameraManager } from './CameraManager/CameraManager';
@@ -20,6 +20,7 @@ const Experience = React.memo(() => {
                     linear: true
                 }}
             >
+                <Perf position={'top-left'} />
                 <Suspense fallback={null}>
                     {/* <Perf position={'top-left'} /> */}
                     <CameraManager />

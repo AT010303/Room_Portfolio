@@ -30,9 +30,9 @@ const DispItem = React.memo(({ toggle, nodes }) => {
         });
     }, [toggle]);
 
-    const dBakeddisp = useTexture('./assets/boardBakedDcmp.jpg');
-    const nBakeddisp = useTexture('./assets/boardBakedNcmp.jpg');
-    const lightMapdisp = useTexture('./assets/boardBakedLMAPcmp.jpg');
+    const dBakeddisp = useTexture('./assets/boardBakedDcmp.webp');
+    const nBakeddisp = useTexture('./assets/boardBakedNcmp.webp');
+    const lightMapdisp = useTexture('./assets/boardBakedLMAPcmp.webp');
 
     const textures = [dBakeddisp, nBakeddisp, lightMapdisp];
     textures.forEach((texture) => {
@@ -117,6 +117,6 @@ const DispItem = React.memo(({ toggle, nodes }) => {
 
 export default DispItem;
 
-useTexture.preload('./assets/boardBakedDcmp.jpg');
-useTexture.preload('./assets/boardBakedNcmp.jpg');
-useTexture.preload('./assets/boardBakedLMAPcmp.jpg');
+useTexture.preload('./assets/boardBakedDcmp.webp');
+useTexture.preload('./assets/boardBakedNcmp.webp');
+useTexture.preload('./assets/boardBakedLMAPcmp.webp');

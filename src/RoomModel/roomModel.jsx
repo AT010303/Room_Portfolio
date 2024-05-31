@@ -70,17 +70,17 @@ const RoomModel = React.memo(() => {
     const roomModel = useGLTF('./assets/RoomModel.glb');
     const chair = useGLTF('./assets/chairtopDraco.glb');
 
-    const dBaked = useTexture('./assets/bakedTextureDaycmp.jpg');
+    const dBaked = useTexture('./assets/bakedTextureDaycmp.webp');
     dBaked.flipY = false;
     dBaked.magFilter = THREE.NearestFilter;
     dBaked.minFilter = THREE.NearestFilter;
 
-    const nBaked = useTexture('./assets/roomTextureNightcmp.jpg');
+    const nBaked = useTexture('./assets/roomTextureNightcmp.webp');
     nBaked.flipY = false;
     nBaked.magFilter = THREE.NearestFilter;
     nBaked.minFilter = THREE.NearestFilter;
 
-    const lightMap = useTexture('./assets/roomTextureLightMapcmp.jpg');
+    const lightMap = useTexture('./assets/roomTextureLightMapcmp.webp');
     lightMap.flipY = false;
     lightMap.magFilter = THREE.NearestFilter;
     lightMap.minFilter = THREE.NearestFilter;
@@ -161,6 +161,6 @@ export default RoomModel;
 
 useGLTF.preload('./assets/RoomModel.glb');
 useGLTF.preload('./assets/chairtopDraco.glb');
-useTexture.preload('./assets/bakedTextureDaycmp.jpg');
-useTexture.preload('./assets/roomTextureNightcmp.jpg');
-useTexture.preload('./assets/roomTextureLightMapcmp.jpg');
+useTexture.preload('./assets/bakedTextureDaycmp.webp');
+useTexture.preload('./assets/roomTextureNightcmp.webp');
+useTexture.preload('./assets/roomTextureLightMapcmp.webp');
