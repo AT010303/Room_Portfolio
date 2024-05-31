@@ -28,8 +28,8 @@ const DispFrame = React.memo(({ nodes }) => {
 
     const desktopWallpaper = useVideoTexture('./assets/desktopWallpaper.mp4');
     const tvWallpaper = useVideoTexture('./assets/marioWallpaper.mp4');
-    const smartphoneWallpaper = useTexture('./assets/smartphoneWallpaper.jpg');
-    const musicBg = useTexture('./assets/SpotifyClone.jpg');
+    const smartphoneWallpaper = useTexture('./assets/smartphoneWallpaper.webp');
+    const musicBg = useTexture('./assets/SpotifyClone.webp');
 
     return (
         <>
@@ -116,6 +116,6 @@ const DispFrame = React.memo(({ nodes }) => {
 
 export default DispFrame;
 
-useTexture.preload('./assets/smartphoneWallpaper.jpg');
-useTexture.preload('./assets/SpotifyClone.jpg');
-// useVideoTexture.preload('./assets/desktopWallpaper.mp4');
+useTexture.preload('./assets/smartphoneWallpaper.webp');
+useTexture.preload('./assets/SpotifyClone.webp');
+
