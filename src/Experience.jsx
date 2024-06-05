@@ -16,8 +16,6 @@ const Experience = React.memo(() => {
                     near: 0.1,
                     far: 200,
                     position: [10, 8, -10],
-                    dpr: [1, 2],
-                    linear: true
                 }}
             >
 
