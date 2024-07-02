@@ -29,7 +29,7 @@ export const CameraManager = () => {
             useCameraStore.setState({ maxPolarAngle: Math.PI * 0.45 });
             useCameraStore.setState({ minAzimuthAngle: Math.PI * 0.5 });
             useCameraStore.setState({ maxAzimuthAngle: Math.PI });
-            cameraControle.current.setLookAt(10, 8, -10, 0, 0, 0, true);
+            cameraControle.current.setLookAt(14, 10, -14, 0, -1, 0, true);
         }
 
         if (cameraState === 'desktop') {

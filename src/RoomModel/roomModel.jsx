@@ -111,6 +111,15 @@ const RoomModel = React.memo(() => {
                     geometry={roomModel.nodes.roomFurniture.geometry}
                     position={roomModel.nodes.roomFurniture.position}
                     rotation={roomModel.nodes.roomFurniture.rotation}
+                    onClick={
+                        cameraState === 'default'
+                            ? undefined
+                            : cameraState === 'displayBoard'
+                              ? undefined
+                              : cameraState === 'laptop'
+                                ? undefined
+                                : defaultState
+                    }
                 >
                     <textureMaterial
                         {...textureMaterialProps}

@@ -110,6 +110,9 @@ const DispItem = React.memo(({ toggle, nodes }) => {
                 onPointerOut={
                     cameraState === 'displayBoard' ? onPointerOut : null
                 }
+                onClick={
+                    cameraState === 'displayBoard' ? defaultState : undefined
+                }
             >
                 <textureMaterial {...TextureMaterialDisps} ref={dispItem} />
             </mesh>
@@ -129,11 +132,7 @@ const DispItem = React.memo(({ toggle, nodes }) => {
                 position={nodes.desktop.position}
                 rotation={nodes.desktop.rotation}
                 onClick={
-                    cameraState === 'displayBoard'
-                        ? cameraState === 'desktop'
-                            ? undefined
-                            : desktopState
-                        : null
+                    cameraState === 'displayBoard' ? desktopState : undefined
                 }
                 onPointerOver={
                     cameraState === 'displayBoard' ? onPointerOver : null

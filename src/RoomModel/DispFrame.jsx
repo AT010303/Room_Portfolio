@@ -42,7 +42,7 @@ const DispFrame = React.memo(({ nodes }) => {
             <SmartphoneiFrame />
             <DesktopiFrame />
             <TvEmulator />
-            
+
             {/* Desktop monitor */}
             <mesh
                 geometry={nodes.monitor.geometry}
@@ -103,9 +103,9 @@ const DispFrame = React.memo(({ nodes }) => {
                 rotation={[0, Math.PI / 2, 0]}
                 scale={[2.8, 1.6, 1]}
                 onClick={
-                    cameraState !== 'displayBoard'
-                        ? displayBoardState
-                        : undefined
+                    cameraState === 'displayBoard'
+                        ? undefined
+                        : displayBoardState
                 }
                 onPointerOver={
                     cameraState === 'default' ? onPointerOver : undefined

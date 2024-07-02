@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(document.querySelector('#root'));
 root.render(
     <>
         <Experience />
-        <Leva />
+        <Leva collapsed />
         <Analytics mode={'production'} />
     </>
 );
