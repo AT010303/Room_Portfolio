@@ -50,18 +50,21 @@ const DispItem = React.memo(({ toggle, nodes }) => {
     // Load textures
     const dBakeddisp = useTexture('./assets/boardBakedDcmp.webp');
     dBakeddisp.flipY = false;
-    dBakeddisp.magFilter = THREE.NearestFilter;
+    dBakeddisp.magFilter = THREE.LinearFilter;
     dBakeddisp.minFilter = THREE.NearestFilter;
+    dBakeddisp.generateMipmaps = false;
 
     const nBakeddisp = useTexture('./assets/boardBakedNcmp.webp');
     nBakeddisp.flipY = false;
-    nBakeddisp.magFilter = THREE.NearestFilter;
+    nBakeddisp.magFilter = THREE.LinearFilter;
     nBakeddisp.minFilter = THREE.NearestFilter;
+    nBakeddisp.generateMipmaps = false;
 
     const lightMapdisp = useTexture('./assets/boardBakedLMAPcmp.webp');
     nBakeddisp.flipY = false;
-    nBakeddisp.magFilter = THREE.NearestFilter;
+    nBakeddisp.magFilter = THREE.LinearFilter;
     nBakeddisp.minFilter = THREE.NearestFilter;
+    nBakeddisp.generateMipmaps = false;
 
     // Define material properties
     const TextureMaterialDisps = {

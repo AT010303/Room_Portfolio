@@ -18,16 +18,19 @@ const PhotoFrame = React.memo(({ toggle, nodes }) => {
 
     const textureProps = useMemo(() => {
         dayFrame.flipY = false;
-        dayFrame.magFilter = THREE.NearestFilter;
+        dayFrame.magFilter = THREE.LinearFilter;
         dayFrame.minFilter = THREE.NearestFilter;
+        dayFrame.generateMipmaps = false;
 
         nightFrame.flipY = false;
-        nightFrame.magFilter = THREE.NearestFilter;
+        nightFrame.magFilter = THREE.LinearFilter;
         nightFrame.minFilter = THREE.NearestFilter;
+        nightFrame.generateMipmaps = false;
 
         lightMapFrame.flipY = false;
-        lightMapFrame.magFilter = THREE.NearestFilter;
+        lightMapFrame.magFilter = THREE.LinearFilter;
         lightMapFrame.minFilter = THREE.NearestFilter;
+        lightMapFrame.generateMipmaps = false;
 
         return {
             dbakedm: dayFrame,

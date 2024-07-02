@@ -72,18 +72,22 @@ const RoomModel = React.memo(() => {
 
     const dBaked = useTexture('./assets/bakedTextureDaycmp.webp');
     dBaked.flipY = false;
-    dBaked.magFilter = THREE.NearestFilter;
+    dBaked.magFilter = THREE.LinearFilter;
     dBaked.minFilter = THREE.NearestFilter;
+    dBaked.generateMipmaps = false;
 
     const nBaked = useTexture('./assets/roomTextureNightcmp.webp');
     nBaked.flipY = false;
-    nBaked.magFilter = THREE.NearestFilter;
+    nBaked.magFilter = THREE.LinearFilter;
     nBaked.minFilter = THREE.NearestFilter;
+    nBaked.generateMipmaps = false;
 
     const lightMap = useTexture('./assets/roomTextureLightMapcmp.webp');
     lightMap.flipY = false;
-    lightMap.magFilter = THREE.NearestFilter;
+    lightMap.magFilter = THREE.LinearFilter;
     lightMap.minFilter = THREE.NearestFilter;
+    lightMap.generateMipmaps = false;
+
 
     const textureMaterialProps = useMemo(
         () => ({
