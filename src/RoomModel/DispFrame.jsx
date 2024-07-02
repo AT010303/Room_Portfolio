@@ -10,6 +10,7 @@ import TvEmulator from './iframes/tvEmulator';
 import LaptopDisp from './laptopDisp';
 
 const DispFrame = React.memo(({ nodes }) => {
+    // Retrieve camera states from the store
     const cameraState = useCameraStore((state) => state.cameraState);
     const desktopState = useCameraStore((state) => state.desktop);
     const laptopState = useCameraStore((state) => state.laptop);
@@ -19,13 +20,16 @@ const DispFrame = React.memo(({ nodes }) => {
 
     const [hovered, setHover] = useState(false);
 
+    // Change cursor style based on hover state
     useEffect(() => {
         document.body.style.cursor = hovered ? 'pointer' : 'auto';
     }, [hovered]);
 
+    // Callbacks for hover events
     const onPointerOver = useCallback(() => setHover(true), []);
     const onPointerOut = useCallback(() => setHover(false), []);
 
+    // Load video and image textures
     const desktopWallpaper = useVideoTexture('./assets/desktopWallpaper.mp4');
     const tvWallpaper = useVideoTexture('./assets/marioWallpaper.mp4');
     const smartphoneWallpaper = useTexture('./assets/smartphoneWallpaper.webp');
@@ -33,10 +37,13 @@ const DispFrame = React.memo(({ nodes }) => {
 
     return (
         <>
+            {/* Render various iFrames and display components */}
             <LaptopDisp nodes={nodes} />
             <SmartphoneiFrame />
             <DesktopiFrame />
             <TvEmulator />
+            
+            {/* Desktop monitor */}
             <mesh
                 geometry={nodes.monitor.geometry}
                 position={nodes.monitor.position}
@@ -48,6 +55,7 @@ const DispFrame = React.memo(({ nodes }) => {
                 <meshBasicMaterial map={desktopWallpaper} toneMapped={false} />
             </mesh>
 
+            {/* Laptop display */}
             <mesh
                 geometry={nodes.laptop.geometry}
                 position={nodes.laptop.position}
@@ -63,6 +71,7 @@ const DispFrame = React.memo(({ nodes }) => {
                 <meshBasicMaterial map={musicBg} toneMapped={false} />
             </mesh>
 
+            {/* TV display */}
             <mesh
                 geometry={nodes.tvdisplay.geometry}
                 position={nodes.tvdisplay.position}
@@ -74,6 +83,7 @@ const DispFrame = React.memo(({ nodes }) => {
                 <meshBasicMaterial map={tvWallpaper} toneMapped={false} />
             </mesh>
 
+            {/* Smartphone display */}
             <mesh
                 geometry={nodes.smartphoneDisp.geometry}
                 position={nodes.smartphoneDisp.position}
@@ -87,6 +97,7 @@ const DispFrame = React.memo(({ nodes }) => {
                 <meshBasicMaterial map={smartphoneWallpaper} />
             </mesh>
 
+            {/* Display board */}
             <mesh
                 position={[-5.2, 2.95, -1.95]}
                 rotation={[0, Math.PI / 2, 0]}
@@ -116,5 +127,6 @@ const DispFrame = React.memo(({ nodes }) => {
 
 export default DispFrame;
 
+// Preload textures
 useTexture.preload('./assets/smartphoneWallpaper.webp');
 useTexture.preload('./assets/SpotifyClone.webp');
