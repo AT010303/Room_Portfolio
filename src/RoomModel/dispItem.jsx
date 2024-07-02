@@ -11,6 +11,7 @@ import TextureMaterial from './textures/TextureMaterial';
 extend({ TextureMaterial });
 
 const DispItem = React.memo(({ toggle, nodes }) => {
+    // Refs for various display items
     const dispItem = useRef();
     const desktopdisp = useRef();
     const musicdisp = useRef();
@@ -18,6 +19,7 @@ const DispItem = React.memo(({ toggle, nodes }) => {
     const smartphonedisp = useRef();
     const tvdisp = useRef();
 
+    // Update materials based on the toggle state using gsap
     useEffect(() => {
         gsap.to(dispItem.current.uniforms.NightMix, {
             value: toggle ? 1 : 0,
@@ -45,6 +47,7 @@ const DispItem = React.memo(({ toggle, nodes }) => {
         });
     }, [toggle]);
 
+    // Load textures
     const dBakeddisp = useTexture('./assets/boardBakedDcmp.webp');
     dBakeddisp.flipY = false;
     dBakeddisp.magFilter = THREE.NearestFilter;
@@ -60,6 +63,7 @@ const DispItem = React.memo(({ toggle, nodes }) => {
     nBakeddisp.magFilter = THREE.NearestFilter;
     nBakeddisp.minFilter = THREE.NearestFilter;
 
+    // Define material properties
     const TextureMaterialDisps = {
         dbakedm: dBakeddisp,
         nbakedm: nBakeddisp,
@@ -75,14 +79,17 @@ const DispItem = React.memo(({ toggle, nodes }) => {
 
     const [hovered, setHover] = useState(false);
 
+    // Change cursor style based on hover state
     useEffect(
         () => void (document.body.style.cursor = hovered ? 'pointer' : 'auto'),
         [hovered]
     );
 
+    // Callbacks for hover events
     const onPointerOver = useCallback(() => setHover(true), []);
     const onPointerOut = useCallback(() => setHover(false), []);
 
+    // Retrieve camera states from the store
     const cameraState = useCameraStore((state) => state.cameraState);
     const defaultState = useCameraStore((state) => state.default);
     const desktopState = useCameraStore((state) => state.desktop);
@@ -92,6 +99,7 @@ const DispItem = React.memo(({ toggle, nodes }) => {
 
     return (
         <>
+            {/* Main display item */}
             <mesh
                 geometry={nodes.dispItem.geometry}
                 position={nodes.dispItem.position}
@@ -105,6 +113,8 @@ const DispItem = React.memo(({ toggle, nodes }) => {
             >
                 <textureMaterial {...TextureMaterialDisps} ref={dispItem} />
             </mesh>
+
+            {/* Rope mesh */}
             <mesh
                 geometry={nodes.rope.geometry}
                 position={nodes.rope.position}
@@ -113,6 +123,7 @@ const DispItem = React.memo(({ toggle, nodes }) => {
                 <meshBasicMaterial color={'#160000'} />
             </mesh>
 
+            {/* Desktop display */}
             <mesh
                 geometry={nodes.desktop.geometry}
                 position={nodes.desktop.position}
@@ -134,6 +145,7 @@ const DispItem = React.memo(({ toggle, nodes }) => {
                 <textureMaterial {...TextureMaterialDisps} ref={desktopdisp} />
             </mesh>
 
+            {/* Music display */}
             <mesh
                 geometry={nodes.music.geometry}
                 position={nodes.music.position}
@@ -154,6 +166,8 @@ const DispItem = React.memo(({ toggle, nodes }) => {
             >
                 <textureMaterial {...TextureMaterialDisps} ref={musicdisp} />
             </mesh>
+
+            {/* Home display */}
             <mesh
                 geometry={nodes.home.geometry}
                 position={nodes.home.position}
@@ -175,6 +189,7 @@ const DispItem = React.memo(({ toggle, nodes }) => {
                 <textureMaterial {...TextureMaterialDisps} ref={homedisp} />
             </mesh>
 
+            {/* Smartphone display */}
             <mesh
                 geometry={nodes.smartphone.geometry}
                 position={nodes.smartphone.position}
@@ -199,6 +214,7 @@ const DispItem = React.memo(({ toggle, nodes }) => {
                 />
             </mesh>
 
+            {/* TV display */}
             <mesh
                 geometry={nodes.tv.geometry}
                 position={nodes.tv.position}
@@ -224,6 +240,8 @@ const DispItem = React.memo(({ toggle, nodes }) => {
 });
 
 export default DispItem;
+
+// Preload textures
 useTexture.preload('./assets/boardBakedDcmp.webp');
 useTexture.preload('./assets/boardBakedNcmp.webp');
 useTexture.preload('./assets/boardBakedLMAPcmp.webp');
