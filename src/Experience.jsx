@@ -15,10 +15,9 @@ const Experience = React.memo(() => {
                     fov: 35,
                     near: 0.1,
                     far: 200,
-                    position: [10, 8, -10],
+                    position: [10, 8, -10]
                 }}
             >
-
                 <Suspense fallback={null}>
                     {/* <Perf position={'top-left'} /> */}
                     <CameraManager />

@@ -118,4 +118,3 @@ export default DispFrame;
 
 useTexture.preload('./assets/smartphoneWallpaper.webp');
 useTexture.preload('./assets/SpotifyClone.webp');
-
