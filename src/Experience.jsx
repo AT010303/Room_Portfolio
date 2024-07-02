@@ -17,6 +17,11 @@ const Experience = React.memo(() => {
                     far: 200,
                     position: [24, 15, -24]
                 }}
+                gl={{
+                    antialias: true,
+                    alpha: true,
+                    powerPreference: 'high-performance'
+                }}
             >
                 <Suspense fallback={null}>
                     {/* <Perf position={'top-left'} /> */}
