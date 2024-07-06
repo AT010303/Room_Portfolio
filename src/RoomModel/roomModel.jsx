@@ -88,7 +88,6 @@ const RoomModel = React.memo(() => {
     lightMap.minFilter = THREE.NearestFilter;
     lightMap.generateMipmaps = false;
 
-
     const textureMaterialProps = useMemo(
         () => ({
             dbakedm: dBaked,

@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
-import { Bloom, EffectComposer } from '@react-three/postprocessing';
+
 import React from 'react';
 
 const Windows = React.memo(({ toggle, nodes }) => {
@@ -8,9 +8,6 @@ const Windows = React.memo(({ toggle, nodes }) => {
 
     return (
         <>
-            <EffectComposer autoClear>
-                <Bloom mipmapBlur intensity={0.9} />
-            </EffectComposer>
             <mesh
                 geometry={nodes.window.geometry}
                 position={nodes.window.position}
