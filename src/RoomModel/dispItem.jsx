@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import { useTexture } from '@react-three/drei';
 import { extend } from '@react-three/fiber';
+import { Select } from '@react-three/postprocessing';
 import { gsap } from 'gsap';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
@@ -81,6 +82,11 @@ const DispItem = React.memo(({ toggle, nodes }) => {
     };
 
     const [hovered, setHover] = useState(false);
+    const [hoveredMonitor, setHoveredMonitor] = useState(null);
+    const [hoveredLaptop, setHoveredLaptop] = useState(null);
+    const [hoveredTv, setHoveredTv] = useState(null);
+    const [hoveredSmartphone, setHoveredSmartphone] = useState(null);
+    const [hoveredHome, setHoveredHome] = useState(null);
 
     // Change cursor style based on hover state
     useEffect(
@@ -130,113 +136,201 @@ const DispItem = React.memo(({ toggle, nodes }) => {
             </mesh>
 
             {/* Desktop display */}
-            <mesh
-                geometry={nodes.desktop.geometry}
-                position={nodes.desktop.position}
-                rotation={nodes.desktop.rotation}
-                onClick={
-                    cameraState === 'displayBoard' ? desktopState : undefined
-                }
-                onPointerOver={
-                    cameraState === 'displayBoard' ? onPointerOver : null
-                }
-                onPointerOut={
-                    cameraState === 'displayBoard' ? onPointerOut : null
-                }
-            >
-                <textureMaterial {...TextureMaterialDisps} ref={desktopdisp} />
-            </mesh>
+            <Select enabled={hoveredMonitor}>
+                <mesh
+                    geometry={nodes.desktop.geometry}
+                    position={nodes.desktop.position}
+                    rotation={nodes.desktop.rotation}
+                    onClick={
+                        cameraState === 'displayBoard'
+                            ? () => {
+                                  desktopState();
+                                  setHoveredMonitor(false);
+                                  onPointerOut();
+                              }
+                            : undefined
+                    }
+                    onPointerOver={
+                        cameraState === 'displayBoard'
+                            ? () => {
+                                  onPointerOver();
+                                  setHoveredMonitor(true);
+                              }
+                            : null
+                    }
+                    onPointerOut={
+                        cameraState === 'displayBoard'
+                            ? () => {
+                                  onPointerOut();
+                                  setHoveredMonitor(false);
+                              }
+                            : null
+                    }
+                >
+                    <textureMaterial
+                        {...TextureMaterialDisps}
+                        ref={desktopdisp}
+                    />
+                </mesh>
+            </Select>
 
             {/* Music display */}
-            <mesh
-                geometry={nodes.music.geometry}
-                position={nodes.music.position}
-                rotation={nodes.music.rotation}
-                onClick={
-                    cameraState === 'displayBoard'
-                        ? cameraState === 'laptop'
-                            ? undefined
-                            : laptopState
-                        : null
-                }
-                onPointerOver={
-                    cameraState === 'displayBoard' ? onPointerOver : null
-                }
-                onPointerOut={
-                    cameraState === 'displayBoard' ? onPointerOut : null
-                }
-            >
-                <textureMaterial {...TextureMaterialDisps} ref={musicdisp} />
-            </mesh>
+            <Select enabled={hoveredLaptop}>
+                <mesh
+                    geometry={nodes.music.geometry}
+                    position={nodes.music.position}
+                    rotation={nodes.music.rotation}
+                    onClick={
+                        cameraState === 'displayBoard'
+                            ? cameraState === 'laptop'
+                                ? undefined
+                                : () => {
+                                      laptopState();
+                                      setHoveredLaptop(false);
+                                      onPointerOut();
+                                  }
+                            : null
+                    }
+                    onPointerOver={
+                        cameraState === 'displayBoard'
+                            ? () => {
+                                  onPointerOver();
+                                  setHoveredLaptop(true);
+                              }
+                            : null
+                    }
+                    onPointerOut={
+                        cameraState === 'displayBoard'
+                            ? () => {
+                                  onPointerOut();
+                                  setHoveredLaptop(false);
+                              }
+                            : null
+                    }
+                >
+                    <textureMaterial
+                        {...TextureMaterialDisps}
+                        ref={musicdisp}
+                    />
+                </mesh>
+            </Select>
 
             {/* Home display */}
-            <mesh
-                geometry={nodes.home.geometry}
-                position={nodes.home.position}
-                rotation={nodes.home.rotation}
-                onClick={
-                    cameraState === 'displayBoard'
-                        ? cameraState === 'default'
-                            ? undefined
-                            : defaultState
-                        : null
-                }
-                onPointerOver={
-                    cameraState === 'displayBoard' ? onPointerOver : null
-                }
-                onPointerOut={
-                    cameraState === 'displayBoard' ? onPointerOut : null
-                }
-            >
-                <textureMaterial {...TextureMaterialDisps} ref={homedisp} />
-            </mesh>
+            <Select enabled={hoveredHome}>
+                <mesh
+                    geometry={nodes.home.geometry}
+                    position={nodes.home.position}
+                    rotation={nodes.home.rotation}
+                    onClick={
+                        cameraState === 'displayBoard'
+                            ? cameraState === 'default'
+                                ? undefined
+                                : () => {
+                                      defaultState();
+                                      setHoveredHome(false);
+                                      onPointerOut();
+                                  }
+                            : null
+                    }
+                    onPointerOver={
+                        cameraState === 'displayBoard'
+                            ? () => {
+                                  onPointerOver();
+                                  setHoveredHome(true);
+                              }
+                            : null
+                    }
+                    onPointerOut={
+                        cameraState === 'displayBoard'
+                            ? () => {
+                                  onPointerOut();
+                                  setHoveredHome(false);
+                              }
+                            : null
+                    }
+                >
+                    <textureMaterial {...TextureMaterialDisps} ref={homedisp} />
+                </mesh>
+            </Select>
 
             {/* Smartphone display */}
-            <mesh
-                geometry={nodes.smartphone.geometry}
-                position={nodes.smartphone.position}
-                rotation={nodes.smartphone.rotation}
-                onClick={
-                    cameraState === 'displayBoard'
-                        ? cameraState === 'smartphone'
-                            ? undefined
-                            : smartphoneState
-                        : null
-                }
-                onPointerOver={
-                    cameraState === 'displayBoard' ? onPointerOver : null
-                }
-                onPointerOut={
-                    cameraState === 'displayBoard' ? onPointerOut : null
-                }
-            >
-                <textureMaterial
-                    {...TextureMaterialDisps}
-                    ref={smartphonedisp}
-                />
-            </mesh>
+            <Select enabled={hoveredSmartphone}>
+                <mesh
+                    geometry={nodes.smartphone.geometry}
+                    position={nodes.smartphone.position}
+                    rotation={nodes.smartphone.rotation}
+                    onClick={
+                        cameraState === 'displayBoard'
+                            ? cameraState === 'smartphone'
+                                ? undefined
+                                : () => {
+                                      smartphoneState();
+                                      setHoveredSmartphone(false);
+                                      onPointerOut();
+                                  }
+                            : null
+                    }
+                    onPointerOver={
+                        cameraState === 'displayBoard'
+                            ? () => {
+                                  onPointerOver();
+                                  setHoveredSmartphone(true);
+                              }
+                            : null
+                    }
+                    onPointerOut={
+                        cameraState === 'displayBoard'
+                            ? () => {
+                                  onPointerOut();
+                                  setHoveredSmartphone(false);
+                              }
+                            : null
+                    }
+                >
+                    <textureMaterial
+                        {...TextureMaterialDisps}
+                        ref={smartphonedisp}
+                    />
+                </mesh>
+            </Select>
 
             {/* TV display */}
-            <mesh
-                geometry={nodes.tv.geometry}
-                position={nodes.tv.position}
-                rotation={nodes.tv.rotation}
-                onClick={
-                    cameraState === 'displayBoard'
-                        ? cameraState === 'tv'
-                            ? undefined
-                            : tvState
-                        : null
-                }
-                onPointerOver={
-                    cameraState === 'displayBoard' ? onPointerOver : null
-                }
-                onPointerOut={
-                    cameraState === 'displayBoard' ? onPointerOut : null
-                }
-            >
-                <textureMaterial {...TextureMaterialDisps} ref={tvdisp} />
-            </mesh>
+            <Select enabled={hoveredTv}>
+                <mesh
+                    geometry={nodes.tv.geometry}
+                    position={nodes.tv.position}
+                    rotation={nodes.tv.rotation}
+                    onClick={
+                        cameraState === 'displayBoard'
+                            ? cameraState === 'tv'
+                                ? undefined
+                                : () => {
+                                      tvState();
+                                      setHoveredTv(false);
+                                      onPointerOut();
+                                  }
+                            : null
+                    }
+                    onPointerOver={
+                        cameraState === 'displayBoard'
+                            ? () => {
+                                  onPointerOver();
+                                  setHoveredTv(true);
+                              }
+                            : null
+                    }
+                    onPointerOut={
+                        cameraState === 'displayBoard'
+                            ? () => {
+                                  onPointerOut();
+                                  setHoveredTv(false);
+                              }
+                            : null
+                    }
+                >
+                    <textureMaterial {...TextureMaterialDisps} ref={tvdisp} />
+                </mesh>
+            </Select>
         </>
     );
 });
